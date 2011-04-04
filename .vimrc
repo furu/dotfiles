@@ -35,11 +35,11 @@ set hidden
 " バックスペースでなんでも消せる
 set backspace=indent,eol,start
 " 改行コードの自動認識優先順位
-"if has('win32') || has('win64')
-	set fileformats=dos,unix,mac
-"else
-	set fileformats=unix,dos,mac
-"endif
+if has('win32') || has('win64')
+  set fileformats=dos,unix,mac
+else
+  set fileformats=unix,dos,mac
+endif
 " 行番号の表示
 set number
 " タイトルバーにファイル名を表示
@@ -87,7 +87,7 @@ set cmdheight=2
 " 常にステータスラインを表示
 set laststatus=2
 " ステータスラインに文字コード、改行コード、ファイルタイプなどを表示する
-"set statusline=%<%f¥ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}¥ %y%=%l,%c%V%8P
+set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ %y%=%l,%c%V%8P
 " Enable mouse support.
 set mouse=a
 
@@ -103,7 +103,6 @@ endif
 if has('gui_running')
   " Show popup menu if right click.
   set mousemodel=popup
-  
   " Don't focus the window when the mouse pointer is moved.
   set nomousefocus
   " Hide mouse pointer on insert mode.
@@ -121,6 +120,8 @@ set shiftwidth=4
 set expandtab
 " default indent settings
 set cindent
+
+set ambiwidth=double
 
 
 "-------------------------------------------
@@ -153,7 +154,7 @@ noremap <Space>k <C-b>
 
 " ノーマルモードで挿入モードにならず現在の行の下に空行を挿入する
 " その際、インデントやコメントの自動挿入は行われない
-" Oを使うので、現在の行の上に空行を挿入することができなくなるけど、あんまり使わないのでOK
+" 0を使うので、現在の行の上に空行を挿入することができなくなるけど、あんまり使わないのでOK
 nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
 
 " <C-h>: ヘルプを引く
@@ -189,18 +190,18 @@ nnoremap <silent> <Space>ev :<C-u>edit $MYVIMRC<CR>
 nnoremap <silent> <Space>eg :<C-u>edit $MYGVIMRC<CR>
 " <Space>rv: Load _vimrc.
 "            Load _gvimrc after .vimrc edited at Gvim.
-"nnoremap <silent> <Space>rv :<C-u>source $MYVIMRC ¥| if has('gui_running') ¥| source $MYGVIMRC ¥| endif <CR>
+nnoremap <silent> <Space>rv :<C-u>source $MYVIMRC \| if has('gui_running' \| source $MYGVIMRC \| endif <CR>
 " <Space>rg: Load _gvimrc.
 nnoremap <silent> <Space>rg :<C-u>source $MYGVIMRC<CR>
 
 " 
-"if !has('gui_running') && !(has('win32') || has('win64'))
-"  autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
-"else
-"  autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC |
-"        ¥ if has('gui_running') | source $MYGVIMRC
-"  autocmd MyAutoCmd BufWritePost $MYGVIMRC if has('gui_running) | source $MYGVIMRC
-"endif
+if !has('gui_running') && !(has('win32') || has('win64'))
+ autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
+else
+ autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC |
+\ if has('gui_running') | source $MYGVIMRC
+ autocmd MyAutoCmd BufWritePost $MYGVIMRC if has('gui_running) | source $MYGVIMRC
+endif
 
 
 "----------------------------------------------------
@@ -217,25 +218,25 @@ command! -bang -bar -complete=file -nargs=? Sjis Cp932
 
 " 定義されているマッピングを調べる
 command!
-      ¥	-nargs=* -complete=mapping
-      ¥	AllMaps
-      ¥	map <args> | map! <args> | lmap <args>
+      \	-nargs=* -complete=mapping
+      \	AllMaps
+      \	map <args> | map! <args> | lmap <args>
 
 " Scouter {{{
 function! Scouter(file, ...)
-  let pat = '^¥s*$¥|^¥s*"'
+  let pat = '^\s*$\|^\s*"'
   let lines = readfile(a:file)
   if !a:0 || !a:1
-    let lines = split(substitute(join(lines, "¥n"), '¥n¥s*¥¥', '', 'g'), "¥n")
+    let lines = split(substitute(join(lines, "\n"), '\n\s*\\', '', 'g'), "\n")
   endif
-  return len(filter(lines, 'v:val !‾ pat'))
+  return len(filter(lines, 'v:val !~ pat'))
 endfunction "}}}
 " :Scouterで_vimrcの戦闘力を計測
 command! -bar -bang -nargs=? -complete=file Scouter
-      ¥ echo Scouter(empty(<q-args>) ? $MYVIMRC : expand(<q-args>), <bang>0)
+      \ echo Scouter(empty(<q-args>) ? $MYVIMRC : expand(<q-args>), <bang>0)
 " :GScouterで_gvimrcの戦闘力を計測
 command! -bar -bang -nargs=? -complete=file GScouter
-      ¥ echo Scouter(empty(<q-args>) ? $MYGVIMRC : expand(<q-args>), <bang>0)
+      \ echo Scouter(empty(<q-args>) ? $MYGVIMRC : expand(<q-args>), <bang>0)
 
 " Open junk file."{{{
 command! -nargs=0 JunkFile call s:open_junk_file()
@@ -292,7 +293,7 @@ augroup END
 
 augroup MySkeleton
   autocmd!
-  autocmd BufNewFile *.rb 0r ‾/vimfiles/templates/skeleton.rb
+  autocmd BufNewFile *.rb 0r /vimfiles/templates/skeleton.rb
 augroup END
 
 " au User Rails* set fenc=utf-8
@@ -316,15 +317,15 @@ let g:neocomplcache_min_syntax_length = 3
 if !exists('g:neocomplcache_keyword_patterns')
   let g:neocomplcache_keyword_patterns = {}
 endif
-let g:neocomplcache_keyword_patterns['default'] = '¥h¥w*'
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
 " タブで補完
-inoremap <expr><TAB> pumvisible() ? "¥<C-n>" : "¥<TAB>"
+inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 "
-inoremap <expr><CR> neocomplcache#smart_close_popup() . "¥<CR>"
+inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
 " <C-h>、<BS>を押したときに確実にポップアップを削除する
-inoremap <expr><C-h> neocomplcache#smart_close_popup() . "¥<C-h>"
-inoremap <expr><BS> neocomplcache#smart_close_popup() . "¥<C-h>"
+inoremap <expr><C-h> neocomplcache#smart_close_popup() . "\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup() . "\<C-h>"
 " <C-e> : 現在選択している候補をキャンセルし、ポップアップを閉じる
 inoremap <expr><C-e> neocomplcache#cancel_popup()
 " <C-y> : 補完を選択し、ポップアップを閉じる
@@ -367,7 +368,7 @@ vmap <Leader>cs <Plug>NERDCommenterSexy
 "-------------------------------------------
 " vimshellの設定
 "-------------------------------------------
-let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":‾")'
+let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ": ")'
 let g:vimshell_enable_auto_slash = 1
 let g:vimshell_enable_smart_case = 1
 
