@@ -410,3 +410,9 @@ endif
 let g:ref_alc_start_linenumber = 50
 
 
+"-------------------------------------------
+" Setting of the hatena-vim.
+"-------------------------------------------
+let g:hatena_user='furu33'
+
+
