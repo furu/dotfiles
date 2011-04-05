@@ -35,3 +35,6 @@
 [submodule ".vim/bundle/vim-ref"]
 	path = .vim/bundle/vim-ref
 	url = git://github.com/thinca/vim-ref.git
+[submodule ".vim/bundle/hatena-vim"]
+	path = .vim/bundle/hatena-vim
+	url = git://github.com/motemen/hatena-vim.git
