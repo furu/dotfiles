@@ -1,9 +1,9 @@
-" Filename: _vimrc
-" Last Change: 30-March-2011
+" Filename: .vimrc
+" Last Change: 5-April-2011
 " Maintainer: furu
 
 "-------------------------------------------
-" pathogenの設定
+" Setting of the pathogen.
 "-------------------------------------------
 " pathogenでftdetectなどをloadさせるために一度ファイルタイプ判定をoff
 filetype off
@@ -21,53 +21,42 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
+" use 256 colors in terminal.
+set t_Co=256
+" set colorscheme.
+" colorscheme=
+
 "-------------------------------------------
-" 基本設定
+" Basic
 "-------------------------------------------
 " viとの互換性を取らない(vim独自拡張機能を使うため)
 set nocompatible
+" シンタックスカラー(オン)
+syntax enable
 " バックアップを作成しない
 set nobackup
 " スワップファイルを作成しない
 set noswapfile
 " 編集中でも他のファイルを開ける
 set hidden
-" バックスペースでなんでも消せる
+" <BS>でindent,eol,startを消せる
 set backspace=indent,eol,start
-" 改行コードの自動認識優先順位
-if has('win32') || has('win64')
-  set fileformats=dos,unix,mac
-else
-  set fileformats=unix,dos,mac
-endif
 " 行番号の表示
 set number
 " タイトルバーにファイル名を表示
 set title
-" クリップボードをWindowsと連携
+" クリップボード
 set clipboard& clipboard+=unnamed
 " ルーラーを表示
 set ruler
-" カレント行をハイライト
-set cursorline
-" カレントウィンドウにのみ罫線を引く
-augroup cch
-  autocmd! cch
-  autocmd WinLeave * set nocursorline
-  autocmd WinEnter,BufRead * set cursorline
-augroup END
-
-hi clear CursorLine
-hi CursorLine gui=underline
-highlight CursorLine ctermbg=black guibg=black
 " 折り返しを有効
 set wrap
-" シンタックスカラー(オン)
-syntax on
 " 開いているファイルのディレクトリに移動
 " あまり推奨されないっぽい
 " -> 代わりにカレントディレクトリ移動のためのキーマッピングを定義した
-"set autochdir
+" set autochdir
+" 
+set showmatch
 " 閉じ括弧のマッチを表示する時間(1/10秒単位)
 set matchtime=2
 " コマンド補完を強化
@@ -88,6 +77,14 @@ set cmdheight=2
 set laststatus=2
 " ステータスラインに文字コード、改行コード、ファイルタイプなどを表示する
 set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ %y%=%l,%c%V%8P
+" 
+set list
+" 
+set listchars=tab:>-,eol:$
+" 
+set ambiwidth=double
+
+" Mouse {{{
 " Enable mouse support.
 set mouse=a
 
@@ -108,8 +105,9 @@ if has('gui_running')
   " Hide mouse pointer on insert mode.
   set mousehide
 endif
+" }}}
 
-" default tab settings
+" default tab & indent settings {{{
 " タブの表示幅
 set tabstop=4
 " 
@@ -120,8 +118,30 @@ set shiftwidth=4
 set expandtab
 " default indent settings
 set cindent
+" }}}
 
-set ambiwidth=double
+" カレント行をハイライト
+set cursorline
+" カレントウィンドウにのみ罫線を引く{{{
+augroup cch
+  autocmd! cch
+  autocmd WinLeave * set nocursorline
+  autocmd WinEnter,BufRead * set cursorline
+augroup END
+
+hi clear CursorLine
+hi CursorLine gui=underline
+highlight CursorLine ctermbg=black guibg=black
+" }}}
+
+" 改行コード
+if has('win32') || has('win64')
+  set fileformat=dos
+  set fileformats=dos,unix,mac
+else
+  set fileformat=unix
+  set fileformats=unix,dos,mac
+endif
 
 
 "-------------------------------------------
@@ -129,7 +149,7 @@ set ambiwidth=double
 "-------------------------------------------
 " 最後まで検索したら先頭へ戻る
 set wrapscan
-" 大文字小文字無視
+" 大文字小文字を無視
 set ignorecase
 " 検索文字列に大文字が含まれている場合は区別して検索
 set smartcase
@@ -184,17 +204,17 @@ nnoremap <Esc><Esc> :nohlsearch<CR>
 "-------------------------------------------------------
 " _vimrcと_gvimrcの編集と反映のためのKey-mappingの定義
 "-------------------------------------------------------
-" <Space>ev: Edit _vimrc.
+" <Space>ev: Edit .vimrc.
 nnoremap <silent> <Space>ev :<C-u>edit $MYVIMRC<CR>
-" <Space>eg: Edit _gvimrc.
+" <Space>eg: Edit .gvimrc.
 nnoremap <silent> <Space>eg :<C-u>edit $MYGVIMRC<CR>
-" <Space>rv: Load _vimrc.
-"            Load _gvimrc after .vimrc edited at Gvim.
+" <Space>rv: Load .vimrc.
+"            Load .gvimrc after .vimrc edited at Gvim.
 nnoremap <silent> <Space>rv :<C-u>source $MYVIMRC \| if has('gui_running' \| source $MYGVIMRC \| endif <CR>
-" <Space>rg: Load _gvimrc.
+" <Space>rg: Load .gvimrc.
 nnoremap <silent> <Space>rg :<C-u>source $MYGVIMRC<CR>
 
-" 
+" auto reload .vimrc and .gvimrc when I edited .vimrc or .gvimrc.
 if !has('gui_running') && !(has('win32') || has('win64'))
  autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
 else
@@ -207,7 +227,7 @@ endif
 "----------------------------------------------------
 " Ex command
 "----------------------------------------------------
-" 文字エンコーディングを指定してファイルを開き直すためのコマンド
+" reload with encoding.
 command! -bang -bar -complete=file -nargs=? Cp932 edit ++enc=cp932
 command! -bang -bar -complete=file -nargs=? EucJp edit ++enc=euc-jp
 command! -bang -bar -complete=file -nargs=? Iso2022jp edit ++enc=iso-2022-jp
@@ -216,11 +236,11 @@ command! -bang -bar -complete=file -nargs=? Utf8 edit ++enc=utf-8
 command! -bang -bar -complete=file -nargs=? Jis Iso2022jp
 command! -bang -bar -complete=file -nargs=? Sjis Cp932
 
-" 定義されているマッピングを調べる
+" check defined mappings.
 command!
-      \	-nargs=* -complete=mapping
-      \	AllMaps
-      \	map <args> | map! <args> | lmap <args>
+      \ -nargs=* -complete=mapping
+      \ AllMaps
+      \ map <args> | map! <args> | lmap <args>
 
 " Scouter {{{
 function! Scouter(file, ...)
@@ -261,7 +281,6 @@ function! s:ChangeCurrentDir(directory, bang)
     execute 'lcd' . a:directory
   endif
 
-
   if a:bang == ''
     pwd
   endif
@@ -291,10 +310,10 @@ augroup MyTab
   autocmd FileType css setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 augroup END
 
-augroup MySkeleton
-  autocmd!
-  autocmd BufNewFile *.rb 0r /vimfiles/templates/skeleton.rb
-augroup END
+" augroup MySkeleton
+  " autocmd!
+  " autocmd BufNewFile *.rb 0r /vimfiles/templates/skeleton.rb
+" augroup END
 
 " au User Rails* set fenc=utf-8
 
@@ -304,7 +323,7 @@ autocmd BufNewFile *.js setlocal fenc=utf-8
 
 
 "-------------------------------------------
-" necomplcacheの設定
+" Setting of the necomplcache.
 "-------------------------------------------
 " 起動時に有効にする
 let g:neocomplcache_enable_at_startup = 1
@@ -336,21 +355,21 @@ smap <C-s> <Plug>(neocomplcache_snippets_expand)
 
 
 "-------------------------------------------
-" quicklaunchの設定
+" Setting of the quicklaunch.
 "-------------------------------------------
 " 今は必要ないのでOFF
 let g:loaded_quicklaunch = 1
 
 
 "-------------------------------------------
-" surroundの設定
+" Setting of the surround.
 "-------------------------------------------
 "nmap s <Plug>Ysurround
 "nmap ss <Plug>Yssurround
 
 
 "-------------------------------------------
-" NERDCommenterの設定
+" Setting of the NERDCommenter.
 "-------------------------------------------
 " Default key-mappings off.
 let g:NERDCreateDefaultMappings = 0
@@ -366,7 +385,7 @@ vmap <Leader>cs <Plug>NERDCommenterSexy
 
 
 "-------------------------------------------
-" vimshellの設定
+" Setting of the vimshell.
 "-------------------------------------------
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ": ")'
 let g:vimshell_enable_auto_slash = 1
@@ -386,7 +405,7 @@ endif
 
 
 "-------------------------------------------
-" ref-alcの設定
+" Setting of the ref-alc.
 "-------------------------------------------
 let g:ref_alc_start_linenumber = 50
 
