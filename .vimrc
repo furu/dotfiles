@@ -22,7 +22,7 @@ augroup MyAutoCmd
 augroup END
 
 " use 256 colors in terminal.
-set t_Co=256
+" set t_Co=256
 " set colorscheme.
 " colorscheme=
 

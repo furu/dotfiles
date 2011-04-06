@@ -10,7 +10,9 @@ if has('win32') || has ('win64')
 elseif has('mac')
   set guifont=Osaka－等幅:h12
 else
-  set guifont=monospace\ 12
+  " set guifont=Monospace\ 12
+  set guifont=Inconsolata\ 12
+  set guifontwide=TakaoExゴシック\ 12
 endif
 
 " Window
@@ -19,13 +21,12 @@ if has('win32') || has('win64')
   set transparency=248
 else
   set columns=80
-  set lines=28
+  set lines=26
 endif
 
 set guioptions& guioptions-=T
 
 colorscheme wombat
-
 
 
 
