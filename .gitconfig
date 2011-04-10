@@ -4,3 +4,5 @@
 [github]
 	user = furu
 	token = b382c5fc8a9513257add1cb5726e995b
+[core]
+	editor = vim
