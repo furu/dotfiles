@@ -1,5 +1,5 @@
 # Filename: .zshrc
-# Last Change: 3-April-2011
+# Last Change: 16-April-2011
 # Maintainer: furu
 
 # Japanese
@@ -7,8 +7,8 @@ export LANG=ja_JP.UTF-8
 
 # Prompt
 PROMPT="
-%~
-%n@%M%# "
+[%~]
+[%n@%M]%# "
 
 # Title
 case "${TERM}" in
