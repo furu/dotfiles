@@ -1,5 +1,5 @@
 " Filename: .gvimrc
-" Last Change: 4-April-2011
+" Last Changed: 17-April-2011
 " Maintainer: furu
 
 scriptencoding utf-8
@@ -21,12 +21,9 @@ if has('win32') || has('win64')
   set transparency=248
 else
   set columns=80
-  set lines=26
+  set lines=22
 endif
 
 set guioptions& guioptions-=T
 
 colorscheme wombat
-
-
-
