@@ -1,6 +1,12 @@
 " Filename: .vimrc
-" Last Change: 5-April-2011
+" Last Changed: 18-April-2011
 " Maintainer: furu
+
+
+if !exists($MYGVIMRC)
+  let $MYGVIMRC = expand("~/.gvimrc")
+endif
+
 
 "-------------------------------------------
 " Setting of the pathogen.
@@ -14,6 +20,7 @@ set helpfile=$VIMRUNTIME/doc/help.txt
 " ファイルタイプ判定をon
 filetype plugin indent on
 
+
 "-------------------------------------------
 " Set augroup.
 "-------------------------------------------
@@ -21,10 +28,11 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
+
 " use 256 colors in terminal.
-" set t_Co=256
-" set colorscheme.
-" colorscheme=
+set t_Co=256
+colorscheme wombat256mod
+
 
 "-------------------------------------------
 " Basic
@@ -129,9 +137,9 @@ augroup cch
   autocmd WinEnter,BufRead * set cursorline
 augroup END
 
-hi clear CursorLine
-hi CursorLine gui=underline
-highlight CursorLine ctermbg=black guibg=black
+" hi clear CursorLine
+" hi CursorLine gui=underline
+" highlight CursorLine ctermbg=black guibg=black
 " }}}
 
 " 改行コード
@@ -220,7 +228,7 @@ if !has('gui_running') && !(has('win32') || has('win64'))
 else
  autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC |
 \ if has('gui_running') | source $MYGVIMRC
- autocmd MyAutoCmd BufWritePost $MYGVIMRC if has('gui_running) | source $MYGVIMRC
+ autocmd MyAutoCmd BufWritePost $MYGVIMRC if has('gui_running') | source $MYGVIMRC
 endif
 
 
