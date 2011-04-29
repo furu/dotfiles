@@ -1,5 +1,5 @@
 " Filename: .vimrc
-" Last Changed: 18-April-2011
+" Last Changed: 29-April-2011
 " Maintainer: furu
 
 
@@ -84,7 +84,7 @@ set cmdheight=2
 " 常にステータスラインを表示
 set laststatus=2
 " ステータスラインに文字コード、改行コード、ファイルタイプなどを表示する
-set statusline=%<%f\ %m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).']['.&ff.']'}\ %y%=%l,%c%V%8P
+set statusline=%<%f\ %r%h%w%m[%{&fenc!=''?&fenc:&enc}][%{&ff=='unix'?'LF':&ff=='dos'?'CRLF':'CR'}]\ %y\ %=[0x%B]\ %c,%l/%L
 " 
 set list
 " 

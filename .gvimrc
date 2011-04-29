@@ -1,5 +1,5 @@
 " Filename: .gvimrc
-" Last Changed: 17-April-2011
+" Last Changed: 29-April-2011
 " Maintainer: furu
 
 scriptencoding utf-8
@@ -15,6 +15,8 @@ else
   set guifontwide=TakaoExゴシック\ 12
 endif
 
+set guioptions& guioptions-=T
+
 " Window
 if has('win32') || has('win64')
   gui 
@@ -23,7 +25,5 @@ else
   set columns=80
   set lines=22
 endif
-
-set guioptions& guioptions-=T
 
 colorscheme wombat
