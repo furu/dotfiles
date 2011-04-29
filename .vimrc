@@ -32,6 +32,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'kana/vim-smartchr'
 Bundle 'h1mesuke/unite-outline'
+Bundle 'vim-scripts/IndentAnything'
 
 filetype plugin indent on
 
