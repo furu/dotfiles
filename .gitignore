@@ -11,3 +11,5 @@
 !/.zshrc
 
 /.vim/bundle
+doc/tags
+doc/tags-ja

@@ -33,6 +33,7 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'kana/vim-smartchr'
 Bundle 'h1mesuke/unite-outline'
 Bundle 'vim-scripts/IndentAnything'
+Bundle 'guns/xoria256.vim'
 
 filetype plugin indent on
 
@@ -59,7 +60,7 @@ augroup END
 
 " use 256 colors in terminal.
 set t_Co=256
-colorscheme wombat256mod
+colorscheme xoria256
 
 
 "-------------------------------------------
