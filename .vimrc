@@ -7,18 +7,45 @@ if !exists($MYGVIMRC)
   let $MYGVIMRC = expand("~/.gvimrc")
 endif
 
+" viとの互換性を取らない(vim独自拡張機能を使うため)
+set nocompatible
+filetype off
+
+"-------------------------------------------
+" Setting of the vundle.
+"-------------------------------------------
+set rtp+=~/.vim/vundle.git/
+call vundle#rc()
+
+Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/vimshell'
+Bundle 'Shougo/vimproc'
+Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/echodoc'
+Bundle 'motemen/hatena-vim'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'tsaleh/vim-matchit'
+Bundle 'thinca/vim-quickrun'
+Bundle 'thinca/vim-ref'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-surround'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'kana/vim-smartchr'
+Bundle 'h1mesuke/unite-outline'
+
+filetype plugin indent on
 
 "-------------------------------------------
 " Setting of the pathogen.
 "-------------------------------------------
 " pathogenでftdetectなどをloadさせるために一度ファイルタイプ判定をoff
-filetype off
+"filetype off
 " pathogen.vimによってbundle配下のpluginをpathに加える
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
-set helpfile=$VIMRUNTIME/doc/help.txt
+"call pathogen#runtime_append_all_bundles()
+"call pathogen#helptags()
+"set helpfile=$VIMRUNTIME/doc/help.txt
 " ファイルタイプ判定をon
-filetype plugin indent on
+"filetype plugin indent on
 
 
 "-------------------------------------------
@@ -37,8 +64,6 @@ colorscheme wombat256mod
 "-------------------------------------------
 " Basic
 "-------------------------------------------
-" viとの互換性を取らない(vim独自拡張機能を使うため)
-set nocompatible
 " シンタックスカラー(オン)
 syntax enable
 " バックアップを作成しない
@@ -218,7 +243,7 @@ nnoremap <silent> <Space>ev :<C-u>edit $MYVIMRC<CR>
 nnoremap <silent> <Space>eg :<C-u>edit $MYGVIMRC<CR>
 " <Space>rv: Load .vimrc.
 "            Load .gvimrc after .vimrc edited at Gvim.
-nnoremap <silent> <Space>rv :<C-u>source $MYVIMRC \| if has('gui_running' \| source $MYGVIMRC \| endif <CR>
+nnoremap <silent> <Space>rv :<C-u>source $MYVIMRC \| if has('gui_running') \| source $MYGVIMRC \| endif <CR>
 " <Space>rg: Load .gvimrc.
 nnoremap <silent> <Space>rg :<C-u>source $MYGVIMRC<CR>
 
