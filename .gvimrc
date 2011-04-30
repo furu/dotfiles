@@ -7,6 +7,7 @@ scriptencoding utf-8
 " Font
 if has('win32') || has ('win64')
   set guifont=Osaka－等幅:h12:cSHIFTJIS
+  set guifontwide=VL_ゴシック:h12:cSHIFTJIS
 elseif has('mac')
   set guifont=Osaka－等幅:h12
 else

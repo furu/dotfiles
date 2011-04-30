@@ -1,10 +1,20 @@
 " Filename: .vimrc
-" Last Changed: 29-April-2011
+" Last Changed: 30-April-2011
 " Maintainer: furu
 
+" Vundleを使うとき、パス関係でうまくいかないので使わない
+"if has('win32') || has('win64')
+"  set shellslash
+"endif
+
+if has('win32') || has('win64')
+  let $DOTVIM = expand('~/vimfiles')
+else
+  let $DOTVIM = expand('~/.vim')
+endif
 
 if !exists($MYGVIMRC)
-  let $MYGVIMRC = expand("~/.gvimrc")
+  let $MYGVIMRC = expand('~/.gvimrc')
 endif
 
 " viとの互換性を取らない(vim独自拡張機能を使うため)
@@ -14,8 +24,9 @@ filetype off
 "-------------------------------------------
 " Setting of the vundle.
 "-------------------------------------------
-set rtp+=~/.vim/vundle.git/
-call vundle#rc()
+
+set runtimepath+=$DOTVIM/vundle.git/
+call vundle#rc('$DOTVIM/bundle')
 
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/vimshell'
@@ -60,7 +71,7 @@ augroup END
 
 " use 256 colors in terminal.
 set t_Co=256
-colorscheme xoria256
+colorscheme wombat256mod
 
 
 "-------------------------------------------
