@@ -1,5 +1,5 @@
 " Filename: .vimrc
-" Last Changed: 30-April-2011
+" Last Changed: 2-May-2011
 " Maintainer: furu
 
 " Vundleを使うとき、パス関係でうまくいかないので使わない
@@ -461,4 +461,10 @@ let g:ref_alc_start_linenumber = 50
 "-------------------------------------------
 let g:hatena_user='furu33'
 
+
+"-------------------------------------------
+" Setting of the echodoc.
+"-------------------------------------------
+" enable echodoc at startup
+let g:echodoc_enable_at_startup = 1
 
