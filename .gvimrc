@@ -4,6 +4,8 @@
 
 scriptencoding utf-8
 
+set guicursor=a:blinkon0
+
 " Font
 if has('win32') || has ('win64')
   set guifont=Osaka－等幅:h12:cSHIFTJIS
