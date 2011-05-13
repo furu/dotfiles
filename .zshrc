@@ -51,6 +51,11 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias vi='vim'
 
+# PATH
+export JAVA_HOME=/usr/local/java/jdk1.6.0_24
+export PATH=$JAVA_HOME/bin:$PATH
+export CLASSPATH=.:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/mysql-connector-java-5.1.16-bin.jar
+
 export PATH=/home/furu/app/termtter/bin:$PATH
 
 # This loads RVM into a shell session.
