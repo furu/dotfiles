@@ -9,6 +9,7 @@
 !/.vimrc
 !/.vim
 !/.zshrc
+!/mksymlink.sh
 
 /.vim/bundle
 doc/tags
