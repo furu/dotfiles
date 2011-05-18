@@ -1,10 +1,8 @@
 " Filename: .gvimrc
-" Last Changed: 10-May-2011
+" Last Changed: 19-May-2011
 " Maintainer: furu
 
 scriptencoding utf-8
-
-set guicursor=a:blinkon0
 
 " Font
 if has('win32') || has ('win64')
@@ -22,13 +20,15 @@ endif
 
 set guioptions& guioptions-=T
 
+set guicursor=a:blinkon0
+
 " Window
 if has('win32') || has('win64')
   gui 
   set transparency=248
 else
   set columns=80
-  set lines=25
+  set lines=27
 endif
 
 colorscheme wombat

@@ -52,9 +52,12 @@ alias egrep='egrep --color=auto'
 alias vi='vim'
 
 # PATH
+export ECLIPSE_HOME=/usr/local/eclipse
+export PATH=$ECLIPSE_HOME:$PATH
+
 export JAVA_HOME=/usr/local/java/jdk1.6.0_24
 export PATH=$JAVA_HOME/bin:$PATH
-export CLASSPATH=.:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/mysql-connector-java-5.1.16-bin.jar
+export CLASSPATH=.:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/mysql-connector-java-5.1.16-bin.jar:/usr/local/java/jfreechart-1.0.13/lib/jfreechart-1.0.13.jar:/usr/local/java/jfreechart-1.0.13/lib/jcommon-1.0.16.jar
 
 export PATH=/home/furu/app/termtter/bin:$PATH
 
