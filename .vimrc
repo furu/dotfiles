@@ -47,6 +47,7 @@ Bundle 'kana/vim-smartchr'
 Bundle 'h1mesuke/unite-outline'
 " Bundle 'vim-scripts/IndentAnything'
 Bundle 'jmatraszek/vim-wombat'
+Bundle 'othree/html5.vim'
 
 filetype plugin indent on
 
