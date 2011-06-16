@@ -1,5 +1,5 @@
-" Filename: .vimrc
-" Last Changed: 2-May-2011
+﻿" Filename: .vimrc
+" Last Changed: 16-June-2011
 " Maintainer: furu
 
 " Vundleを使うとき、パス関係でうまくいかないので使わない
@@ -25,26 +25,28 @@ filetype off
 " Setting of the vundle.
 "-------------------------------------------
 
-set runtimepath+=$DOTVIM/vundle.git/
+set runtimepath+=$DOTVIM/bundle/vundle
 call vundle#rc('$DOTVIM/bundle')
 
+Bundle 'gmarik/vundle'
+
 Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/vimshell'
-Bundle 'Shougo/vimproc'
+" Bundle 'Shougo/vimshell'
+" Bundle 'Shougo/vimproc'
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/echodoc'
-Bundle 'motemen/hatena-vim'
+" Bundle 'motemen/hatena-vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'tsaleh/vim-matchit'
-Bundle 'thinca/vim-quickrun'
+" Bundle 'thinca/vim-quickrun'
 Bundle 'thinca/vim-ref'
-Bundle 'tpope/vim-rails'
+" Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-surround'
-Bundle 'vim-ruby/vim-ruby'
+" Bundle 'vim-ruby/vim-ruby'
 Bundle 'kana/vim-smartchr'
 Bundle 'h1mesuke/unite-outline'
-Bundle 'vim-scripts/IndentAnything'
-Bundle 'guns/xoria256.vim'
+" Bundle 'vim-scripts/IndentAnything'
+Bundle 'jmatraszek/vim-wombat'
 
 filetype plugin indent on
 
@@ -71,7 +73,8 @@ augroup END
 
 " use 256 colors in terminal.
 set t_Co=256
-colorscheme wombat256mod
+colorscheme wombat256
+"colorscheme wombat256mod
 
 
 "-------------------------------------------
@@ -111,8 +114,6 @@ set wildmenu
 set whichwrap=b,s,h,l,<,>,[,]
 " スクロール時の余白確保
 set scrolloff=5
-" 画面最後の行をできる限り表示する
-set display=lastline
 " ビープを鳴らさない
 "set vb t_vb=
 " 他で書き換えられたら自動で読みなおす
@@ -127,7 +128,9 @@ set statusline=%<%f\ %r%h%w%m[%{&fenc!=''?&fenc:&enc}][%{&ff=='unix'?'LF':&ff=='
 set list
 " 
 set listchars=tab:>-,eol:$
-" 
+" 画面最後の行をできる限り表示する
+set display=lastline
+" □や◯の文字があってもカーソル位置がずれないようにする
 set ambiwidth=double
 
 " Mouse {{{
@@ -187,6 +190,18 @@ if has('win32') || has('win64')
 else
   set fileformat=unix
   set fileformats=unix,dos,mac
+endif
+
+" 全角スペースを強調表示
+function! ZenkakuSpace()
+  highlight ZenkakuSpace cterm=underline ctermbg=darkgrey gui=underline guifg=darkgrey
+  silent! match ZenkakuSpace /　/
+endfunction
+if has('syntax')
+  augroup ZenkakuSpace
+    autocmd!
+    autocmd VimEnter,BufEnter * call ZenkakuSpace()
+  augroup END
 endif
 
 
@@ -433,21 +448,21 @@ vmap <Leader>cs <Plug>NERDCommenterSexy
 "-------------------------------------------
 " Setting of the vimshell.
 "-------------------------------------------
-let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ": ")'
-let g:vimshell_enable_auto_slash = 1
-let g:vimshell_enable_smart_case = 1
+"let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ": ")'
+"let g:vimshell_enable_auto_slash = 1
+"let g:vimshell_enable_smart_case = 1
 
-if has('win32') || has('win64')
-  let g:vimshell_prompt = "furu" . "@". hostname() . "% "
-else
-  let g:vimshell_prompt = $USER . "@". hostname() ."% "
+"if has('win32') || has('win64')
+"  let g:vimshell_prompt = "furu" . "@". hostname() . "% "
+"else
+"  let g:vimshell_prompt = $USER . "@". hostname() ."% "
 
-  call vimshell#set_execute_file('bmp,jpg,png,gif', 'gexe eog')
-  call vimshell#set_execute_file('mp3,m4a,ogg', 'gexe amarok')
-  let g:vimshell_execute_file_list['zip'] = 'zipinfo'
-  call vimshell#set_execute_file('tgz,gz', 'gzcat')
-  call vimshell#set_execute_file('tbz,bz2', 'bzcat')
-endif
+"  call vimshell#set_execute_file('bmp,jpg,png,gif', 'gexe eog')
+"  call vimshell#set_execute_file('mp3,m4a,ogg', 'gexe amarok')
+"  let g:vimshell_execute_file_list['zip'] = 'zipinfo'
+"  call vimshell#set_execute_file('tgz,gz', 'gzcat')
+"  call vimshell#set_execute_file('tbz,bz2', 'bzcat')
+"endif
 
 
 "-------------------------------------------

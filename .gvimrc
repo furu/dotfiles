@@ -1,14 +1,14 @@
-" Filename: .gvimrc
-" Last Changed: 19-May-2011
+﻿" Filename: .gvimrc
+" Last Changed: 16-June-2011
 " Maintainer: furu
 
 scriptencoding utf-8
 
 " Font
 if has('win32') || has ('win64')
-  " set guifont=Osaka－等幅:h12:cSHIFTJIS
+  set guifont=Osaka－等幅:h12:cSHIFTJIS
   " set guifontwide=VL_ゴシック:h12:cSHIFTJIS
-  set guifont=Ricty:h12:cSHIFTJIS
+  " set guifont=Ricty:h12:cSHIFTJIS
 elseif has('mac')
   set guifont=Osaka－等幅:h12
 else
@@ -24,8 +24,8 @@ set guicursor=a:blinkon0
 
 " Window
 if has('win32') || has('win64')
-  gui 
-  set transparency=248
+"  gui 
+"  set transparency=248
 else
   set columns=80
   set lines=27
