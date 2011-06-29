@@ -1,12 +1,12 @@
 ﻿" Filename: .gvimrc
-" Last Changed: 16-June-2011
+" Last Changed: 29-June-2011
 " Maintainer: furu
 
 scriptencoding utf-8
 
 " Font
 if has('win32') || has ('win64')
-  set guifont=Osaka－等幅:h12:cSHIFTJIS
+  set guifont=Osaka－等幅:h12:cSHIFTJIS,
   " set guifontwide=VL_ゴシック:h12:cSHIFTJIS
   " set guifont=Ricty:h12:cSHIFTJIS
 elseif has('mac')
@@ -15,7 +15,8 @@ else
   " set guifont=Monospace\ 12
   " set guifont=Inconsolata\ 12
   " set guifontwide=TakaoExゴシック\ 12
-  set guifont=Ricty\ 12
+  " set guifont=Ricty\ 12
+  set guifont=Osaka－等幅\ 12,Ricty\ 12,Inconsolata\ 12,Monospace\ 12
 endif
 
 set guioptions& guioptions-=T
