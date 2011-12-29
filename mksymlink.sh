@@ -1,10 +1,10 @@
-﻿#!/bin/bash
+#!/bin/sh
 
 # http://dxd8.com/archives/219/
 
 TARGET_BASEDIR=$HOME/Dropbox/dotfiles/
 LINK_BASEDIR=$HOME
-FILES=(.zshrc .vimrc .gvimrc)
+FILES=(.vimrc .gvimrc) 
 BACKUP=1
 
 check_configuration()

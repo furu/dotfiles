@@ -4,13 +4,10 @@
 
 !/.bashrc
 !/.gitignore
-!/.gitmodules
 !/.gvimrc
 !/.vimrc
 !/.vim
 !/.zshrc
 !/mksymlink.sh
-
-/.vim/bundle
-doc/tags
-doc/tags-ja
+!/.Xmodmap
+!/.gitconfig

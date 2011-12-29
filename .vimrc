@@ -1,11 +1,7 @@
-﻿" Filename: .vimrc
-" Last Changed: 16-June-2011
+" Filename: .vimrc
+" Last Change: 28-Dec-2011.
 " Maintainer: furu
 
-" Vundleを使うとき、パス関係でうまくいかないので使わない
-"if has('win32') || has('win64')
-"  set shellslash
-"endif
 
 if has('win32') || has('win64')
   let $DOTVIM = expand('~/vimfiles')
@@ -17,51 +13,65 @@ if !exists($MYGVIMRC)
   let $MYGVIMRC = expand('~/.gvimrc')
 endif
 
+" Use English interface.
+if has('win32') || has('win64')
+  " For Windows.
+  language message en
+else
+  " For Linux.
+  language message C
+endif
+
 " viとの互換性を取らない(vim独自拡張機能を使うため)
 set nocompatible
 filetype off
 
 "-------------------------------------------
-" Setting of the vundle.
+" Setting of the NeoBundle.
 "-------------------------------------------
+if has('vim_starting')
+  set runtimepath+=$DOTVIM/bundle/neobundle.vim
+  call neobundle#rc(expand('$DOTVIM/bundle'))
+endif
 
-set runtimepath+=$DOTVIM/bundle/vundle
-call vundle#rc('$DOTVIM/bundle')
+NeoBundle 'Shougo/neobundle.vim'
 
-Bundle 'gmarik/vundle'
-
-Bundle 'Shougo/neocomplcache'
-" Bundle 'Shougo/vimshell'
-" Bundle 'Shougo/vimproc'
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/echodoc'
-" Bundle 'motemen/hatena-vim'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'tsaleh/vim-matchit'
-" Bundle 'thinca/vim-quickrun'
-Bundle 'thinca/vim-ref'
-" Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-surround'
-" Bundle 'vim-ruby/vim-ruby'
-Bundle 'kana/vim-smartchr'
-Bundle 'h1mesuke/unite-outline'
-" Bundle 'vim-scripts/IndentAnything'
-Bundle 'jmatraszek/vim-wombat'
-Bundle 'othree/html5.vim'
+NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/vimshell'
+NeoBundle 'Shougo/vimproc'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/echodoc'
+NeoBundle 'Shougo/vimfiler'
+" NeoBundle 'motemen/hatena-vim'
+NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'tsaleh/vim-matchit'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'thinca/vim-ref'
+" NeoBundle 'tpope/vim-rails'
+NeoBundle 'tpope/vim-surround'
+" NeoBundle 'tpope/vim-endwise'
+" NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'kana/vim-smartchr'
+" NeoBundle 'h1mesuke/unite-outline'
+" NeoBundle 'vim-scripts/IndentAnything'
+NeoBundle 'jmatraszek/vim-wombat'
+NeoBundle 'vim-scripts/wombat256.vim'
+" NeoBundle 'othree/html5.vim'
+" NeoBundle 'ujihisa/neco-ruby'
+" NeoBundle 'pocket7878/presen-vim'
+" NeoBundle 'pocket7878/curses-vim'
+NeoBundle 'vim-scripts/autodate.vim'
+" NeoBundle 'tyru/eskk.vim'
+" NeoBundle 'tyru/skk.vim'
+" NeoBundle 'ujihisa/vital.vim'
+NeoBundle 'ujihisa/neco-look'
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'tyru/open-browser.vim'
+NeoBundle 'mattn/unite-advent_calendar'
+NeoBundle 'thinca/vim-openbuf'
+NeoBundle 'choplin/unite-vim_hacks'
 
 filetype plugin indent on
-
-"-------------------------------------------
-" Setting of the pathogen.
-"-------------------------------------------
-" pathogenでftdetectなどをloadさせるために一度ファイルタイプ判定をoff
-"filetype off
-" pathogen.vimによってbundle配下のpluginをpathに加える
-"call pathogen#runtime_append_all_bundles()
-"call pathogen#helptags()
-"set helpfile=$VIMRUNTIME/doc/help.txt
-" ファイルタイプ判定をon
-"filetype plugin indent on
 
 
 "-------------------------------------------
@@ -72,10 +82,12 @@ augroup MyAutoCmd
 augroup END
 
 
-" use 256 colors in terminal.
-set t_Co=256
-colorscheme wombat256
-"colorscheme wombat256mod
+if !exists('g:colors_name') && !has('gui_running')
+  " use 256 colors in terminal.
+  set t_Co=256
+  "colorscheme wombat256
+  colorscheme wombat256mod
+endif
 
 
 "-------------------------------------------
@@ -116,7 +128,7 @@ set whichwrap=b,s,h,l,<,>,[,]
 " スクロール時の余白確保
 set scrolloff=5
 " ビープを鳴らさない
-"set vb t_vb=
+"set visualbell t_vb=
 " 他で書き換えられたら自動で読みなおす
 set autoread
 " コマンドラインの高さ
@@ -198,12 +210,12 @@ function! ZenkakuSpace()
   highlight ZenkakuSpace cterm=underline ctermbg=darkgrey gui=underline guifg=darkgrey
   silent! match ZenkakuSpace /　/
 endfunction
-if has('syntax')
-  augroup ZenkakuSpace
-    autocmd!
-    autocmd VimEnter,BufEnter * call ZenkakuSpace()
-  augroup END
-endif
+" if has('syntax')
+"   augroup ZenkakuSpace
+"     autocmd!
+"     autocmd VimEnter,BufEnter * call ZenkakuSpace()
+"   augroup END
+" endif
 
 
 "-------------------------------------------
@@ -221,9 +233,6 @@ set incsearch
 set hlsearch
 
 
-"-------------------------------------------
-" Key-mappings
-"-------------------------------------------
 " カーソルを表示行で移動
 nnoremap j gj
 nnoremap k gk
@@ -236,12 +245,12 @@ noremap <Space>k <C-b>
 
 " ノーマルモードで挿入モードにならず現在の行の下に空行を挿入する
 " その際、インデントやコメントの自動挿入は行われない
-" 0を使うので、現在の行の上に空行を挿入することができなくなるけど、あんまり使わないのでOK
-nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
+" Oを使うので、現在の行の上に空行を挿入することができなくなるけど、あんまり使わないのでOK
+nnoremap <silent> O :<C-u>call append(expand('.'), '')<CR>j
 
-" <C-h>: ヘルプを引く
+" ヘルプを引く
 nnoremap <C-h> :<C-u>help<Space>
-" <C-h><C-h>: カーソル下のキーワードを:helpで引く
+" カーソル下のキーワードを:helpで引く
 nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><CR>
 
 " 最後に選択したテキストの選択
@@ -250,33 +259,23 @@ vnoremap gc :<C-u>normal gc<CR>
 onoremap gc :<C-u>normal gc<CR>
 
 " バッファ一覧を表示し、番号を入力することでバッファを切り替える
-nnoremap <Space>b :ls<Enter>:buffer<Space>
+" nnoremap <Space>b :ls<Enter>:buffer<Space>
 
 " 自動で挿入されたインデントが、何も入力せずにインサートモードを抜けたり、さらに新しい行を作ったりした場合に削除されないようにする
 nnoremap o oX<C-h>
 inoremap <CR> <CR>X<C-h>
 
-" <Space>cd: change current directory. 
-nnoremap <silent> <Space>cd :<C-u>CD<CR>
-
-" <Esc><Esc>: nohlsearch
+" key-mapping for nohlsearch
 nnoremap <Esc><Esc> :nohlsearch<CR>
 
-
-"-------------------------------------------------------
-" _vimrcと_gvimrcの編集と反映のためのKey-mappingの定義
-"-------------------------------------------------------
-" <Space>ev: Edit .vimrc.
+" key-mapping for edit .vimrc/.gvimrc
 nnoremap <silent> <Space>ev :<C-u>edit $MYVIMRC<CR>
-" <Space>eg: Edit .gvimrc.
 nnoremap <silent> <Space>eg :<C-u>edit $MYGVIMRC<CR>
-" <Space>rv: Load .vimrc.
-"            Load .gvimrc after .vimrc edited at Gvim.
+
 nnoremap <silent> <Space>rv :<C-u>source $MYVIMRC \| if has('gui_running') \| source $MYGVIMRC \| endif <CR>
-" <Space>rg: Load .gvimrc.
 nnoremap <silent> <Space>rg :<C-u>source $MYGVIMRC<CR>
 
-" auto reload .vimrc and .gvimrc when I edited .vimrc or .gvimrc.
+" auto reload .vimrc and .gvimrc when I edited .vimrc or .gvimrc. {{{
 if !has('gui_running') && !(has('win32') || has('win64'))
  autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
 else
@@ -284,11 +283,9 @@ else
 \ if has('gui_running') | source $MYGVIMRC
  autocmd MyAutoCmd BufWritePost $MYGVIMRC if has('gui_running') | source $MYGVIMRC
 endif
+"}}}
 
 
-"----------------------------------------------------
-" Ex command
-"----------------------------------------------------
 " reload with encoding.
 command! -bang -bar -complete=file -nargs=? Cp932 edit ++enc=cp932
 command! -bang -bar -complete=file -nargs=? EucJp edit ++enc=euc-jp
@@ -298,11 +295,12 @@ command! -bang -bar -complete=file -nargs=? Utf8 edit ++enc=utf-8
 command! -bang -bar -complete=file -nargs=? Jis Iso2022jp
 command! -bang -bar -complete=file -nargs=? Sjis Cp932
 
-" check defined mappings.
+" check defined mappings. {{{
 command!
       \ -nargs=* -complete=mapping
       \ AllMaps
       \ map <args> | map! <args> | lmap <args>
+"}}}
 
 " Scouter {{{
 function! Scouter(file, ...)
@@ -312,13 +310,12 @@ function! Scouter(file, ...)
     let lines = split(substitute(join(lines, "\n"), '\n\s*\\', '', 'g'), "\n")
   endif
   return len(filter(lines, 'v:val !~ pat'))
-endfunction "}}}
-" :Scouterで_vimrcの戦闘力を計測
+endfunction
 command! -bar -bang -nargs=? -complete=file Scouter
       \ echo Scouter(empty(<q-args>) ? $MYVIMRC : expand(<q-args>), <bang>0)
-" :GScouterで_gvimrcの戦闘力を計測
 command! -bar -bang -nargs=? -complete=file GScouter
       \ echo Scouter(empty(<q-args>) ? $MYGVIMRC : expand(<q-args>), <bang>0)
+"}}}
 
 " Open junk file."{{{
 command! -nargs=0 JunkFile call s:open_junk_file()
@@ -336,6 +333,8 @@ endfunction "}}}
 
 " Change current directory. {{{
 command! -nargs=? -complete=dir -bang CD call s:ChangeCurrentDir('<args>', '<bang>')
+" change current directory. 
+nnoremap <silent> <Space>cd :<C-u>CD<CR>
 function! s:ChangeCurrentDir(directory, bang)
   if a:directory == ''
     lcd %:p:h
@@ -348,20 +347,14 @@ function! s:ChangeCurrentDir(directory, bang)
   endif
 endfunction "}}}
 
+" mv editing file (from sorah's vimrc) {{{
+function! s:mv_editing_file(new_file_name)
+  call system("mv".expand('%')." ".a:new_file_name)
+  edit a:new_file_name
+endfunction
+command! -nargs=1 Rename call g:mv_editing_file(<f-args>)
+" }}}
 
-"----------------------------------------------------
-" autocmd
-"----------------------------------------------------
-" ↓をやるとエラーが発生する
-" augroup MyAutoCmd
-  " autocmd!
-  " autocmd MyAutoCmd FileType javascript setlocal fileencoding=utf-8
-  " autocmd MyAutoCmd FileType html setlocal fileencoding=utf-8
-  " autocmd MyAutoCmd FileType css setlocal fileencoding=utf-8
-" augroup END
-
-" autocmd!
-" autocmd FileType javascript setlocal fileencoding=utf-8
 
 augroup MyTab
   autocmd!
@@ -369,19 +362,14 @@ augroup MyTab
   autocmd FileType vim setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+  autocmd FileType haml setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   autocmd FileType css setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+  autocmd FileType scss setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+  autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 augroup END
 
-" augroup MySkeleton
-  " autocmd!
-  " autocmd BufNewFile *.rb 0r /vimfiles/templates/skeleton.rb
-" augroup END
 
-" au User Rails* set fenc=utf-8
-
-autocmd FileType ruby setlocal fenc=utf-8
-
-autocmd BufNewFile *.js setlocal fenc=utf-8
+autocmd MyAutoCmd FileType ruby inoremap <buffer> <expr> { smartchr#loop('{', '#{')
 
 
 "-------------------------------------------
@@ -398,6 +386,7 @@ let g:neocomplcache_min_syntax_length = 3
 if !exists('g:neocomplcache_keyword_patterns')
   let g:neocomplcache_keyword_patterns = {}
 endif
+" キーdefaultのパターンのデフォルトが\k\+となっていて，日本語も収集してしまうのでしないように変更
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
 " タブで補完
@@ -415,12 +404,24 @@ inoremap <expr><C-y> neocomplcache#close_popup()
 imap <C-s> <Plug>(neocomplcache_snippets_expand)
 smap <C-s> <Plug>(neocomplcache_snippets_expand)
 
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-"-------------------------------------------
-" Setting of the quicklaunch.
-"-------------------------------------------
-" 今は必要ないのでOFF
-let g:loaded_quicklaunch = 1
+if !exists('g:neocomplcache_omni_patterns')
+  let g:neocomplcache_omni_patterns = {}
+endif
+let g:rsenseUseOmniFunc = 1
+if filereadable(expand('~/opt/rsense-0.3/bin/rsense'))
+  let g:rsenseHome = expand('~/opt/rsense-0.3')
+  let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+endif
+"autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
+let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 
 
 "-------------------------------------------
@@ -449,38 +450,57 @@ vmap <Leader>cs <Plug>NERDCommenterSexy
 "-------------------------------------------
 " Setting of the vimshell.
 "-------------------------------------------
-"let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ": ")'
-"let g:vimshell_enable_auto_slash = 1
-"let g:vimshell_enable_smart_case = 1
-
-"if has('win32') || has('win64')
-"  let g:vimshell_prompt = "furu" . "@". hostname() . "% "
-"else
-"  let g:vimshell_prompt = $USER . "@". hostname() ."% "
-
-"  call vimshell#set_execute_file('bmp,jpg,png,gif', 'gexe eog')
-"  call vimshell#set_execute_file('mp3,m4a,ogg', 'gexe amarok')
-"  let g:vimshell_execute_file_list['zip'] = 'zipinfo'
-"  call vimshell#set_execute_file('tgz,gz', 'gzcat')
-"  call vimshell#set_execute_file('tbz,bz2', 'bzcat')
-"endif
 
 
 "-------------------------------------------
-" Setting of the ref-alc.
+" Setting of the ref.vim.
 "-------------------------------------------
-let g:ref_alc_start_linenumber = 50
+" let g:ref_alc_start_linenumber = 50
+autocmd FileType ref call s:initialize_ref_viewer()
+function! s:initialize_ref_viewer()
+  nmap <buffer> b <Plug>(ref-back)
+  nmap <buffer> f <Plug>(ref-forward)
+  nnoremap <buffer> q <C-w>c
+  setlocal nonumber
+endfunction
 
 
 "-------------------------------------------
 " Setting of the hatena-vim.
 "-------------------------------------------
-let g:hatena_user='furu33'
+" let g:hatena_user='furu33'
 
 
 "-------------------------------------------
 " Setting of the echodoc.
 "-------------------------------------------
-" enable echodoc at startup
 let g:echodoc_enable_at_startup = 1
 
+
+"-------------------------------------------
+" Setting of the unite.vim.
+"-------------------------------------------
+nnoremap <silent> ,b :<C-u>Unite -buffer-name=files buffer_tab<CR>
+nnoremap <silent> ,f :<C-u>Unite -buffer-name=files file<CR>
+nnoremap <silent> ,r :<C-u>Unite -buffer-name=files file_mru<CR>
+
+
+"-------------------------------------------
+" Setting of the quickrun.vim.
+"-------------------------------------------
+let g:quickrun_config = {}
+" For RSpec
+let g:quickrun_config['ruby.rspec'] = {
+            \'command': 'rspec',
+            \'cmdopt': '-fs',
+            \}
+augroup FuruRSpec
+  autocmd!
+  autocmd BufWinEnter,BufNewFile *_spec.rb set filetype=ruby.rspec
+augroup END
+
+
+"-------------------------------------------
+" Setting of the vimfiler.
+"-------------------------------------------
+let g:vimfiler_as_default_explorer = 1

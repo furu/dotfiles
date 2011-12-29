@@ -1,5 +1,5 @@
 # Filename: .zshrc
-# Last Change: 16-April-2011
+# Last Change: 27-Nov-2011.
 # Maintainer: furu
 
 # Japanese
@@ -20,16 +20,21 @@ kterm*|xterm)
 esac
 
 # History
-export HISTFILE=~/.zsh_history
-export HISTSIZE=1000
-export SAVEHIST=1000
+export HISTFILE=$HOME/.zsh_history
+export HISTSIZE=100000
+export SAVEHIST=100000
 setopt hist_ignore_dups
+setopt extended_history
+function history-all { history -E l }
+setopt share_history
 
 # Completion
-autoload -U compinit; compinit
+autoload -Uz compinit; compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+zstyle :compinstall filename '/home/furu/.zshrc'
 
 #bindkey -v
+bindkey -e
 
 setopt prompt_subst
 setopt nobeep
@@ -51,6 +56,10 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 #alias vi='vim'
 
+# Directory
+setopt auto_pushd
+setopt pushd_ignore_dups
+
 # PATH
 #export ECLIPSE_HOME=/usr/local/eclipse
 #export PATH=$ECLIPSE_HOME:$PATH
@@ -60,7 +69,12 @@ alias egrep='egrep --color=auto'
 #export CLASSPATH=.:$JAVA_HOME/lib/tools.jar:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/mysql-connector-java-5.1.16-bin.jar:/usr/local/java/jfreechart-1.0.13/lib/jfreechart-1.0.13.jar:/usr/local/java/jfreechart-1.0.13/lib/jcommon-1.0.16.jar
 
 #export PATH=/home/furu/app/termtter/bin:$PATH
+export PATH=$HOME/bin:$PATH
+export RSENSE_HOME=$HOME/opt/rsense-0.3
+
+# export LESS='-R'
+# export LESSOPEN='| /usr/bin/src-hilite-lesspipe.sh %s'
 
 # This loads RVM into a shell session.
+# fpath=(~/.zsh/Completion $fpath)
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" 
-fpath=(~/.zsh/Completion $fpath)
