@@ -1,5 +1,5 @@
 " Filename: .gvimrc
-" Last Change: 10-Dec-2011.
+" Last Change: 09-Jan-2012.
 " Maintainer: furu
 
 scriptencoding utf-8
@@ -15,9 +15,9 @@ else
   " set guifont=Monospace\ 12
   " set guifont=Inconsolata\ 12
   " set guifontwide=TakaoExゴシック\ 12
-  " set guifont=Ricty\ 12
+  set guifont=Ricty\ 12
   " set guifont=Osaka－等幅\ Bold\ 12,Ricty\ 12,Inconsolata\ 12,Monospace\ 12
-  set guifont=Osaka－等幅\ 12,Ricty\ 12,Inconsolata\ 12,Monospace\ 12
+  " set guifont=Osaka－等幅\ 12,Ricty\ 12,Inconsolata\ 12,Monospace\ 12
 endif
 "}}}
 

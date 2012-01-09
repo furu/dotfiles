@@ -1,5 +1,10 @@
 [user]
-	email = peco1103@gmail.com
-	name = Tatsuya Furukido
+    email = peco1103@gmail.com
+    name = furu
 [color]
-	ui = auto
+    ui = auto
+[core]
+    editor = vim
+[alias]
+    st = status
+    co = checkout

@@ -1,5 +1,5 @@
 " Filename: .vimrc
-" Last Change: 28-Dec-2011.
+" Last Change: 31-Dec-2011.
 " Maintainer: furu
 
 
@@ -50,7 +50,6 @@ NeoBundle 'thinca/vim-ref'
 " NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-surround'
 " NeoBundle 'tpope/vim-endwise'
-" NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'kana/vim-smartchr'
 " NeoBundle 'h1mesuke/unite-outline'
 " NeoBundle 'vim-scripts/IndentAnything'
@@ -369,9 +368,6 @@ augroup MyTab
 augroup END
 
 
-autocmd MyAutoCmd FileType ruby inoremap <buffer> <expr> { smartchr#loop('{', '#{')
-
-
 "-------------------------------------------
 " Setting of the necomplcache.
 "-------------------------------------------
@@ -504,3 +500,10 @@ augroup END
 " Setting of the vimfiler.
 "-------------------------------------------
 let g:vimfiler_as_default_explorer = 1
+
+
+"-------------------------------------------
+" Setting of the smartchr.
+"-------------------------------------------
+autocmd MyAutoCmd FileType ruby inoremap <buffer> <expr> { smartchr#loop('{', '#{')
+" inoremap <expr> = smartchr#loop(' = ', '=', ' == ')
