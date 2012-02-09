@@ -1,6 +1,6 @@
 [user]
-    email = peco1103@gmail.com
-    name = furu
+    email = 
+    name = 
 [color]
     ui = auto
 [core]
@@ -8,3 +8,6 @@
 [alias]
     st = status
     co = checkout
+[github]
+    user = 
+    token = 

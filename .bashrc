@@ -13,7 +13,8 @@ alias dp='dropbox'
 alias dpst='dropbox status'
 alias dpls='dropbox ls'
 alias grep='grep --color=auto'
-PS1='[\u@\h \W]\$ '
+# PS1='[\u@\h \W]\$ '
 
-export LESS=' -R'
-export LESSOPEN='| /usr/bin/src-hilite-lesspipe.sh %s'
+# export LESS=' -R'
+# export LESSOPEN='| /usr/bin/src-hilite-lesspipe.sh %s'
+export EDITOR="vim"

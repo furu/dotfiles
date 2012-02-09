@@ -1,5 +1,5 @@
 " Filename: .vimrc
-" Last Change: 31-Dec-2011.
+" Last Change: 10-Feb-2012.
 " Maintainer: furu
 
 
@@ -17,6 +17,7 @@ endif
 if has('win32') || has('win64')
   " For Windows.
   language message en
+  set shellslash
 else
   " For Linux.
   language message C
@@ -31,8 +32,9 @@ filetype off
 "-------------------------------------------
 if has('vim_starting')
   set runtimepath+=$DOTVIM/bundle/neobundle.vim
-  call neobundle#rc(expand('$DOTVIM/bundle'))
 endif
+
+call neobundle#rc(expand('$DOTVIM/bundle'))
 
 NeoBundle 'Shougo/neobundle.vim'
 
@@ -53,22 +55,26 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'kana/vim-smartchr'
 " NeoBundle 'h1mesuke/unite-outline'
 " NeoBundle 'vim-scripts/IndentAnything'
-NeoBundle 'jmatraszek/vim-wombat'
 NeoBundle 'vim-scripts/wombat256.vim'
-" NeoBundle 'othree/html5.vim'
+NeoBundle 'othree/html5.vim'
 " NeoBundle 'ujihisa/neco-ruby'
 " NeoBundle 'pocket7878/presen-vim'
 " NeoBundle 'pocket7878/curses-vim'
 NeoBundle 'vim-scripts/autodate.vim'
-" NeoBundle 'tyru/eskk.vim'
+NeoBundle 'tyru/eskk.vim'
 " NeoBundle 'tyru/skk.vim'
 " NeoBundle 'ujihisa/vital.vim'
-NeoBundle 'ujihisa/neco-look'
+" NeoBundle 'ujihisa/neco-look'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'mattn/unite-advent_calendar'
 NeoBundle 'thinca/vim-openbuf'
 NeoBundle 'choplin/unite-vim_hacks'
+NeoBundle 'hail2u/vim-css3-syntax'
+NeoBundle 'tyru/restart.vim'
+NeoBundle 'ujihisa/vimshell-ssh'
+NeoBundle 'Shougo/unite-ssh'
+NeoBundle 'tsukkee/lingr-vim'
 
 filetype plugin indent on
 
@@ -369,52 +375,57 @@ augroup END
 
 
 "-------------------------------------------
-" Setting of the necomplcache.
+" Setting of the neocomplcache.
 "-------------------------------------------
-" 起動時に有効にする
 let g:neocomplcache_enable_at_startup = 1
 " 大文字が入力されるまで大文字小文字の区別を無視
 let g:neocomplcache_enable_smart_case = 1
-" _区切りの補完を有効化する
 let g:neocomplcache_enable_underbar_completion = 1
 " Set minimum syntax keyword length.
 let g:neocomplcache_min_syntax_length = 3
+
+" Define dictionary.
+let g:neocomplcache_dictionary_filetype_lists = {
+  \ 'default' : '',
+    \ }
+
+" Define keyword.
 if !exists('g:neocomplcache_keyword_patterns')
   let g:neocomplcache_keyword_patterns = {}
 endif
 " キーdefaultのパターンのデフォルトが\k\+となっていて，日本語も収集してしまうのでしないように変更
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
-" タブで補完
+" <TAB>: completion.
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-"
-inoremap <expr><CR> neocomplcache#smart_close_popup() . "\<CR>"
-" <C-h>、<BS>を押したときに確実にポップアップを削除する
+" <CR>: close popup and save indent.
+inoremap <expr><CR> neocomplcache#close_popup() . "\<CR>"
+" <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplcache#smart_close_popup() . "\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup() . "\<C-h>"
 " <C-e> : 現在選択している候補をキャンセルし、ポップアップを閉じる
 inoremap <expr><C-e> neocomplcache#cancel_popup()
 " <C-y> : 補完を選択し、ポップアップを閉じる
 inoremap <expr><C-y> neocomplcache#close_popup()
-" <C-s> : スニペット展開
-imap <C-s> <Plug>(neocomplcache_snippets_expand)
-smap <C-s> <Plug>(neocomplcache_snippets_expand)
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
+" Enable heavy omni completion.
 if !exists('g:neocomplcache_omni_patterns')
   let g:neocomplcache_omni_patterns = {}
 endif
-let g:rsenseUseOmniFunc = 1
-if filereadable(expand('~/opt/rsense-0.3/bin/rsense'))
-  let g:rsenseHome = expand('~/opt/rsense-0.3')
-  let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-endif
-"autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+" let g:rsenseUseOmniFunc = 1
+" if filereadable(expand('~/opt/rsense-0.3/bin/rsense'))
+  " let g:rsenseHome = expand('~/opt/rsense-0.3')
+  " let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+" endif
+let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\h\w*\|\h\w+::'
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
 let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
@@ -500,6 +511,12 @@ augroup END
 " Setting of the vimfiler.
 "-------------------------------------------
 let g:vimfiler_as_default_explorer = 1
+" Like Textmate icons.
+" let g:vimfiler_tree_leaf_icon = ' '
+" let g:vimfiler_tree_opened_icon = ''
+" let g:vimfiler_tree_closed_icon = ''
+" let g:vimfiler_file_icon = ''
+" let g:vimfiler_marked_file_icon = ''
 
 
 "-------------------------------------------
@@ -507,3 +524,4 @@ let g:vimfiler_as_default_explorer = 1
 "-------------------------------------------
 autocmd MyAutoCmd FileType ruby inoremap <buffer> <expr> { smartchr#loop('{', '#{')
 " inoremap <expr> = smartchr#loop(' = ', '=', ' == ')
+
