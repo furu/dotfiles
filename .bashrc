@@ -18,3 +18,5 @@ alias grep='grep --color=auto'
 # export LESS=' -R'
 # export LESSOPEN='| /usr/bin/src-hilite-lesspipe.sh %s'
 export EDITOR="vim"
+
+PATH=$PATH:/home/furu/.cabal/bin

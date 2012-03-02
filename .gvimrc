@@ -1,5 +1,5 @@
 " Filename: .gvimrc
-" Last Change: 10-Feb-2012.
+" Last Change: 01-Mar-2012.
 " Maintainer: furu
 
 scriptencoding utf-8
@@ -30,7 +30,8 @@ if has('vim_starting')
   endif
 endif
 
-set guioptions& guioptions-=T
+" Don't show toolbar & menubar
+set guioptions& guioptions-=T guioptions-=m
 
 " Switch off cursor blinking.
 set guicursor& guicursor+=a:blinkon0

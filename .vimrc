@@ -1,7 +1,9 @@
 " Filename: .vimrc
-" Last Change: 10-Feb-2012.
+" Last Change: 03-Mar-2012.
 " Maintainer: furu
 
+" Use Vim defaults instead of 100% vi compatibility.
+set nocompatible
 
 if has('win32') || has('win64')
   let $DOTVIM = expand('~/vimfiles')
@@ -23,8 +25,6 @@ else
   language message C
 endif
 
-" viとの互換性を取らない(vim独自拡張機能を使うため)
-set nocompatible
 filetype off
 
 "-------------------------------------------
@@ -46,7 +46,6 @@ NeoBundle 'Shougo/echodoc'
 NeoBundle 'Shougo/vimfiler'
 " NeoBundle 'motemen/hatena-vim'
 NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'tsaleh/vim-matchit'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-ref'
 " NeoBundle 'tpope/vim-rails'
@@ -57,14 +56,14 @@ NeoBundle 'kana/vim-smartchr'
 " NeoBundle 'vim-scripts/IndentAnything'
 NeoBundle 'vim-scripts/wombat256.vim'
 NeoBundle 'othree/html5.vim'
-" NeoBundle 'ujihisa/neco-ruby'
-" NeoBundle 'pocket7878/presen-vim'
-" NeoBundle 'pocket7878/curses-vim'
+NeoBundle 'ujihisa/neco-ruby'
+NeoBundle 'pocket7878/presen-vim'
+NeoBundle 'pocket7878/curses-vim'
 NeoBundle 'vim-scripts/autodate.vim'
 NeoBundle 'tyru/eskk.vim'
 " NeoBundle 'tyru/skk.vim'
 " NeoBundle 'ujihisa/vital.vim'
-" NeoBundle 'ujihisa/neco-look'
+NeoBundle 'ujihisa/neco-look'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'mattn/unite-advent_calendar'
@@ -75,9 +74,15 @@ NeoBundle 'tyru/restart.vim'
 NeoBundle 'ujihisa/vimshell-ssh'
 NeoBundle 'Shougo/unite-ssh'
 NeoBundle 'tsukkee/lingr-vim'
+NeoBundle 'basyura/twibill.vim'
+NeoBundle 'basyura/bitly.vim'
+NeoBundle 'basyura/TweetVim'
+NeoBundle 'ujihisa/neco-ghc'
+NeoBundle 'kana/vim-filetype-haskell'
 
 filetype plugin indent on
 
+runtime macros/matchit.vim
 
 "-------------------------------------------
 " Set augroup.
@@ -90,8 +95,9 @@ augroup END
 if !exists('g:colors_name') && !has('gui_running')
   " use 256 colors in terminal.
   set t_Co=256
+  colorscheme desert
   "colorscheme wombat256
-  colorscheme wombat256mod
+  "colorscheme wombat256mod
 endif
 
 
@@ -106,7 +112,7 @@ set nobackup
 set noswapfile
 " 編集中でも他のファイルを開ける
 set hidden
-" <BS>でindent,eol,startを消せる
+" Remove indent, eol, start by <BS>.
 set backspace=indent,eol,start
 " 行番号の表示
 set number
@@ -150,10 +156,13 @@ set listchars=tab:>-,eol:$
 set display=lastline
 " □や◯の文字があってもカーソル位置がずれないようにする
 set ambiwidth=double
+" new windows is put right
+set splitright
+set textwidth=0
 
 " Mouse {{{
 " Enable mouse support.
-set mouse=a
+" set mouse=a
 
 " For screen.
 if &term =~ "^screen"
@@ -187,19 +196,21 @@ set expandtab
 set cindent
 " }}}
 
-" カレント行をハイライト
-set cursorline
-" カレントウィンドウにのみ罫線を引く{{{
-augroup cch
-  autocmd! cch
-  autocmd WinLeave * set nocursorline
-  autocmd WinEnter,BufRead * set cursorline
-augroup END
+if has('gui_running')
+  " カレント行をハイライト
+  set cursorline
+  " カレントウィンドウにのみ罫線を引く{{{
+  augroup cch
+    autocmd! cch
+    autocmd WinLeave * set nocursorline
+    autocmd WinEnter,BufRead * set cursorline
+  augroup END
 
-" hi clear CursorLine
-" hi CursorLine gui=underline
-" highlight CursorLine ctermbg=black guibg=black
-" }}}
+  " hi clear CursorLine
+  " hi CursorLine gui=underline
+  " highlight CursorLine ctermbg=black guibg=black
+  " }}}
+endif
 
 " 改行コード
 if has('win32') || has('win64')
@@ -373,6 +384,8 @@ augroup MyTab
   autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 augroup END
 
+" move cursor to last edit position
+autocmd MyAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 "-------------------------------------------
 " Setting of the neocomplcache.
@@ -490,6 +503,7 @@ let g:echodoc_enable_at_startup = 1
 nnoremap <silent> ,b :<C-u>Unite -buffer-name=files buffer_tab<CR>
 nnoremap <silent> ,f :<C-u>Unite -buffer-name=files file<CR>
 nnoremap <silent> ,r :<C-u>Unite -buffer-name=files file_mru<CR>
+nnoremap <silent> ,t :<C-u>Unite tab:no-current<CR>
 
 
 "-------------------------------------------
@@ -525,3 +539,15 @@ let g:vimfiler_as_default_explorer = 1
 autocmd MyAutoCmd FileType ruby inoremap <buffer> <expr> { smartchr#loop('{', '#{')
 " inoremap <expr> = smartchr#loop(' = ', '=', ' == ')
 
+
+"-------------------------------------------
+" Setting of the eskk.
+"-------------------------------------------
+" set imdisable
+let g:eskk#large_dictionary = {
+      \'path': "/usr/share/skk/SKK-JISYO.L",
+      \'sorted': 1,
+      \'encoding': 'euc-jp',
+      \}
+" let g:eskk#enable_completion = 1
+" let g:eskk#start_completion_length = 1
