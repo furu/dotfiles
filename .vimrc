@@ -1,5 +1,5 @@
 " Filename: .vimrc
-" Last Change: 03-Mar-2012.
+" Last Change: 08-Apr-2012.
 " Maintainer: furu
 
 " Use Vim defaults instead of 100% vi compatibility.
@@ -19,13 +19,17 @@ endif
 if has('win32') || has('win64')
   " For Windows.
   language message en
-  set shellslash
 else
   " For Linux.
   language message C
 endif
 
+if has('win32') || has('win64')
+  set shellslash
+endif
+
 filetype off
+
 
 "-------------------------------------------
 " Setting of the NeoBundle.
@@ -48,7 +52,7 @@ NeoBundle 'Shougo/vimfiler'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-ref'
-" NeoBundle 'tpope/vim-rails'
+NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-surround'
 " NeoBundle 'tpope/vim-endwise'
 NeoBundle 'kana/vim-smartchr'
@@ -79,10 +83,18 @@ NeoBundle 'basyura/bitly.vim'
 NeoBundle 'basyura/TweetVim'
 NeoBundle 'ujihisa/neco-ghc'
 NeoBundle 'kana/vim-filetype-haskell'
+NeoBundle 'tsukkee/unite-tag'
+NeoBundle 'fuenor/qfixhowm'
+NeoBundle 'basyura/unite-rails'
+NeoBundle 'ujihisa/ref-hoogle'
+NeoBundle 'ujihisa/unite-haskellimport'
 
 filetype plugin indent on
 
+
 runtime macros/matchit.vim
+runtime macros/encode.vim
+
 
 "-------------------------------------------
 " Set augroup.
@@ -93,7 +105,7 @@ augroup END
 
 
 if !exists('g:colors_name') && !has('gui_running')
-  " use 256 colors in terminal.
+  " Use 256 colors in terminal.
   set t_Co=256
   colorscheme desert
   "colorscheme wombat256
@@ -104,17 +116,17 @@ endif
 "-------------------------------------------
 " Basic
 "-------------------------------------------
-" シンタックスカラー(オン)
+" Enable syntax color.
 syntax enable
-" バックアップを作成しない
+" Don't create backup file.
 set nobackup
-" スワップファイルを作成しない
+" Don't create swap file.
 set noswapfile
 " 編集中でも他のファイルを開ける
 set hidden
 " Remove indent, eol, start by <BS>.
 set backspace=indent,eol,start
-" 行番号の表示
+" Show line number.
 set number
 " タイトルバーにファイル名を表示
 set title
@@ -139,7 +151,7 @@ set whichwrap=b,s,h,l,<,>,[,]
 " スクロール時の余白確保
 set scrolloff=5
 " ビープを鳴らさない
-"set visualbell t_vb=
+" set visualbell t_vb=
 " 他で書き換えられたら自動で読みなおす
 set autoread
 " コマンドラインの高さ
@@ -212,7 +224,7 @@ if has('gui_running')
   " }}}
 endif
 
-" 改行コード
+" Line feed code
 if has('win32') || has('win64')
   set fileformat=dos
   set fileformats=dos,unix,mac
@@ -302,7 +314,7 @@ endif
 "}}}
 
 
-" reload with encoding.
+" Reload with encoding.
 command! -bang -bar -complete=file -nargs=? Cp932 edit ++enc=cp932
 command! -bang -bar -complete=file -nargs=? EucJp edit ++enc=euc-jp
 command! -bang -bar -complete=file -nargs=? Iso2022jp edit ++enc=iso-2022-jp
@@ -311,7 +323,7 @@ command! -bang -bar -complete=file -nargs=? Utf8 edit ++enc=utf-8
 command! -bang -bar -complete=file -nargs=? Jis Iso2022jp
 command! -bang -bar -complete=file -nargs=? Sjis Cp932
 
-" check defined mappings. {{{
+" Check defined mappings. {{{
 command!
       \ -nargs=* -complete=mapping
       \ AllMaps
@@ -327,6 +339,7 @@ function! Scouter(file, ...)
   endif
   return len(filter(lines, 'v:val !~ pat'))
 endfunction
+
 command! -bar -bang -nargs=? -complete=file Scouter
       \ echo Scouter(empty(<q-args>) ? $MYVIMRC : expand(<q-args>), <bang>0)
 command! -bar -bang -nargs=? -complete=file GScouter
@@ -334,7 +347,6 @@ command! -bar -bang -nargs=? -complete=file GScouter
 "}}}
 
 " Open junk file."{{{
-command! -nargs=0 JunkFile call s:open_junk_file()
 function! s:open_junk_file()
   let l:junk_dir = $HOME . '/.vim_junk' . strftime('/%Y/%m')
   if !isdirectory(l:junk_dir)
@@ -345,12 +357,12 @@ function! s:open_junk_file()
   if l:filename != ''
     execute 'edit ' . l:filename
   endif
-endfunction "}}}
+endfunction
+
+command! -nargs=0 JunkFile call s:open_junk_file()
+"}}}
 
 " Change current directory. {{{
-command! -nargs=? -complete=dir -bang CD call s:ChangeCurrentDir('<args>', '<bang>')
-" change current directory. 
-nnoremap <silent> <Space>cd :<C-u>CD<CR>
 function! s:ChangeCurrentDir(directory, bang)
   if a:directory == ''
     lcd %:p:h
@@ -361,15 +373,21 @@ function! s:ChangeCurrentDir(directory, bang)
   if a:bang == ''
     pwd
   endif
-endfunction "}}}
+endfunction
+
+command! -nargs=? -complete=dir -bang CD call s:ChangeCurrentDir('<args>', '<bang>')
+
+nnoremap <silent> <Space>cd :<C-u>CD<CR>
+"}}}
 
 " mv editing file (from sorah's vimrc) {{{
 function! s:mv_editing_file(new_file_name)
   call system("mv".expand('%')." ".a:new_file_name)
   edit a:new_file_name
 endfunction
+
 command! -nargs=1 Rename call g:mv_editing_file(<f-args>)
-" }}}
+"}}}
 
 
 augroup MyTab
@@ -382,17 +400,19 @@ augroup MyTab
   autocmd FileType css setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   autocmd FileType scss setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   autocmd FileType php setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+  autocmd FileType eruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 augroup END
 
-" move cursor to last edit position
+" Move cursor to last edit position.
 autocmd MyAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
 
 "-------------------------------------------
 " Setting of the neocomplcache.
 "-------------------------------------------
 let g:neocomplcache_enable_at_startup = 1
 " 大文字が入力されるまで大文字小文字の区別を無視
-let g:neocomplcache_enable_smart_case = 1
+" let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_underbar_completion = 1
 " Set minimum syntax keyword length.
 let g:neocomplcache_min_syntax_length = 3
@@ -454,10 +474,13 @@ let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 "-------------------------------------------
 " Setting of the NERDCommenter.
 "-------------------------------------------
-" Default key-mappings off.
+" Off default key-mappings.
 let g:NERDCreateDefaultMappings = 0
 let NERDSpaceDelims = 1
-" My key-mappings define.
+let g:NERDCustomDelimiters = {
+            \ 'haskell': {'left': '--', 'leftAlt': '{-', 'rightAlt': '-}'}
+            \ }
+" Define my key-mappings.
 nmap <Leader>cc <Plug>NERDCommenterToggle
 vmap <Leader>cc <Plug>NERDCommenterToggle
 nmap <Leader>cm <Plug>NERDCommenterMinimal
@@ -470,7 +493,18 @@ vmap <Leader>cs <Plug>NERDCommenterSexy
 "-------------------------------------------
 " Setting of the vimshell.
 "-------------------------------------------
+let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
+if has('win32') || has('win64')
+  let g:vimshell_prompt = $USERNAME . "% "
+else
+  let g:vimshell_prompt = $USER . "% "
+endif
+let g:vimshell_max_command_history = 50000
 
+autocmd FileType vimshell
+      \ call vimshell#altercmd#define('ll', 'ls -l')
+      \| call vimshell#altercmd#define('la', 'ls -a')
+      \| call vimshell#altercmd#define('lla', 'ls -la')
 
 "-------------------------------------------
 " Setting of the ref.vim.
@@ -483,6 +517,7 @@ function! s:initialize_ref_viewer()
   nnoremap <buffer> q <C-w>c
   setlocal nonumber
 endfunction
+let g:ref_phpmanual_path = expand('~/Documents/References/php-chunked-xhtml')
 
 
 "-------------------------------------------
@@ -504,6 +539,8 @@ nnoremap <silent> ,b :<C-u>Unite -buffer-name=files buffer_tab<CR>
 nnoremap <silent> ,f :<C-u>Unite -buffer-name=files file<CR>
 nnoremap <silent> ,r :<C-u>Unite -buffer-name=files file_mru<CR>
 nnoremap <silent> ,t :<C-u>Unite tab:no-current<CR>
+nnoremap ,a :Unite rails/
+nnoremap ,p :Unite -auto-preview 
 
 
 "-------------------------------------------
@@ -551,3 +588,12 @@ let g:eskk#large_dictionary = {
       \}
 " let g:eskk#enable_completion = 1
 " let g:eskk#start_completion_length = 1
+
+
+"-------------------------------------------
+" Setting of the QFixHowm.
+"-------------------------------------------
+let howm_dir = expand('~/Dropbox/work/howm')
+let howm_fileencoding = 'utf-8'
+let howm_fileformat = 'unix'
+let QFixHowm_FileType = 'qfix_memo'
