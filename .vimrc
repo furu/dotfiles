@@ -2,8 +2,9 @@
 " Last Change: 08-Apr-2012.
 " Maintainer: furu
 
-" Use Vim defaults instead of 100% vi compatibility.
+" Use Vim default instead of 100% vi compatibility.
 set nocompatible
+
 
 if has('win32') || has('win64')
   let $DOTVIM = expand('~/vimfiles')
@@ -28,12 +29,12 @@ if has('win32') || has('win64')
   set shellslash
 endif
 
+
+"-------------------------------------------
+" neobundle.vim
+"-------------------------------------------
 filetype off
 
-
-"-------------------------------------------
-" Setting of the NeoBundle.
-"-------------------------------------------
 if has('vim_starting')
   set runtimepath+=$DOTVIM/bundle/neobundle.vim
 endif
@@ -96,9 +97,6 @@ runtime macros/matchit.vim
 runtime macros/encode.vim
 
 
-"-------------------------------------------
-" Set augroup.
-"-------------------------------------------
 augroup MyAutoCmd
   autocmd!
 augroup END
@@ -124,17 +122,17 @@ set nobackup
 set noswapfile
 " 編集中でも他のファイルを開ける
 set hidden
-" Remove indent, eol, start by <BS>.
+" Remove indent, eol and start by <BS>.
 set backspace=indent,eol,start
 " Show line number.
 set number
-" タイトルバーにファイル名を表示
+" Show file name on title bar.
 set title
-" クリップボード
+" Use clipboard.
 set clipboard& clipboard+=unnamed
-" ルーラーを表示
+" Show cursor position.
 set ruler
-" 折り返しを有効
+" Enable wrap.
 set wrap
 " 開いているファイルのディレクトリに移動
 " あまり推奨されないっぽい
@@ -247,7 +245,7 @@ endfunction
 
 
 "-------------------------------------------
-" Search
+" Searching
 "-------------------------------------------
 " 最後まで検索したら先頭へ戻る
 set wrapscan
@@ -255,9 +253,9 @@ set wrapscan
 set ignorecase
 " 検索文字列に大文字が含まれている場合は区別して検索
 set smartcase
-" インクリメントサーチ
+" Incremental searching.
 set incsearch
-" 検索文字をハイライト
+" Highlight searched words.
 set hlsearch
 
 
@@ -403,12 +401,13 @@ augroup MyTab
   autocmd FileType eruby setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 augroup END
 
+
 " Move cursor to last edit position.
 autocmd MyAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 
 "-------------------------------------------
-" Setting of the neocomplcache.
+" neocomplcache
 "-------------------------------------------
 let g:neocomplcache_enable_at_startup = 1
 " 大文字が入力されるまで大文字小文字の区別を無視
@@ -416,12 +415,10 @@ let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_underbar_completion = 1
 " Set minimum syntax keyword length.
 let g:neocomplcache_min_syntax_length = 3
-
 " Define dictionary.
 let g:neocomplcache_dictionary_filetype_lists = {
-  \ 'default' : '',
-    \ }
-
+            \ 'default': '',
+            \ }
 " Define keyword.
 if !exists('g:neocomplcache_keyword_patterns')
   let g:neocomplcache_keyword_patterns = {}
@@ -429,11 +426,11 @@ endif
 " キーdefaultのパターンのデフォルトが\k\+となっていて，日本語も収集してしまうのでしないように変更
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
-" <TAB>: completion.
+" <TAB>: Completion.
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-" <CR>: close popup and save indent.
+" <CR>: Close popup and save indent.
 inoremap <expr><CR> neocomplcache#close_popup() . "\<CR>"
-" <C-h>, <BS>: close popup and delete backword char.
+" <C-h>, <BS>: Close popup and delete backword char.
 inoremap <expr><C-h> neocomplcache#smart_close_popup() . "\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup() . "\<C-h>"
 " <C-e> : 現在選択している候補をキャンセルし、ポップアップを閉じる
@@ -465,14 +462,14 @@ let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 
 
 "-------------------------------------------
-" Setting of the surround.
+" surround
 "-------------------------------------------
 "nmap s <Plug>Ysurround
 "nmap ss <Plug>Yssurround
 
 
 "-------------------------------------------
-" Setting of the NERDCommenter.
+" NERDCommenter
 "-------------------------------------------
 " Off default key-mappings.
 let g:NERDCreateDefaultMappings = 0
@@ -491,7 +488,7 @@ vmap <Leader>cs <Plug>NERDCommenterSexy
 
 
 "-------------------------------------------
-" Setting of the vimshell.
+" vimshell
 "-------------------------------------------
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 if has('win32') || has('win64')
@@ -506,8 +503,9 @@ autocmd FileType vimshell
       \| call vimshell#altercmd#define('la', 'ls -a')
       \| call vimshell#altercmd#define('lla', 'ls -la')
 
+
 "-------------------------------------------
-" Setting of the ref.vim.
+" ref
 "-------------------------------------------
 " let g:ref_alc_start_linenumber = 50
 autocmd FileType ref call s:initialize_ref_viewer()
@@ -521,19 +519,13 @@ let g:ref_phpmanual_path = expand('~/Documents/References/php-chunked-xhtml')
 
 
 "-------------------------------------------
-" Setting of the hatena-vim.
-"-------------------------------------------
-" let g:hatena_user='furu33'
-
-
-"-------------------------------------------
-" Setting of the echodoc.
+" echodoc
 "-------------------------------------------
 let g:echodoc_enable_at_startup = 1
 
 
 "-------------------------------------------
-" Setting of the unite.vim.
+" unite.vim.
 "-------------------------------------------
 nnoremap <silent> ,b :<C-u>Unite -buffer-name=files buffer_tab<CR>
 nnoremap <silent> ,f :<C-u>Unite -buffer-name=files file<CR>
@@ -544,7 +536,7 @@ nnoremap ,p :Unite -auto-preview
 
 
 "-------------------------------------------
-" Setting of the quickrun.vim.
+" quickrun
 "-------------------------------------------
 let g:quickrun_config = {}
 " For RSpec
@@ -559,26 +551,20 @@ augroup END
 
 
 "-------------------------------------------
-" Setting of the vimfiler.
+" vimfiler
 "-------------------------------------------
 let g:vimfiler_as_default_explorer = 1
-" Like Textmate icons.
-" let g:vimfiler_tree_leaf_icon = ' '
-" let g:vimfiler_tree_opened_icon = ''
-" let g:vimfiler_tree_closed_icon = ''
-" let g:vimfiler_file_icon = ''
-" let g:vimfiler_marked_file_icon = ''
 
 
 "-------------------------------------------
-" Setting of the smartchr.
+" smartchr
 "-------------------------------------------
 autocmd MyAutoCmd FileType ruby inoremap <buffer> <expr> { smartchr#loop('{', '#{')
 " inoremap <expr> = smartchr#loop(' = ', '=', ' == ')
 
 
 "-------------------------------------------
-" Setting of the eskk.
+" eskk
 "-------------------------------------------
 " set imdisable
 let g:eskk#large_dictionary = {
@@ -591,7 +577,7 @@ let g:eskk#large_dictionary = {
 
 
 "-------------------------------------------
-" Setting of the QFixHowm.
+" QFixHowm
 "-------------------------------------------
 let howm_dir = expand('~/Dropbox/work/howm')
 let howm_fileencoding = 'utf-8'
