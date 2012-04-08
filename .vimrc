@@ -89,6 +89,7 @@ NeoBundle 'fuenor/qfixhowm'
 NeoBundle 'basyura/unite-rails'
 NeoBundle 'ujihisa/ref-hoogle'
 NeoBundle 'ujihisa/unite-haskellimport'
+NeoBundle 'thinca/vim-unite-history'
 
 filetype plugin indent on
 
@@ -118,8 +119,9 @@ endif
 syntax enable
 " Don't create backup file.
 set nobackup
-" Don't create swap file.
-set noswapfile
+" Create swap file.
+set swapfile
+set directory=~/.vim/tmp
 " 編集中でも他のファイルを開ける
 set hidden
 " Remove indent, eol and start by <BS>.
@@ -144,6 +146,7 @@ set showmatch
 set matchtime=2
 " コマンド補完を強化
 set wildmenu
+set wildignorecase
 " カーソルが行末で止まらないようにする
 set whichwrap=b,s,h,l,<,>,[,]
 " スクロール時の余白確保
@@ -258,6 +261,25 @@ set incsearch
 " Highlight searched words.
 set hlsearch
 
+
+" start of line
+" cnoremap <C-A> <Home>
+" end of line
+" cnoremap <C-E> <End>
+" forward one character
+" cnoremap <C-F> <Right>
+" back one character
+" cnoremap <C-B> <Left>
+" delete character under cursor
+" cnoremap <C-D> <Del>
+" recall newer command-line
+" cnoremap <C-N> <Down>
+" recall previous (older) command-line
+" cnoremap <C-P> <Up>
+" back one word
+" cnoremap <Esc><C-B> <S-Left>
+" forward one word
+" cnoremap <Esc><C-F> <S-Right>
 
 " カーソルを表示行で移動
 nnoremap j gj
@@ -516,6 +538,9 @@ function! s:initialize_ref_viewer()
   setlocal nonumber
 endfunction
 let g:ref_phpmanual_path = expand('~/Documents/References/php-chunked-xhtml')
+" カーソル下の単語をalcで調べる
+nnoremap <silent> <C-a><C-a> :<C-u>Ref alc <C-r><C-w><CR>
+nnoremap <Space>ra :Ref alc<Space>
 
 
 "-------------------------------------------
@@ -532,7 +557,8 @@ nnoremap <silent> ,f :<C-u>Unite -buffer-name=files file<CR>
 nnoremap <silent> ,r :<C-u>Unite -buffer-name=files file_mru<CR>
 nnoremap <silent> ,t :<C-u>Unite tab:no-current<CR>
 nnoremap ,a :Unite rails/
-nnoremap ,p :Unite -auto-preview 
+nnoremap ,p :Unite -auto-preview<Space>
+nnoremap ,h :Unite history/
 
 
 "-------------------------------------------
