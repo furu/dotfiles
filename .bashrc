@@ -1,22 +1,18 @@
-#
-# ~/.bashrc
-#
-
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
-alias ll='ls -l'
-alias la='ls -a'
-alias lla='ls -la'
-alias dp='dropbox'
-alias dpst='dropbox status'
-alias dpls='dropbox ls'
-alias grep='grep --color=auto'
-# PS1='[\u@\h \W]\$ '
+PS1='\w$(__git_ps1 " (%s)")\n\
+\[\033[01;32m\]\u \[\033[01;34m\]\$\[\033[00m\] '
+# PS1='\w\n\
+# \[\033[01;32m\]\u \[\033[01;34m\]\$\[\033[00m\] '
 
-# export LESS=' -R'
-# export LESSOPEN='| /usr/bin/src-hilite-lesspipe.sh %s'
-export EDITOR="vim"
+export GIT_PS1_SHOWDIRTYSTATE=1
+export GIT_PS1_SHOWSTASHSTATE=1
+export GIT_PS1_SHOWUNTRACKEDFILES=1
+export GIT_PS1_SHOWUPSTREAM=1
 
-PATH=$PATH:/home/furu/.cabal/bin
+export HISTSIZE=5000
+export HISTFILESIZE=50000
+export HISTCONTROL=ignoreboth
+
+[ -f ~/utils/bundler-exec.sh ] && source ~/utils/bundler-exec.sh

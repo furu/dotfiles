@@ -4,7 +4,7 @@
 
 TARGET_BASEDIR=$HOME/Dropbox/dotfiles/
 LINK_BASEDIR=$HOME
-FILES=(.bashrc .vimrc .gvimrc .gitconfig .Xmodmap) 
+FILES=(.bashrc .vimrc .gvimrc .inputrc)
 BACKUP=1
 
 check_configuration()

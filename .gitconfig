@@ -1,13 +1,18 @@
 [user]
-    email = 
-    name = 
+    email = ba09219@gmail.com
+    name = furu
 [color]
     ui = auto
 [core]
-    editor = vim
+    ; editor = mvim -f
+    editor = mvim --remote-tab-wait-silent
 [alias]
-    st = status
+    st = status -sb
     co = checkout
+    ; dc = diff --cached
+    br = branch
+    ci = commit
+    df = diff
+    dfs = diff --staged
 [github]
-    user = 
-    token = 
+    user = furu
