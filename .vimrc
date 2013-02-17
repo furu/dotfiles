@@ -1,5 +1,5 @@
 " Filename: .vimrc
-" Last Change: 13-Feb-2013.
+" Last Change: 18-Feb-2013.
 " Maintainer: furu
 
 " Use Vim default instead of 100% vi compatibility.
@@ -109,6 +109,7 @@ NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'mattn/gist-vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'thinca/vim-singleton'
+NeoBundle 'Shougo/junkfile.vim'
 
 " Build vimproc.
 NeoBundle 'Shougo/vimproc', {
@@ -397,22 +398,6 @@ command! -bar -bang -nargs=? -complete=file Scouter
       \ echo Scouter(empty(<q-args>) ? $MYVIMRC : expand(<q-args>), <bang>0)
 command! -bar -bang -nargs=? -complete=file GScouter
       \ echo Scouter(empty(<q-args>) ? $MYGVIMRC : expand(<q-args>), <bang>0)
-"}}}
-
-" Open junk file."{{{
-function! s:open_junk_file()
-  let l:junk_dir = $HOME . '/.vim_junk' . strftime('/%Y/%m')
-  if !isdirectory(l:junk_dir)
-    call mkdir(l:junk_dir, 'p')
-  endif
-
-  let l:filename = input('Junk Code: ', l:junk_dir . strftime('/%Y-%m-%d-%H%M%S.'))
-  if l:filename != ''
-    execute 'edit ' . l:filename
-  endif
-endfunction
-
-command! -nargs=0 JunkFile call s:open_junk_file()
 "}}}
 
 " Change current directory. {{{
