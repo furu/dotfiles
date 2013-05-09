@@ -1,11 +1,5 @@
-[user]
-    email = ba09219@gmail.com
-    name = furu
 [color]
     ui = auto
-[core]
-    ; editor = mvim -f
-    editor = mvim --remote-tab-wait-silent
 [alias]
     st = status -sb
     co = checkout
@@ -18,3 +12,5 @@
     user = furu
 [push]
 	default = simple
+[include]
+    path = .gitconfig.local
