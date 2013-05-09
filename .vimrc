@@ -1,5 +1,5 @@
 " Filename: .vimrc
-" Last Change: 18-Feb-2013.
+" Last Change: 03-Mar-2013.
 " Maintainer: furu
 
 " Use Vim default instead of 100% vi compatibility.
@@ -111,6 +111,8 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'thinca/vim-singleton'
 NeoBundle 'Shougo/junkfile.vim'
 NeoBundle 'thinca/vim-scouter'
+NeoBundle 'mattn/httpstatus-vim'
+NeoBundle 'slim-template/vim-slim'
 
 " Build vimproc.
 NeoBundle 'Shougo/vimproc', {
@@ -597,12 +599,12 @@ let g:unite_source_history_yank_enable = 1
 let g:unite_source_git_grep_required_pattern_length = 2
 nnoremap <silent> ,b :<C-u>Unite -buffer-name=files buffer_tab<CR>
 nnoremap <silent> ,f :<C-u>Unite -buffer-name=files file<CR>
-nnoremap <silent> ,r :<C-u>Unite -buffer-name=files file_rec<CR>
+nnoremap <silent> ,r :<C-u>Unite -buffer-name=files file_rec/async<CR>
 nnoremap <silent> ,m :<C-u>Unite -buffer-name=files file_mru<CR>
 nnoremap <silent> ,t :<C-u>Unite tab:no-current<CR>
 nnoremap <silent> ,hy :<C-u>Unite history/yank<CR>
 nnoremap <silent> ,v :<C-u>Unite -buffer-name=files bookmark<CR>
-nnoremap <silent> ,g :<C-u>Unite -buffer-name=search vcs_grep -start-insert<CR>
+nnoremap <silent> ,g :<C-u>Unite -buffer-name=search grep<CR>
 nnoremap ,a :Unite rails/
 nnoremap ,p :Unite -auto-preview<Space>
 nnoremap ,h :Unite history/
