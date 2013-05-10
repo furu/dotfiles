@@ -4,7 +4,7 @@
 
 TARGET_BASEDIR=$HOME/Dropbox/dotfiles/
 LINK_BASEDIR=$HOME
-FILES=(.bashrc .vimrc .gvimrc .inputrc)
+FILES=(vimrc gvimrc gitconfig tmux.conf zshrc)
 BACKUP=1
 
 check_configuration()
@@ -75,7 +75,7 @@ create_symlinks()
 
     for _FILE in ${FILES[@]}; do
         _TARGET_FILE=${TARGET_BASEDIR}${_FILE}
-        _LINK_FILE=${LINK_BASEDIR}${_FILE}
+        _LINK_FILE=${LINK_BASEDIR}.${_FILE}
 
         echo "$_LINK_FILE -> $_TARGET_FILE"
 
