@@ -1,5 +1,5 @@
 " Filename: .vimrc
-" Last Change: 11-May-2013.
+" Last Change: 23-May-2013.
 " Maintainer: furu
 
 " Use Vim default instead of 100% vi compatibility.
@@ -114,6 +114,7 @@ NeoBundle 'thinca/vim-scouter'
 NeoBundle 'mattn/httpstatus-vim'
 NeoBundle 'slim-template/vim-slim'
 NeoBundle 'zaiste/tmux.vim'
+NeoBundle 'cespare/vim-toml'
 
 " Build vimproc.
 NeoBundle 'Shougo/vimproc', {
