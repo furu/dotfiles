@@ -28,16 +28,17 @@ zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}'
 autoload -Uz colors
 colors
 
-# setopt prompt_subst
-# autoload -Uz vcs_info
-# precmd() {
-  # psvar=()
-  # vcs_info
-  # psvar[1]=$vcs_info_msg_0_
-# }
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' formats '[%b]'
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd() {
+  psvar=()
+  vcs_info
+  [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
 
 PROMPT="
-%{$fg[cyan]%}%~
+%{$fg[cyan]%}%~ %1(v|%F{green}%1v%f|)
 %{$fg_bold[red]%}➜  %{$reset_color%}"
 
 # Pretty print PATH
