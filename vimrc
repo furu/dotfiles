@@ -1,5 +1,5 @@
 " Filename: .vimrc
-" Last Change: 23-May-2013.
+" Last Change: 07-Jun-2013.
 " Maintainer: furu
 
 " Use Vim default instead of 100% vi compatibility.
@@ -115,6 +115,7 @@ NeoBundle 'mattn/httpstatus-vim'
 NeoBundle 'slim-template/vim-slim'
 NeoBundle 'zaiste/tmux.vim'
 NeoBundle 'cespare/vim-toml'
+NeoBundle 'vim-jp/autofmt'
 
 " Build vimproc.
 NeoBundle 'Shougo/vimproc', {
@@ -691,3 +692,8 @@ nmap <Leader>w <Plug>(openbrowser-open)
 " Scall
 "-------------------------------------------
 let g:scall_function_name = 'S'
+
+"-------------------------------------------
+" autofmt
+"-------------------------------------------
+set formatexpr=autofmt#japanese#formatexpr()
