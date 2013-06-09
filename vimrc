@@ -282,6 +282,7 @@ if !exists('g:colors_name') && !has('gui_running')
 endif
 
 set helplang=en,ja
+set formatoptions+=mM
 
 
 "-------------------------------------------
