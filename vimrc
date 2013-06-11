@@ -429,7 +429,7 @@ augroup MyTab
   autocmd!
   autocmd FileType ruby call s:set_short_indent()
   autocmd FileType vim call s:set_short_indent()
-  autocmd FileType javascript call s:set_short_indent()
+  autocmd FileType javascript setlocal shiftwidth=4 softtabstop=4 expandtab
   autocmd FileType html call s:set_short_indent()
   autocmd FileType haml call s:set_short_indent()
   autocmd FileType css call s:set_short_indent()
