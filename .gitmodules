@@ -1,3 +1,6 @@
 [submodule "zsh/z"]
 	path = zsh/z
 	url = git://github.com/rupa/z.git
+[submodule "zsh/git-issue-zsh-completion"]
+	path = zsh/git-issue-zsh-completion
+	url = git://github.com/glidenote/git-issue-zsh-completion.git

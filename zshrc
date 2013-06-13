@@ -18,6 +18,9 @@ HISTSIZE=50000
 SAVEHIST=50000
 
 # Completion
+
+fpath=(${HOME}/.zsh/git-issue-zsh-completion $fpath)
+
 zstyle :compinstall filename '/Users/furu/.zshrc'
 autoload -Uz compinit promptinit
 compinit
