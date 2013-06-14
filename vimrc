@@ -1,5 +1,5 @@
 " Filename: .vimrc
-" Last Change: 11-Jun-2013.
+" Last Change: 14-Jun-2013.
 " Maintainer: furu
 
 " Use Vim default instead of 100% vi compatibility.
@@ -79,7 +79,7 @@ NeoBundle 'choplin/unite-vim_hacks'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'tyru/restart.vim'
 " NeoBundle 'ujihisa/vimshell-ssh'
-" NeoBundle 'Shougo/unite-ssh'
+NeoBundle 'Shougo/unite-ssh'
 NeoBundleLazy 'tsukkee/lingr-vim'
 " NeoBundle 'basyura/twibill.vim'
 " NeoBundle 'basyura/bitly.vim'
