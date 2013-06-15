@@ -1,5 +1,5 @@
 " Filename: .vimrc
-" Last Change: 14-Jun-2013.
+" Last Change: 15-Jun-2013.
 " Maintainer: furu
 
 " Use Vim default instead of 100% vi compatibility.
@@ -118,6 +118,7 @@ NeoBundle 'cespare/vim-toml'
 NeoBundle 'vim-jp/autofmt'
 NeoBundle 'fuenor/JpFormat.vim'
 NeoBundle 'scrooloose/syntastic'
+NeoBundle 'kana/vim-submode'
 
 " Build vimproc.
 NeoBundle 'Shougo/vimproc', {
@@ -696,7 +697,30 @@ nmap <Leader>w <Plug>(openbrowser-open)
 "-------------------------------------------
 let g:scall_function_name = 'S'
 
+
 "-------------------------------------------
 " autofmt
 "-------------------------------------------
 set formatexpr=autofmt#japanese#formatexpr()
+
+
+"-------------------------------------------
+" submode
+"-------------------------------------------
+" resize window mode {{{
+call submode#enter_with('winsize', 'n', '', '<C-w>>', '<C-w>>')
+call submode#enter_with('winsize', 'n', '', '<C-w><', '<C-w><')
+call submode#enter_with('winsize', 'n', '', '<C-w>-', '<C-w>-')
+call submode#enter_with('winsize', 'n', '', '<C-w>+', '<C-w>+')
+call submode#map('winsize', 'n', '', '>', '<C-w>>')
+call submode#map('winsize', 'n', '', '<', '<C-w><')
+call submode#map('winsize', 'n', '', '-', '<C-w>-')
+call submode#map('winsize', 'n', '', '+', '<C-w>+')
+"}}}
+
+" switch tab mode {{{
+call submode#enter_with('switchtab', 'n', '', 'gt', 'gt')
+call submode#enter_with('switchtab', 'n', '', 'gT', 'gT')
+call submode#map('switchtab', 'n', '', 't', 'gt')
+call submode#map('switchtab', 'n', '', 'T', 'gT')
+"}}}
