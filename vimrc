@@ -1,5 +1,5 @@
 " Filename: .vimrc
-" Last Change: 15-Jun-2013.
+" Last Change: 18-Jun-2013.
 " Maintainer: furu
 
 " Use Vim default instead of 100% vi compatibility.
@@ -431,7 +431,7 @@ augroup MyTab
   autocmd FileType ruby call s:set_short_indent()
   autocmd FileType vim call s:set_short_indent()
   autocmd FileType javascript setlocal shiftwidth=4 softtabstop=4 expandtab
-  autocmd FileType html call s:set_short_indent()
+  autocmd FileType html setlocal shiftwidth=4 softtabstop=4 expandtab
   autocmd FileType haml call s:set_short_indent()
   autocmd FileType css call s:set_short_indent()
   autocmd FileType scss call s:set_short_indent()
