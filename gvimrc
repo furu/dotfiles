@@ -40,8 +40,6 @@ set guicursor& guicursor+=a:blinkon0
 
 " Setting of colorscheme.
 " Don't override colorscheme.
-" colorscheme wombat
-" colorscheme molokai
 set background=dark
 colorscheme landscape
 highlight Cursor guibg=#268bd2 guifg=#ffffff
