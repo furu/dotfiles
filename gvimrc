@@ -1,5 +1,5 @@
 " Filename: .gvimrc
-" Last Change: 26-Dec-2012.
+" Last Change: 25-Jun-2013.
 " Maintainer: furu
 
 scriptencoding utf-8
@@ -43,7 +43,7 @@ set guicursor& guicursor+=a:blinkon0
 " colorscheme wombat
 " colorscheme molokai
 set background=dark
-colorscheme solarized
+colorscheme landscape
 highlight Cursor guibg=#268bd2 guifg=#ffffff
 " highlight Search term=reverse ctermfg=0 ctermbg=14 guifg=#000000 guibg=#ffff33
 " if !exists('g:colors_name')

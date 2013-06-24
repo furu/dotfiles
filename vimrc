@@ -1,5 +1,5 @@
 " Filename: .vimrc
-" Last Change: 21-Jun-2013.
+" Last Change: 25-Jun-2013.
 " Maintainer: furu
 
 " Use Vim default instead of 100% vi compatibility.
@@ -119,6 +119,7 @@ NeoBundle 'vim-jp/autofmt'
 NeoBundle 'fuenor/JpFormat.vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'kana/vim-submode'
+NeoBundle 'itchyny/landscape.vim'
 
 " Build vimproc.
 NeoBundle 'Shougo/vimproc', {
