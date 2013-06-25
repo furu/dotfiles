@@ -438,6 +438,7 @@ augroup MyTab
   autocmd FileType vim call s:set_two_indent()
   autocmd FileType javascript call s:set_four_indent()
   autocmd FileType html call s:set_four_indent()
+  autocmd FileType xhtml call s:set_four_indent()
   autocmd FileType haml call s:set_two_indent()
   autocmd FileType css call s:set_two_indent()
   autocmd FileType scss call s:set_two_indent()
