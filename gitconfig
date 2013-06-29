@@ -1,14 +1,22 @@
 [color]
     ui = auto
 [alias]
-    st = status -sb
+    a = add
+    cl = clone
+    f = fetch
+    l = log
+    s = status -sb
     co = checkout
-    ; dc = diff --cached
-    br = branch
+    b = branch
     ci = commit
-    df = diff
-    dfs = diff --staged
-    graph = log --graph --date-order --all --pretty=format:'%h %Cred%d %Cgreen%ad %Cblue%cn %Creset%s' --date=short
+    d = diff
+    ds = diff --staged
+    g = grep
+    gr = log --graph --date-order --all\
+         --pretty=format:'%h %Cred%d %Cgreen%ad %Cblue%cn %Creset%s' --date=short
+    p = push
+    r = rebase
+    m = merge
 [github]
     user = furu
 [push]
