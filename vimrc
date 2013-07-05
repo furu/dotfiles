@@ -1,5 +1,5 @@
 " Filename: .vimrc
-" Last Change: 25-Jun-2013.
+" Last Change: 06-Jul-2013.
 " Maintainer: furu
 
 " Use Vim default instead of 100% vi compatibility.
@@ -120,6 +120,7 @@ NeoBundle 'fuenor/JpFormat.vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'kana/vim-submode'
 NeoBundle 'itchyny/landscape.vim'
+NeoBundle 'Keithbsmiley/rspec.vim'
 
 " Build vimproc.
 NeoBundle 'Shougo/vimproc', {
@@ -649,7 +650,7 @@ let g:quickrun_config['ruby.rspec'] = {
 
 augroup QuickRunUnitTest
   autocmd!
-  autocmd BufWinEnter,BufNewFile *_spec.rb setlocal filetype=ruby.rspec
+  autocmd BufWinEnter,BufNewFile *_spec.rb setlocal filetype=ruby.rspec syntax=rspec
 augroup END
 
 nnoremap <silent> <Leader>t :QuickRun -mode n -runner vimproc:updatetime=10 -hook/unittest/enable 1<CR>
