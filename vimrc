@@ -1,5 +1,5 @@
 " Filename: .vimrc
-" Last Change: 06-Jul-2013.
+" Last Change: 16-Jul-2013.
 " Maintainer: furu
 
 " Use Vim default instead of 100% vi compatibility.
@@ -732,3 +732,10 @@ call submode#enter_with('switchtab', 'n', '', 'gT', 'gT')
 call submode#map('switchtab', 'n', '', 't', 'gt')
 call submode#map('switchtab', 'n', '', 'T', 'gT')
 "}}}
+
+
+"-------------------------------------------
+" gist-vim
+"-------------------------------------------
+let g:gist_detect_filetype = 1
+let g:gist_update_on_write = 2
