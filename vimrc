@@ -1,5 +1,5 @@
 " Filename: .vimrc
-" Last Change: 16-Jul-2013.
+" Last Change: 18-Jul-2013.
 " Maintainer: furu
 
 " Use Vim default instead of 100% vi compatibility.
@@ -620,6 +620,7 @@ nnoremap <silent> ,t :<C-u>Unite tab:no-current<CR>
 nnoremap <silent> ,hy :<C-u>Unite history/yank<CR>
 nnoremap <silent> ,v :<C-u>Unite -buffer-name=files bookmark<CR>
 nnoremap <silent> ,g :<C-u>Unite -buffer-name=search grep<CR>
+nnoremap <silent> ,o :<C-u>Unite outline<CR>
 nnoremap ,a :Unite rails/
 nnoremap ,p :Unite -auto-preview<Space>
 nnoremap ,h :Unite history/
