@@ -1,5 +1,5 @@
 " Filename: .vimrc
-" Last Change: 18-Jul-2013.
+" Last Change: 09-Aug-2013.
 " Maintainer: furu
 
 " Use Vim default instead of 100% vi compatibility.
@@ -121,15 +121,18 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'kana/vim-submode'
 NeoBundle 'itchyny/landscape.vim'
 NeoBundle 'Keithbsmiley/rspec.vim'
+NeoBundle 'mattn/emmet-vim'
 
 " Build vimproc.
-NeoBundle 'Shougo/vimproc', {
-            \ 'build' : {
-            \     'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
-            \     'mac' : 'make -f make_mac.mak clean && make -f make_mac.mak',
-            \     'unix' : 'make -f make_unix.mak clean && make -f make_unix.mak',
-            \    },
-            \ }
+if !s:is_windows
+  NeoBundle 'Shougo/vimproc', {
+              \ 'build' : {
+              \     'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
+              \     'mac' : 'make -f make_mac.mak clean && make -f make_mac.mak',
+              \     'unix' : 'make -f make_unix.mak clean && make -f make_unix.mak',
+              \    },
+              \ }
+endif
 
 filetype plugin indent on
 
@@ -676,8 +679,13 @@ autocmd MyAutoCmd FileType ruby inoremap <buffer> <expr> { smartchr#loop('{', '#
 "-------------------------------------------
 if s:is_windows
  set imdisable
+ " let g:eskk#large_dictionary = {
+       " \'path': "C:\Windows\IME\SKK0\DICTS\skkdict.txt",
+       " \'sorted': 1,
+       " \'encoding': 'euc-jp',
+       " \}
  let g:eskk#large_dictionary = {
-       \'path': "C:\Windows\IME\SKK0\DICTS\skkdict.txt",
+       \'path': "C:\\skkdic\\SKK-JISYO.L",
        \'sorted': 1,
        \'encoding': 'euc-jp',
        \}
