@@ -685,18 +685,18 @@ autocmd MyAutoCmd FileType ruby inoremap <buffer> <expr> { smartchr#loop('{', '#
 " eskk
 "-------------------------------------------
 if s:is_windows
- set imdisable
- " let g:eskk#large_dictionary = {
-       " \'path': "C:\Windows\IME\SKK0\DICTS\skkdict.txt",
-       " \'sorted': 1,
-       " \'encoding': 'euc-jp',
-       " \}
- let g:eskk#large_dictionary = {
-       \'path': "C:\\skkdic\\SKK-JISYO.L",
-       \'sorted': 1,
-       \'encoding': 'euc-jp',
-       \}
-else
+  set imdisable
+  " let g:eskk#large_dictionary = {
+  " \'path': "C:\Windows\IME\SKK0\DICTS\skkdict.txt",
+  " \'sorted': 1,
+  " \'encoding': 'euc-jp',
+  " \}
+  let g:eskk#large_dictionary = {
+        \'path': "C:\\skkdic\\SKK-JISYO.L",
+        \'sorted': 1,
+        \'encoding': 'euc-jp',
+        \}
+elseif s:is_mac
   let g:eskk#dictionary = {
         \'path': '/Users/furu/Library/Application\ Support/AquaSKK/skk-jisyo.utf8',
         \'sorted': 0,
@@ -704,6 +704,13 @@ else
         \}
   let g:eskk#large_dictionary = {
         \'path': "/Users/furu/Library/Application\ Support/AquaSKK/SKK-JISYO.L",
+        \'sorted': 1,
+        \'encoding': 'euc-jp',
+        \}
+else
+  set imdisable
+  let g:eskk#large_dictionary = {
+        \'path': "/usr/share/skk/SKK-JISYO.L",
         \'sorted': 1,
         \'encoding': 'euc-jp',
         \}
