@@ -123,6 +123,7 @@ NeoBundle 'itchyny/landscape.vim'
 NeoBundle 'Keithbsmiley/rspec.vim'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'osyo-manga/vim-anzu'
 
 " Build vimproc.
 if !s:is_windows
@@ -764,3 +765,12 @@ call submode#map('switchtab', 'n', '', 'T', 'gT')
 "-------------------------------------------
 let g:gist_detect_filetype = 1
 let g:gist_update_on_write = 2
+
+
+"-------------------------------------------
+" anzu
+"-------------------------------------------
+nmap n <Plug>(anzu-n-with-echo)
+nmap N <Plug>(anzu-N-with-echo)
+nmap * <Plug>(anzu-star-with-echo)
+nmap # <Plug>(anzu-sharp-with-echo)
