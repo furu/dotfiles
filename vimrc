@@ -124,6 +124,7 @@ NeoBundle 'Keithbsmiley/rspec.vim'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'osyo-manga/vim-anzu'
+NeoBundle 'zhaocai/unite-scriptnames'
 
 " Build vimproc.
 if !s:is_windows
