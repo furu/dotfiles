@@ -1,5 +1,5 @@
 " Filename: .vimrc
-" Last Change: 16-Aug-2013.
+" Last Change: 18-Aug-2013.
 " Maintainer: furu
 
 " Use Vim default instead of 100% vi compatibility.
@@ -459,6 +459,8 @@ autocmd MyAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") |
 
 autocmd MyAutoCmd BufRead,BufNewFile *.md setlocal filetype=markdown
 autocmd MyAutoCmd BufRead,BufNewFile Guardfile setlocal filetype=ruby
+autocmd FileType ocaml source /Users/furu/.opam/system/share/typerex/ocp-indent/ocp-indent.vim
+
 
 function! s:append_binding_pry()
   call append(line(".") - 1, "binding.pry")
