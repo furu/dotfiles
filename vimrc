@@ -1,5 +1,5 @@
 " Filename: .vimrc
-" Last Change: 18-Aug-2013.
+" Last Change: 19-Aug-2013.
 " Maintainer: furu
 
 " Use Vim default instead of 100% vi compatibility.
@@ -125,6 +125,7 @@ NeoBundle 'mattn/emmet-vim'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'zhaocai/unite-scriptnames'
+NeoBundle 'thinca/vim-visualstar'
 
 " Build vimproc.
 if !s:is_windows
