@@ -1,5 +1,5 @@
 " Filename: .vimrc
-" Last Change: 19-Aug-2013.
+" Last Change: 26-Aug-2013.
 " Maintainer: furu
 
 " Use Vim default instead of 100% vi compatibility.
@@ -52,7 +52,6 @@ call neobundle#rc(expand('$DOTVIM/bundle'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'Shougo/neocomplcache'
 NeoBundleLazy 'Shougo/vimshell'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/echodoc'
@@ -122,10 +121,23 @@ NeoBundle 'kana/vim-submode'
 NeoBundle 'itchyny/landscape.vim'
 NeoBundle 'Keithbsmiley/rspec.vim'
 NeoBundle 'mattn/emmet-vim'
-NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'zhaocai/unite-scriptnames'
 NeoBundle 'thinca/vim-visualstar'
+
+
+" Ref: http://rhysd.hatenablog.com/entry/2013/08/24/223438
+function! s:satisfy_neocomplete_requirements() " {{{
+  return has('lua') && (v:version > 703 || v:version == 703 && has('patch885'))
+endfunction " }}}
+
+if s:satisfy_neocomplete_requirements()
+  NeoBundle 'Shougo/neocomplete.vim'
+  NeoBundleFetch 'Shougo/neocomplcache'
+else
+  NeoBundle 'Shougo/neocomplcache'
+  NeoBundleFetch 'Shougo/neocomplete.vim'
+endif
 
 " Build vimproc.
 if !s:is_windows
@@ -520,43 +532,44 @@ endfunction "}}}
 nnoremap <silent> <Leader>b :echo <SID>git_blame_info(expand('%'), line('.'))<CR>
 
 
-"-------------------------------------------
-" neocomplcache
-"-------------------------------------------
-" let g:neocomplcache_enable_at_startup = 0
-" Case-insensitive until input uppercase letter.
-" let g:neocomplcache_enable_smart_case = 1
-" let g:neocomplcache_enable_underbar_completion = 1
-" Set minimum syntax keyword length.
-" let g:neocomplcache_min_syntax_length = 3
-" Define dictionary.
-" let g:neocomplcache_dictionary_filetype_lists = {
-            " \ 'default': '',
-            " \ }
-" Define keyword.
-" if !exists('g:neocomplcache_keyword_patterns')
-  " let g:neocomplcache_keyword_patterns = {}
-" endif
-" キーdefaultのパターンのデフォルトが\k\+となっていて，日本語も収集してしまうのでしないように変更
-" let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+if s:satisfy_neocomplete_requirements()
+  "-------------------------------------------
+  " neocomplete
+  "-------------------------------------------
+  let g:neocomplete#enable_at_startup = 1
+else
+  "-------------------------------------------
+  " neocomplcache
+  "-------------------------------------------
+  let g:neocomplcache_enable_at_startup = 1
+  " Case-insensitive until input uppercase letter.
+  " let g:neocomplcache_enable_smart_case = 1
+  " let g:neocomplcache_enable_underbar_completion = 1
+  " Set minimum syntax keyword length.
+  " let g:neocomplcache_min_syntax_length = 3
+  " Define dictionary.
+  " let g:neocomplcache_dictionary_filetype_lists = {
+              " \ 'default': '',
+              " \ }
+  " Define keyword.
+  " if !exists('g:neocomplcache_keyword_patterns')
+    " let g:neocomplcache_keyword_patterns = {}
+  " endif
+  " キーdefaultのパターンのデフォルトが\k\+となっていて，日本語も収集してしまうのでしないように変更
+  " let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
-" <TAB>: Completion.
-" inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-" <CR>: Close popup and save indent.
-" inoremap <expr><CR> neocomplcache#close_popup() . "\<CR>"
-" <C-h>, <BS>: Close popup and delete backword char.
-" inoremap <expr><C-h> neocomplcache#smart_close_popup() . "\<C-h>"
-" inoremap <expr><BS> neocomplcache#smart_close_popup() . "\<C-h>"
-" <C-e> : 現在選択している候補をキャンセルし、ポップアップを閉じる
-" inoremap <expr><C-e> neocomplcache#cancel_popup()
-" <C-y> : 補完を選択し、ポップアップを閉じる
-" inoremap <expr><C-y> neocomplcache#close_popup()
-
-
-"-------------------------------------------
-" neocomplete
-"-------------------------------------------
-let g:neocomplete#enable_at_startup = 1
+  " <TAB>: Completion.
+  " inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+  " <CR>: Close popup and save indent.
+  " inoremap <expr><CR> neocomplcache#close_popup() . "\<CR>"
+  " <C-h>, <BS>: Close popup and delete backword char.
+  " inoremap <expr><C-h> neocomplcache#smart_close_popup() . "\<C-h>"
+  " inoremap <expr><BS> neocomplcache#smart_close_popup() . "\<C-h>"
+  " <C-e> : 現在選択している候補をキャンセルし、ポップアップを閉じる
+  " inoremap <expr><C-e> neocomplcache#cancel_popup()
+  " <C-y> : 補完を選択し、ポップアップを閉じる
+  " inoremap <expr><C-y> neocomplcache#close_popup()
+endif
 
 
 "-------------------------------------------
