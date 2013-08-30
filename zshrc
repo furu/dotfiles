@@ -80,7 +80,7 @@ alias la='ls -a'
 alias lla='ls -la'
 alias grep='grep --color=auto'
 alias cp='cp -irp'
-alias chou='sudo pacman -Syu'
+alias chou='echo "Execute \"sudo pacman -Syu\""; sudo pacman -Syu'
 
 # For R Programming Language
 disable r
