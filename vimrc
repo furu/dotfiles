@@ -1,5 +1,5 @@
 " Filename: .vimrc
-" Last Change: 26-Aug-2013.
+" Last Change: 03-Sep-2013.
 " Maintainer: furu
 
 " Use Vim default instead of 100% vi compatibility.
@@ -457,8 +457,8 @@ augroup MyTab
   autocmd FileType ruby call s:set_two_indent()
   autocmd FileType vim call s:set_two_indent()
   autocmd FileType javascript call s:set_four_indent()
-  autocmd FileType html call s:set_four_indent()
-  autocmd FileType xhtml call s:set_four_indent()
+  autocmd FileType html call s:set_two_indent()
+  autocmd FileType xhtml call s:set_two_indent()
   autocmd FileType haml call s:set_two_indent()
   autocmd FileType css call s:set_two_indent()
   autocmd FileType scss call s:set_two_indent()
