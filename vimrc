@@ -125,6 +125,7 @@ NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'zhaocai/unite-scriptnames'
 NeoBundle 'thinca/vim-visualstar'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'gregsexton/gitv'
 
 
 " Ref: http://rhysd.hatenablog.com/entry/2013/08/24/223438
