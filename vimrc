@@ -1,5 +1,5 @@
 " Filename: .vimrc
-" Last Change: 03-Sep-2013.
+" Last Change: 06-Sep-2013.
 " Maintainer: furu
 
 " Use Vim default instead of 100% vi compatibility.
@@ -124,6 +124,7 @@ NeoBundle 'mattn/emmet-vim'
 NeoBundle 'osyo-manga/vim-anzu'
 NeoBundle 'zhaocai/unite-scriptnames'
 NeoBundle 'thinca/vim-visualstar'
+NeoBundle 'tpope/vim-fugitive'
 
 
 " Ref: http://rhysd.hatenablog.com/entry/2013/08/24/223438
