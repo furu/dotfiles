@@ -1,5 +1,5 @@
 " Filename: .vimrc
-" Last Change: 06-Sep-2013.
+" Last Change: 09-Sep-2013.
 " Maintainer: furu
 
 " Use Vim default instead of 100% vi compatibility.
@@ -775,6 +775,8 @@ call submode#enter_with('switchtab', 'n', '', 'gT', 'gT')
 call submode#map('switchtab', 'n', '', 't', 'gt')
 call submode#map('switchtab', 'n', '', 'T', 'gT')
 "}}}
+
+let g:submode_keep_leaving_key = 1
 
 
 "-------------------------------------------
