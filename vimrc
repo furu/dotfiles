@@ -1,5 +1,5 @@
 " Filename: .vimrc
-" Last Change: 11-Sep-2013.
+" Last Change: 12-Sep-2013.
 " Maintainer: furu
 
 " Use Vim default instead of 100% vi compatibility.
@@ -127,6 +127,9 @@ NeoBundle 'thinca/vim-visualstar'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'teramako/jscomplete-vim'
 
 
 " Ref: http://rhysd.hatenablog.com/entry/2013/08/24/223438
@@ -575,6 +578,8 @@ else
   " <C-y> : 補完を選択し、ポップアップを閉じる
   " inoremap <expr><C-y> neocomplcache#close_popup()
 endif
+
+autocmd FileType javascript setlocal omnifunc=jscomplete#CompleteJS
 
 
 "-------------------------------------------
