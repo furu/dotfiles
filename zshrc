@@ -40,6 +40,9 @@ precmd() {
   [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 }
 
+autoload -Uz zmv
+alias zmv='noglob zmv -W'
+
 PROMPT="
 %{$fg[cyan]%}%~ %1(v|%F{green}%1v%f|)
 %{$fg_bold[red]%}➜  %{$reset_color%}"
