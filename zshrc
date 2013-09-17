@@ -10,6 +10,7 @@ setopt auto_cd
 setopt beep
 setopt extended_glob
 setopt nomatch
+setopt no_complete_aliases
 unsetopt append_history
 unsetopt notify
 
@@ -84,6 +85,7 @@ alias lla='ls -la'
 alias grep='grep --color=auto'
 alias cp='cp -irp'
 alias chou='echo "Execute \"sudo pacman -Syu\""; sudo pacman -Syu'
+alias g='git'
 
 # For R Programming Language
 disable r
