@@ -19,6 +19,7 @@
     m = merge
     ss = stash
     sh = show
+    ba = branch -a
 [github]
     user = furu
 [push]
