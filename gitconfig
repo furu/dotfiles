@@ -17,6 +17,8 @@
     p = push
     r = rebase
     m = merge
+    ss = stash
+    sh = show
 [github]
     user = furu
 [push]
