@@ -1,5 +1,5 @@
 " Filename: .vimrc
-" Last Change: 18-Sep-2013.
+" Last Change: 03-Oct-2013.
 " Maintainer: furu
 
 " Use Vim default instead of 100% vi compatibility.
@@ -285,11 +285,10 @@ if has('gui_running')
 endif
 
 " Line feed code
+set fileformat=unix
 if s:is_windows
-  set fileformat=dos
   set fileformats=dos,unix,mac
 else
-  set fileformat=unix
   set fileformats=unix,dos,mac
 endif
 
