@@ -1,5 +1,5 @@
 " Filename: .vimrc
-" Last Change: 03-Oct-2013.
+" Last Change: 13-Oct-2013.
 " Maintainer: furu
 
 " Use Vim default instead of 100% vi compatibility.
@@ -131,6 +131,7 @@ NeoBundle 'tpope/vim-repeat'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'teramako/jscomplete-vim'
 NeoBundle 'vim-scripts/newspaper.vim'
+NeoBundle 'vim-scripts/wombat256.vim'
 
 
 " Ref: http://rhysd.hatenablog.com/entry/2013/08/24/223438
