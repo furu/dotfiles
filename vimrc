@@ -125,7 +125,6 @@ NeoBundle 'gregsexton/gitv'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'teramako/jscomplete-vim'
 NeoBundle 'vim-scripts/newspaper.vim'
 NeoBundle 'vim-scripts/wombat256.vim'
 
