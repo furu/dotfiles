@@ -1,5 +1,5 @@
 " Filename: .vimrc
-" Last Change: 13-Oct-2013.
+" Last Change: 30-Oct-2013.
 " Maintainer: furu
 
 " Use Vim default instead of 100% vi compatibility.
@@ -308,7 +308,7 @@ endfunction
 if !exists('g:colors_name') && !has('gui_running')
   " Use 256 colors in terminal.
   set t_Co=256
-  colorscheme peachpuff
+  colorscheme molokai
 endif
 
 set helplang=en,ja
