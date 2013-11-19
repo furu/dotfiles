@@ -4,7 +4,8 @@ scriptencoding utf-8
 if has('win32') || has ('win64')
   " set guifont=Osaka－等幅:h12:cSHIFTJIS
   " set guifont=Ricty:h12:cSHIFTJIS
-  set guifont=Inconsolata:h12:cSHIFTJIS
+  " set guifont=Inconsolata:h12:cSHIFTJIS
+  set guifont=Migu_1M:h11
 elseif has('mac')
   " set guifont=Osaka－等幅:h12
   set guifont=Osaka-Mono:h14
