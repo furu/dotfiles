@@ -1,7 +1,3 @@
-" Filename: .gvimrc
-" Last Change: 01-Jul-2013.
-" Maintainer: furu
-
 scriptencoding utf-8
 
 " Fonts:"{{{

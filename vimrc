@@ -1,7 +1,3 @@
-" Filename: .vimrc
-" Last Change: 30-Oct-2013.
-" Maintainer: furu
-
 " Use Vim default instead of 100% vi compatibility.
 set nocompatible
 
