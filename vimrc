@@ -48,7 +48,7 @@ call neobundle#rc(expand('$DOTVIM/bundle'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundleLazy 'Shougo/vimshell'
+NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/echodoc'
 NeoBundle 'Shougo/vimfiler'
@@ -606,17 +606,18 @@ vmap <Leader>cs <Plug>NERDCommenterSexy
 " vimshell
 "-------------------------------------------
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-if s:is_windows
-  let g:vimshell_prompt = $USERNAME . "% "
-else
-  let g:vimshell_prompt = $USER . "% "
-endif
+let g:vimshell_prompt = "% "
 let g:vimshell_max_command_history = 50000
+let g:vimshell_split_command = ''
 
 autocmd FileType vimshell
       \ call vimshell#altercmd#define('ll', 'ls -l')
       \| call vimshell#altercmd#define('la', 'ls -a')
       \| call vimshell#altercmd#define('lla', 'ls -la')
+      \| call vimshell#set_alias('j', ':Unite -buffer-name=files -default-action=lcd -no-split -input=$$args directory_mru')
+      \| call vimshell#altercmd#define('g', 'git')
+      \| call vimshell#altercmd#define('l', 'ls')
+      \| call vimshell#altercmd#define('be', 'bundle exec')
 
 
 "-------------------------------------------
