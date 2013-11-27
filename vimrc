@@ -651,7 +651,7 @@ nnoremap <silent> ,f :<C-u>Unite -buffer-name=files file<CR>
 nnoremap <silent> ,r :<C-u>Unite -buffer-name=files file_rec/async<CR>
 nnoremap <silent> ,m :<C-u>Unite -buffer-name=files file_mru<CR>
 nnoremap <silent> ,t :<C-u>Unite tab:no-current<CR>
-nnoremap <silent> ,hy :<C-u>Unite history/yank<CR>
+nnoremap <silent> ,y :<C-u>Unite history/yank<CR>
 nnoremap <silent> ,v :<C-u>Unite -buffer-name=files bookmark<CR>
 nnoremap <silent> ,g :<C-u>Unite -buffer-name=search grep<CR>
 nnoremap <silent> ,o :<C-u>Unite outline<CR>
