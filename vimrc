@@ -128,6 +128,7 @@ NeoBundle 'tpope/vim-repeat'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'vim-scripts/newspaper.vim'
 NeoBundle 'vim-scripts/wombat256.vim'
+NeoBundle 'alpaca-tc/alpaca_tags'
 
 
 " Ref: http://rhysd.hatenablog.com/entry/2013/08/24/223438
