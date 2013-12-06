@@ -129,6 +129,7 @@ NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'vim-scripts/newspaper.vim'
 NeoBundle 'vim-scripts/wombat256.vim'
 NeoBundle 'alpaca-tc/alpaca_tags'
+NeoBundle 'nathanaelkane/vim-indent-guides'
 
 
 " Ref: http://rhysd.hatenablog.com/entry/2013/08/24/223438
@@ -808,3 +809,10 @@ nmap # <Plug>(anzu-sharp-with-echo)
 noremap <Plug>N N
 map * <Plug>(visualstar-*)<Plug>N
 map # <Plug>(visualstar-#)<Plug>N
+
+
+"-------------------------------------------
+" vim-indent-guides
+"-------------------------------------------
+let g:indent_guides_guide_size = 1
+let g:indent_guides_start_level = 2
