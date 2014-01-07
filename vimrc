@@ -131,6 +131,8 @@ NeoBundle 'vim-scripts/wombat256.vim'
 NeoBundle 'alpaca-tc/alpaca_tags'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'evidens/vim-twig'
+NeoBundle 'koron/codic-vim'
+NeoBundle 'rhysd/unite-codic.vim'
 
 
 " Ref: http://rhysd.hatenablog.com/entry/2013/08/24/223438
