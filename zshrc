@@ -14,6 +14,9 @@ setopt no_complete_aliases
 unsetopt append_history
 unsetopt notify
 
+# Remove duplicated path.
+typeset -U path PATH
+
 HISTFILE=~/.zsh_history
 HISTSIZE=50000
 SAVEHIST=50000
