@@ -4,7 +4,7 @@
     a = add
     cl = clone
     f = fetch
-    l = log
+    l = log --stat
     s = status -sb
     co = checkout
     b = branch
