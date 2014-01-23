@@ -20,6 +20,7 @@
     ss = stash
     sh = show
     ba = branch -a
+    ganbari = shortlog --no-merges -n --since=midnight
 [github]
     user = furu
 [push]
