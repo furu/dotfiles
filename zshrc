@@ -101,3 +101,8 @@ export PATH=${PATH}:./vendor/bin
 
 # Source local zshrc
 [ -e ~/.zshrc.local ] && source ~/.zshrc.local
+
+# Start tmux
+if type tmux > /dev/null 2>&1; then
+    [[ -z "${TMUX}" ]] && tmux -2
+fi
