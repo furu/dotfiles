@@ -103,6 +103,10 @@ export PATH=${PATH}:./vendor/bin
 [ -e ~/.zshrc.local ] && source ~/.zshrc.local
 
 # Start tmux
-if type tmux > /dev/null 2>&1; then
-    [[ -z "${TMUX}" ]] && tmux -2
+if type tmux > /dev/null 2>&1 && [ -z "${TMUX}" ]; then
+    if tmux has-session > /dev/null 2>&1; then
+        tmux -2 attach
+    elif; then
+        tmux -2
+    fi
 fi
