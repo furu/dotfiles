@@ -398,6 +398,8 @@ nnoremap <silent> <Space>rg :<C-u>source $MYGVIMRC<CR>
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
 
+nnoremap <C-]> g<C-]>
+
 " auto reload .vimrc and .gvimrc when I edited .vimrc or .gvimrc. {{{
 if !has('gui_running') && !(has('win32') || has('win64'))
   autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
