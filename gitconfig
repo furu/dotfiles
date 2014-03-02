@@ -29,3 +29,5 @@
     path = .gitconfig.local
 [merge]
     ff = false
+[core]
+    excludesfile = ~/.gitignore
