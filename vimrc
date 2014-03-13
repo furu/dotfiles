@@ -547,12 +547,12 @@ if s:satisfy_neocomplete_requirements()
   "-------------------------------------------
   " neocomplete
   "-------------------------------------------
-  let g:neocomplete#enable_at_startup = 1
+  " let g:neocomplete#enable_at_startup = 1
 else
   "-------------------------------------------
   " neocomplcache
   "-------------------------------------------
-  let g:neocomplcache_enable_at_startup = 1
+  " let g:neocomplcache_enable_at_startup = 1
   " Case-insensitive until input uppercase letter.
   " let g:neocomplcache_enable_smart_case = 1
   " let g:neocomplcache_enable_underbar_completion = 1
