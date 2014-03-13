@@ -31,3 +31,5 @@
     ff = false
 [core]
     excludesfile = ~/.gitignore
+[grep]
+    lineNumber = true
