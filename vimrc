@@ -486,7 +486,6 @@ autocmd MyAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") |
 
 autocmd MyAutoCmd BufRead,BufNewFile *.md setlocal filetype=markdown
 autocmd MyAutoCmd BufRead,BufNewFile Guardfile setlocal filetype=ruby
-autocmd FileType ocaml source /Users/furu/.opam/system/share/typerex/ocp-indent/ocp-indent.vim
 
 
 function! s:append_binding_pry()
