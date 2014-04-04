@@ -1,1 +1,4 @@
 export PAGER='lv -c'
+export GEM_HOME=$(ruby -e 'puts Gem.user_dir')
+
+PATH=${PATH}:${GEM_HOME}/bin
