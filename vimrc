@@ -624,7 +624,6 @@ nnoremap <silent> <Leader>f :VimFiler<CR>
 " smartchr
 "-------------------------------------------
 autocmd MyAutoCmd FileType ruby inoremap <buffer> <expr> { smartchr#loop('{', '#{')
-" inoremap <expr> = smartchr#loop(' = ', '=', ' == ')
 
 
 "-------------------------------------------
