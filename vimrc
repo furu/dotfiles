@@ -92,7 +92,6 @@ NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'taka84u9/vim-ref-ri'
 NeoBundle 'kana/vim-tabpagecd'
 NeoBundle 'thinca/vim-fontzoom'
-NeoBundleLazy 'thinca/vim-scall'
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'mattn/gist-vim'
 NeoBundle 'altercation/vim-colors-solarized'
@@ -666,12 +665,6 @@ endif
 " openbrowser
 "-------------------------------------------
 nmap <Leader>w <Plug>(openbrowser-open)
-
-
-"-------------------------------------------
-" Scall
-"-------------------------------------------
-let g:scall_function_name = 'S'
 
 
 "-------------------------------------------
