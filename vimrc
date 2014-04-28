@@ -48,7 +48,6 @@ call neobundle#rc(expand('$DOTVIM/bundle'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'Shougo/vimshell'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/echodoc'
 NeoBundle 'Shougo/vimfiler'
@@ -73,7 +72,6 @@ NeoBundle 'thinca/vim-openbuf'
 NeoBundle 'choplin/unite-vim_hacks'
 NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'tyru/restart.vim'
-" NeoBundle 'ujihisa/vimshell-ssh'
 NeoBundle 'Shougo/unite-ssh'
 NeoBundleLazy 'tsukkee/lingr-vim'
 NeoBundle 'basyura/twibill.vim'
@@ -551,24 +549,6 @@ vmap <Leader>cm <Plug>NERDCommenterMinimal
 nmap <Leader>ca <Plug>NERDCommenterAppend
 nmap <Leader>c$ <Plug>NERDCommenterToEOL
 vmap <Leader>cs <Plug>NERDCommenterSexy
-
-
-"-------------------------------------------
-" vimshell
-"-------------------------------------------
-let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-let g:vimshell_prompt = "% "
-let g:vimshell_max_command_history = 50000
-let g:vimshell_split_command = ''
-
-autocmd FileType vimshell
-      \ call vimshell#altercmd#define('ll', 'ls -l')
-      \| call vimshell#altercmd#define('la', 'ls -a')
-      \| call vimshell#altercmd#define('lla', 'ls -la')
-      \| call vimshell#set_alias('j', ':Unite -buffer-name=files -default-action=lcd -no-split -input=$$args directory_mru')
-      \| call vimshell#altercmd#define('g', 'git')
-      \| call vimshell#altercmd#define('l', 'ls')
-      \| call vimshell#altercmd#define('be', 'bundle exec')
 
 
 "-------------------------------------------
