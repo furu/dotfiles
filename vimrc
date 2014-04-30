@@ -98,7 +98,6 @@ NeoBundle 'mattn/httpstatus-vim'
 NeoBundle 'slim-template/vim-slim'
 NeoBundle 'zaiste/tmux.vim'
 NeoBundle 'cespare/vim-toml'
-NeoBundle 'vim-jp/autofmt'
 NeoBundle 'fuenor/JpFormat.vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'kana/vim-submode'
@@ -657,12 +656,6 @@ endif
 " openbrowser
 "-------------------------------------------
 nmap <Leader>w <Plug>(openbrowser-open)
-
-
-"-------------------------------------------
-" autofmt
-"-------------------------------------------
-set formatexpr=autofmt#japanese#formatexpr()
 
 
 "-------------------------------------------
