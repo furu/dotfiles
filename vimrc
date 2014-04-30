@@ -51,70 +51,102 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/junkfile.vim'
-
-
 NeoBundle 'Shougo/echodoc'
+NeoBundle 'Shougo/unite-ssh'
+
 NeoBundle 'scrooloose/nerdcommenter'
+NeoBundle 'scrooloose/syntastic'
+
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-ref'
+NeoBundle 'thinca/vim-visualstar'
+NeoBundle 'thinca/vim-singleton'
+NeoBundle 'thinca/vim-scouter'
+NeoBundle 'thinca/vim-fontzoom'
+NeoBundle 'thinca/vim-openbuf'
+
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-surround'
+NeoBundle 'tpope/vim-haml'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-repeat'
+
 NeoBundle 'kana/vim-smartchr'
-NeoBundle 'othree/html5.vim'
-NeoBundle 'vim-scripts/autodate.vim'
+NeoBundle 'kana/vim-filetype-haskell'
+NeoBundle 'kana/vim-tabpagecd'
+NeoBundle 'kana/vim-submode'
+
 NeoBundle 'tyru/eskk.vim'
-NeoBundle 'mattn/webapi-vim'
 NeoBundle 'tyru/open-browser.vim'
-NeoBundle 'mattn/unite-advent_calendar'
-NeoBundle 'thinca/vim-openbuf'
-NeoBundle 'choplin/unite-vim_hacks'
-NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'tyru/restart.vim'
-NeoBundle 'Shougo/unite-ssh'
-NeoBundleLazy 'tsukkee/lingr-vim'
+
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'mattn/unite-advent_calendar'
+NeoBundle 'mattn/favstar-vim'
+NeoBundle 'mattn/httpstatus-vim'
+NeoBundle 'mattn/emmet-vim'
+
 NeoBundle 'basyura/twibill.vim'
 NeoBundle 'basyura/bitly.vim'
 NeoBundle 'basyura/TweetVim'
-NeoBundle 'mattn/favstar-vim'
-NeoBundle 'kana/vim-filetype-haskell'
 NeoBundle 'basyura/unite-rails'
+
 NeoBundle 'ujihisa/ref-hoogle'
 NeoBundle 'ujihisa/unite-haskellimport'
-NeoBundle 'tomasr/molokai'
 NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle 'tpope/vim-haml'
-NeoBundle 'sgur/unite-git_grep'
-NeoBundle 'heavenshell/vim-quickrun-hook-unittest'
-NeoBundle 'kchmck/vim-coffee-script'
-NeoBundle 'taka84u9/unite-git'
-NeoBundle 'dag/vim2hs'
+
+NeoBundle 'othree/html5.vim'
+
+NeoBundle 'vim-scripts/autodate.vim'
+
+NeoBundle 'choplin/unite-vim_hacks'
+
+NeoBundle 'hail2u/vim-css3-syntax'
+
+NeoBundleLazy 'tsukkee/lingr-vim'
 NeoBundle 'tsukkee/unite-tag'
+
+NeoBundle 'tomasr/molokai'
+
+NeoBundle 'sgur/unite-git_grep'
+
+NeoBundle 'heavenshell/vim-quickrun-hook-unittest'
+
+NeoBundle 'kchmck/vim-coffee-script'
+
+NeoBundle 'taka84u9/unite-git'
 NeoBundle 'taka84u9/vim-ref-ri'
-NeoBundle 'kana/vim-tabpagecd'
-NeoBundle 'thinca/vim-fontzoom'
+
+NeoBundle 'dag/vim2hs'
+
 NeoBundle 'h1mesuke/vim-alignta'
-NeoBundle 'thinca/vim-singleton'
-NeoBundle 'thinca/vim-scouter'
-NeoBundle 'mattn/httpstatus-vim'
+
 NeoBundle 'slim-template/vim-slim'
+
 NeoBundle 'zaiste/tmux.vim'
+
 NeoBundle 'cespare/vim-toml'
+
 NeoBundle 'fuenor/JpFormat.vim'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'kana/vim-submode'
+
 NeoBundle 'Keithbsmiley/rspec.vim'
-NeoBundle 'mattn/emmet-vim'
+
 NeoBundle 'osyo-manga/vim-anzu'
+
 NeoBundle 'zhaocai/unite-scriptnames'
-NeoBundle 'thinca/vim-visualstar'
-NeoBundle 'tpope/vim-fugitive'
+
 NeoBundle 'gregsexton/gitv'
+
 NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'tpope/vim-repeat'
+
 NeoBundle 'pangloss/vim-javascript'
+
 NeoBundle 'alpaca-tc/alpaca_tags'
+
 NeoBundle 'evidens/vim-twig'
+
 NeoBundle 'koron/codic-vim'
+
 NeoBundle 'rhysd/unite-codic.vim'
 
 
