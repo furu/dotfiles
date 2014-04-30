@@ -261,13 +261,13 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
 nnoremap <C-]> g<C-]>
 
 " Reload with encoding.
-command! -bang -bar -complete=file -nargs=? Cp932 edit ++enc=cp932
-command! -bang -bar -complete=file -nargs=? EucJp edit ++enc=euc-jp
-command! -bang -bar -complete=file -nargs=? Iso2022jp edit ++enc=iso-2022-jp
-command! -bang -bar -complete=file -nargs=? Utf8 edit ++enc=utf-8
+command! -bang -bar -complete=file -nargs=? Cp932 edit ++enc=cp932 <args>
+command! -bang -bar -complete=file -nargs=? EucJp edit ++enc=euc-jp <args>
+command! -bang -bar -complete=file -nargs=? Iso2022jp edit ++enc=iso-2022-jp <args>
+command! -bang -bar -complete=file -nargs=? Utf8 edit ++enc=utf-8 <args>
 " Aliases
-command! -bang -bar -complete=file -nargs=? Jis Iso2022jp
-command! -bang -bar -complete=file -nargs=? Sjis Cp932
+command! -bang -bar -complete=file -nargs=? Jis Iso2022jp <args>
+command! -bang -bar -complete=file -nargs=? Sjis Cp932 <args>
 
 function! s:set_two_indent()
   setlocal shiftwidth=2 softtabstop=2 expandtab
