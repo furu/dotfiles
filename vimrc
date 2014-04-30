@@ -93,15 +93,13 @@ NeoBundle 'evidens/vim-twig'
 
 
 " Build vimproc.
-if !s:is_windows
-  NeoBundle 'Shougo/vimproc', {
-              \ 'build' : {
-              \     'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
-              \     'mac' : 'make -f make_mac.mak clean && make -f make_mac.mak',
-              \     'unix' : 'make -f make_unix.mak clean && make -f make_unix.mak',
-              \    },
-              \ }
-endif
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
+      \     'mac' : 'make -f make_mac.mak clean && make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak clean && make -f make_unix.mak',
+      \    },
+      \ }
 
 filetype plugin indent on
 
