@@ -36,7 +36,7 @@ endif
 if has('vim_starting')
   set runtimepath+=$DOTVIM/bundle/neobundle.vim
 endif
-call neobundle#rc(expand('$DOTVIM/bundle'))
+call neobundle#begin(expand('$DOTVIM/bundle'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
@@ -44,8 +44,9 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'sgur/unite-git_grep'
-NeoBundle 'rhysd/unite-codic.vim'
-  NeoBundle 'koron/codic-vim'
+NeoBundle 'rhysd/unite-codic.vim', {
+      \ 'depends' : 'koron/codic-vim'
+      \ }
 NeoBundle 'ujihisa/unite-colorscheme'
 
 NeoBundle 'Shougo/junkfile.vim'
@@ -91,7 +92,6 @@ NeoBundle 'tpope/vim-haml'
 NeoBundle 'slim-template/vim-slim'
 NeoBundle 'evidens/vim-twig'
 
-
 " Build vimproc.
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
@@ -101,7 +101,11 @@ NeoBundle 'Shougo/vimproc', {
       \    },
       \ }
 
+call neobundle#end()
+
 filetype plugin indent on
+
+NeoBundleCheck
 
 
 "-------------------------------------------
