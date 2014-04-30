@@ -446,54 +446,6 @@ endfunction
 command! -nargs=0 AppendBindingPry call s:append_binding_pry()
 nnoremap <silent> <Space>p :<C-u>AppendBindingPry<CR>k==
 
-" git blame
-" https://gist.github.com/4054621
-" Original Author: @rbtnn
-function! s:git_blame_info_dict(filename, line_num) "{{{
-  let lines = split(system(printf('git blame -L%d,%d --line-porcelain %s'
-    \ , a:line_num, a:line_num, a:filename)), "\n")
-  if len(lines) == 13
-    let dict = {
-    \ 'hash' : split(lines[0], ' '),
-    \ 'author' : matchstr(lines[1], 'author \zs.*'),
-    \ 'author-mail' : matchstr(lines[2], 'author-mail \zs.*'),
-    \ 'author-time' : matchstr(lines[3], 'author-time \zs.*'),
-    \ 'author-tz' : matchstr(lines[4], 'author-tz \zs.*'),
-    \ 'committer' : matchstr(lines[5], 'committer \zs.*'),
-    \ 'committer-mail' : matchstr(lines[6], 'committer-mail \zs.*'),
-    \ 'committer-time' : matchstr(lines[7], 'committer-time \zs.*'),
-    \ 'committer-tz' : matchstr(lines[8], 'committer-tz \zs.*'),
-    \ 'summary' : matchstr(lines[9], 'summary \zs.*'),
-    \ 'previous' : split(matchstr(lines[10], 'previous \zs.*'),' '),
-    \ 'filename' : matchstr(lines[11], 'filename \zs.*'),
-    \ 'line' : lines[12],
-    \ }
-    let dict['author'] = dict['author'] ==# 'Not Committed Yet' ? '' : dict['author']
-    let dict['author-mail'] = dict['author-mail'] ==# '<not.committed.yet>' ? '' : dict['author-mail']
-    let dict['committer'] = dict['committer'] ==# 'Not Committed Yet' ? '' : dict['committer']
-    let dict['committer-mail'] = dict['committer-mail'] ==# '<not.committed.yet>' ? '' : dict['committer-mail']
-    return dict
-  else
-    return {}
-  endif
-endfunction "}}}
-
-function! s:git_blame_info(filename, line_num) "{{{
-  let ex_fname = fnamemodify(a:filename, ':p')
-  let ex_fname_dir = fnamemodify(a:filename, ':p:h')
-  let tmp_dir = getcwd()
-  execute 'cd ' . ex_fname_dir
-  let result = s:git_blame_info_dict(ex_fname, a:line_num)
-  execute 'cd ' . tmp_dir
-  if empty(result)
-    return 'null'
-  else
-    return printf('[%s][%s][%s] %s', result.hash[0][:6], result.committer, strftime("%F", result['committer-time']), result.summary)
-  endif
-endfunction "}}}
-
-nnoremap <silent> <Leader>b :echo <SID>git_blame_info(expand('%'), line('.'))<CR>
-
 
 "-------------------------------------------
 " NERDCommenter
