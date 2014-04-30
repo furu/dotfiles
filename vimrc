@@ -91,7 +91,6 @@ NeoBundle 'taka84u9/vim-ref-ri'
 NeoBundle 'kana/vim-tabpagecd'
 NeoBundle 'thinca/vim-fontzoom'
 NeoBundle 'h1mesuke/vim-alignta'
-NeoBundle 'mattn/gist-vim'
 NeoBundle 'thinca/vim-singleton'
 NeoBundle 'Shougo/junkfile.vim'
 NeoBundle 'thinca/vim-scouter'
@@ -688,13 +687,6 @@ call submode#map('switchtab', 'n', '', 'T', 'gT')
 "}}}
 
 let g:submode_keep_leaving_key = 1
-
-
-"-------------------------------------------
-" gist-vim
-"-------------------------------------------
-let g:gist_detect_filetype = 1
-let g:gist_update_on_write = 2
 
 
 "-------------------------------------------
