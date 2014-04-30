@@ -1,4 +1,3 @@
-" Use Vim default instead of 100% vi compatibility.
 set nocompatible
 
 let s:is_windows = has('win32') || has('win64')
@@ -21,10 +20,8 @@ endif
 
 " Use English interface.
 if s:is_windows
-  " For Windows.
   language message en
 else
-  " For Linux and Mac.
   language message C
 endif
 
@@ -129,16 +126,12 @@ endif
 "-------------------------------------------
 " Basic
 "-------------------------------------------
-" Enable syntax color.
 syntax enable
-" Don't create backup file.
 set nobackup
-" Create swap file.
 set swapfile
 set directory=$TMPDIR
 " Remove indent, eol and start by <BS>.
 set backspace=indent,eol,start
-" Show line number.
 set number
 " Show file name on title bar.
 set title
@@ -146,7 +139,6 @@ set title
 " set clipboard& clipboard+=unnamed
 " Show cursor position.
 set ruler
-" Enable wrap.
 set wrap
 set showmatch
 " 閉じ括弧のマッチを表示する時間(1/10秒単位)
@@ -157,13 +149,9 @@ set wildignorecase
 set wildmode=longest:full,full
 " カーソルが行末で止まらないようにする
 set whichwrap=b,s,h,l,<,>,[,]
-" 他で書き換えられたら自動で読みなおす
 set autoread
-" コマンドラインの高さ
 set cmdheight=2
-" 常にステータスラインを表示
 set laststatus=2
-" ステータスラインに文字コード、改行コード、ファイルタイプなどを表示する
 set statusline=%<%f\ %r%h%w%m[%{&fenc!=''?&fenc:&enc}][%{&ff=='unix'?'LF':&ff=='dos'?'CRLF':'CR'}]\ %y\ %=[0x%B]\ %c,%l/%L
 set list
 set listchars=tab:>-,eol:$
@@ -200,9 +188,7 @@ endif
 
 " default tab & indent settings {{{
 set softtabstop=4
-" 自動インデント時の空白の数
 set shiftwidth=4
-" タブをスペースにする
 set expandtab
 " }}}
 
@@ -229,13 +215,9 @@ set formatoptions+=mM
 "-------------------------------------------
 " 最後まで検索したら先頭へ戻る
 set wrapscan
-" 大文字小文字を無視
 set ignorecase
-" 検索文字列に大文字が含まれている場合は区別して検索
 set smartcase
-" Incremental searching.
 set incsearch
-" Highlight searched words.
 set hlsearch
 
 
