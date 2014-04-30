@@ -114,7 +114,6 @@ NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'alpaca-tc/alpaca_tags'
-NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'evidens/vim-twig'
 NeoBundle 'koron/codic-vim'
 NeoBundle 'rhysd/unite-codic.vim'
@@ -713,10 +712,3 @@ nmap # <Plug>(anzu-sharp-with-echo)
 noremap <Plug>N N
 map * <Plug>(visualstar-*)<Plug>N
 map # <Plug>(visualstar-#)<Plug>N
-
-
-"-------------------------------------------
-" vim-indent-guides
-"-------------------------------------------
-let g:indent_guides_guide_size = 1
-let g:indent_guides_start_level = 2
