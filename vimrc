@@ -440,13 +440,6 @@ autocmd MyAutoCmd BufRead,BufNewFile *.md setlocal filetype=markdown
 autocmd MyAutoCmd BufRead,BufNewFile Guardfile setlocal filetype=ruby
 
 
-function! s:append_binding_pry()
-  call append(line(".") - 1, "binding.pry")
-endfunction
-command! -nargs=0 AppendBindingPry call s:append_binding_pry()
-nnoremap <silent> <Space>p :<C-u>AppendBindingPry<CR>k==
-
-
 "-------------------------------------------
 " NERDCommenter
 "-------------------------------------------
