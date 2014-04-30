@@ -239,7 +239,7 @@ noremap : ;
 " Oを使うので、現在の行の上に空行を挿入することができなくなるけど、あんまり使わないのでOK
 nnoremap <silent> O :<C-u>call append(expand('.'), '')<CR>j
 
-" :help quickly.
+" :help quickly. TODO: Occur waiting for key-in.
 nnoremap <C-h> :<C-u>help<Space>
 " :help under cursor keyword.
 nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><CR>
