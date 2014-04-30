@@ -30,11 +30,6 @@ if s:is_windows
 endif
 
 
-augroup MyAutoCmd
-  autocmd!
-augroup END
-
-
 "-------------------------------------------
 " neobundle.vim
 "-------------------------------------------
@@ -122,6 +117,43 @@ endif
 " if has('clientserver')
   " call singleton#enable()
 " endif
+
+
+"-------------------------------------------
+" autocmd
+"-------------------------------------------
+augroup MyAutoCmd
+  autocmd!
+augroup END
+
+function! s:set_two_indent()
+  setlocal shiftwidth=2 softtabstop=2 expandtab
+endfunction
+function! s:set_four_indent()
+  setlocal shiftwidth=4 softtabstop=4 expandtab
+endfunction
+augroup MyTab
+  autocmd!
+  autocmd FileType ruby call s:set_two_indent()
+  autocmd FileType vim call s:set_two_indent()
+  autocmd FileType javascript call s:set_four_indent()
+  autocmd FileType html call s:set_two_indent()
+  autocmd FileType xhtml call s:set_two_indent()
+  autocmd FileType haml call s:set_two_indent()
+  autocmd FileType css call s:set_two_indent()
+  autocmd FileType scss call s:set_two_indent()
+  autocmd FileType php call s:set_four_indent()
+  autocmd FileType eruby call s:set_two_indent()
+  autocmd FileType jsp call s:set_two_indent()
+  autocmd FileType cucumber call s:set_two_indent()
+augroup END
+
+" Move cursor to last edit position.
+autocmd MyAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+autocmd MyAutoCmd BufRead,BufNewFile *.md setlocal filetype=markdown
+autocmd MyAutoCmd BufRead,BufNewFile Guardfile setlocal filetype=ruby
+
 
 "-------------------------------------------
 " Basic
@@ -220,6 +252,23 @@ set smartcase
 set incsearch
 set hlsearch
 
+
+"-------------------------------------------
+" commands
+"-------------------------------------------
+" Reload with encoding.
+command! -bang -bar -complete=file -nargs=? Cp932 edit ++enc=cp932 <args>
+command! -bang -bar -complete=file -nargs=? EucJp edit ++enc=euc-jp <args>
+command! -bang -bar -complete=file -nargs=? Iso2022jp edit ++enc=iso-2022-jp <args>
+command! -bang -bar -complete=file -nargs=? Utf8 edit ++enc=utf-8 <args>
+" Aliases
+command! -bang -bar -complete=file -nargs=? Jis Iso2022jp <args>
+command! -bang -bar -complete=file -nargs=? Sjis Cp932 <args>
+
+
+"-------------------------------------------
+" key mappings
+"-------------------------------------------
 " カーソルを表示行で移動
 noremap j gj
 noremap k gk
@@ -259,43 +308,6 @@ nnoremap <silent> <Space>eg :<C-u>edit $MYGVIMRC<CR>
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
 
 nnoremap <C-]> g<C-]>
-
-" Reload with encoding.
-command! -bang -bar -complete=file -nargs=? Cp932 edit ++enc=cp932 <args>
-command! -bang -bar -complete=file -nargs=? EucJp edit ++enc=euc-jp <args>
-command! -bang -bar -complete=file -nargs=? Iso2022jp edit ++enc=iso-2022-jp <args>
-command! -bang -bar -complete=file -nargs=? Utf8 edit ++enc=utf-8 <args>
-" Aliases
-command! -bang -bar -complete=file -nargs=? Jis Iso2022jp <args>
-command! -bang -bar -complete=file -nargs=? Sjis Cp932 <args>
-
-function! s:set_two_indent()
-  setlocal shiftwidth=2 softtabstop=2 expandtab
-endfunction
-function! s:set_four_indent()
-  setlocal shiftwidth=4 softtabstop=4 expandtab
-endfunction
-augroup MyTab
-  autocmd!
-  autocmd FileType ruby call s:set_two_indent()
-  autocmd FileType vim call s:set_two_indent()
-  autocmd FileType javascript call s:set_four_indent()
-  autocmd FileType html call s:set_two_indent()
-  autocmd FileType xhtml call s:set_two_indent()
-  autocmd FileType haml call s:set_two_indent()
-  autocmd FileType css call s:set_two_indent()
-  autocmd FileType scss call s:set_two_indent()
-  autocmd FileType php call s:set_four_indent()
-  autocmd FileType eruby call s:set_two_indent()
-  autocmd FileType jsp call s:set_two_indent()
-  autocmd FileType cucumber call s:set_two_indent()
-augroup END
-
-" Move cursor to last edit position.
-autocmd MyAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
-autocmd MyAutoCmd BufRead,BufNewFile *.md setlocal filetype=markdown
-autocmd MyAutoCmd BufRead,BufNewFile Guardfile setlocal filetype=ruby
 
 
 "-------------------------------------------
