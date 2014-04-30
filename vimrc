@@ -372,24 +372,6 @@ command! -bang -bar -complete=file -nargs=? Utf8 edit ++enc=utf-8
 command! -bang -bar -complete=file -nargs=? Jis Iso2022jp
 command! -bang -bar -complete=file -nargs=? Sjis Cp932
 
-" Change current directory. {{{
-function! s:ChangeCurrentDir(directory, bang)
-  if a:directory == ''
-    lcd %:p:h
-  else
-    execute 'lcd' . a:directory
-  endif
-
-  if a:bang == ''
-    pwd
-  endif
-endfunction
-
-command! -nargs=? -complete=dir -bang CD call s:ChangeCurrentDir('<args>', '<bang>')
-
-nnoremap <silent> <Space>cd :<C-u>CD<CR>
-"}}}
-
 
 function! s:set_two_indent()
   setlocal shiftwidth=2 softtabstop=2 expandtab
