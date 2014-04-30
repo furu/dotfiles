@@ -256,22 +256,9 @@ nnoremap <silent> <Esc><Esc> :<C-u>nohlsearch<CR>
 nnoremap <silent> <Space>ev :<C-u>edit $MYVIMRC<CR>
 nnoremap <silent> <Space>eg :<C-u>edit $MYGVIMRC<CR>
 
-nnoremap <silent> <Space>rv :<C-u>source $MYVIMRC \| if has('gui_running') \| source $MYGVIMRC \| endif <CR>
-nnoremap <silent> <Space>rg :<C-u>source $MYGVIMRC<CR>
-
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
 
 nnoremap <C-]> g<C-]>
-
-" auto reload .vimrc and .gvimrc when I edited .vimrc or .gvimrc. {{{
-if !has('gui_running') && !(has('win32') || has('win64'))
-  autocmd MyAutoCmd BufWritePost $MYVIMRC nested source $MYVIMRC
-else
-  autocmd MyAutoCmd BufWritePost $MYVIMRC source $MYVIMRC |
-        \ if has('gui_running') | source $MYGVIMRC
-  autocmd MyAutoCmd BufWritePost $MYGVIMRC if has('gui_running') | source $MYGVIMRC
-endif
-"}}}
 
 " Reload with encoding.
 command! -bang -bar -complete=file -nargs=? Cp932 edit ++enc=cp932
