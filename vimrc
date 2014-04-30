@@ -320,7 +320,7 @@ vmap <Leader>cs <Plug>NERDCommenterSexy
 "-------------------------------------------
 " ref
 "-------------------------------------------
-autocmd FileType ref call s:initialize_ref_viewer()
+autocmd MyAutoCmd FileType ref call s:initialize_ref_viewer()
 function! s:initialize_ref_viewer()
   nnoremap <buffer> q <C-w>c
   setlocal nonumber
