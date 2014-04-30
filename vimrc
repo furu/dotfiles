@@ -275,10 +275,6 @@ noremap k gk
 noremap <Down> gj
 noremap <Up> gk
 
-" 1画面ずつページ送り
-noremap <Space>j <C-f>
-noremap <Space>k <C-b>
-
 " For US Keybord.
 noremap ; :
 noremap : ;
