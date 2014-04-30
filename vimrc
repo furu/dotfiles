@@ -222,22 +222,6 @@ set expandtab
 " set cindent
 " }}}
 
-if has('gui_running')
-  " カレント行をハイライト
-  " set cursorline
-  " カレントウィンドウにのみ罫線を引く{{{
-  " augroup cch
-    " autocmd! cch
-    " autocmd WinLeave * set nocursorline
-    " autocmd WinEnter,BufRead * set cursorline
-  " augroup END
-
-  " hi clear CursorLine
-  " hi CursorLine gui=underline
-  " highlight CursorLine ctermbg=black guibg=black
-  " }}}
-endif
-
 " Line feed code
 set fileformat=unix
 if s:is_windows
@@ -245,18 +229,6 @@ if s:is_windows
 else
   set fileformats=unix,dos,mac
 endif
-
-" 全角スペースを強調表示
-function! ZenkakuSpace()
-  highlight ZenkakuSpace cterm=underline ctermbg=darkgrey gui=underline guifg=darkgrey
-  silent! match ZenkakuSpace /　/
-endfunction
-" if has('syntax')
-"   augroup ZenkakuSpace
-"     autocmd!
-"     autocmd VimEnter,BufEnter * call ZenkakuSpace()
-"   augroup END
-" endif
 
 if !exists('g:colors_name') && !has('gui_running')
   " Use 256 colors in terminal.
@@ -282,25 +254,6 @@ set incsearch
 " Highlight searched words.
 set hlsearch
 
-
-" start of line
-" cnoremap <C-A> <Home>
-" end of line
-" cnoremap <C-E> <End>
-" forward one character
-" cnoremap <C-F> <Right>
-" back one character
-" cnoremap <C-B> <Left>
-" delete character under cursor
-" cnoremap <C-D> <Del>
-" recall newer command-line
-" cnoremap <C-N> <Down>
-" recall previous (older) command-line
-" cnoremap <C-P> <Up>
-" back one word
-" cnoremap <Esc><C-B> <S-Left>
-" forward one word
-" cnoremap <Esc><C-F> <S-Right>
 
 " カーソルを表示行で移動
 noremap j gj
@@ -333,7 +286,6 @@ onoremap gc :<C-u>normal gc<CR>
 
 " 自動で挿入されたインデントが、何も入力せずにインサートモードを抜けたり、さらに新しい行を作ったりした場合に削除されないようにする
 nnoremap o oX<C-h>
-" inoremap <CR> <CR>X<C-h>
 
 " key-mapping for nohlsearch
 nnoremap <silent> <Esc><Esc> :<C-u>nohlsearch<CR>
@@ -504,11 +456,6 @@ autocmd MyAutoCmd FileType ruby inoremap <buffer> <expr> { smartchr#loop('{', '#
 "-------------------------------------------
 if s:is_windows
   set imdisable
-  " let g:eskk#large_dictionary = {
-  " \'path': "C:\Windows\IME\SKK0\DICTS\skkdict.txt",
-  " \'sorted': 1,
-  " \'encoding': 'euc-jp',
-  " \}
   let g:eskk#large_dictionary = {
         \'path': "C:\\skkdic\\SKK-JISYO.L",
         \'sorted': 1,
