@@ -49,15 +49,17 @@ call neobundle#rc(expand('$DOTVIM/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/unite-outline'
+NeoBundle 'Shougo/junkfile.vim'
+
+
 NeoBundle 'Shougo/echodoc'
-NeoBundle 'Shougo/vimfiler'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'kana/vim-smartchr'
-NeoBundle 'Shougo/unite-outline'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'vim-scripts/autodate.vim'
 NeoBundle 'tyru/eskk.vim'
@@ -92,7 +94,6 @@ NeoBundle 'kana/vim-tabpagecd'
 NeoBundle 'thinca/vim-fontzoom'
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'thinca/vim-singleton'
-NeoBundle 'Shougo/junkfile.vim'
 NeoBundle 'thinca/vim-scouter'
 NeoBundle 'mattn/httpstatus-vim'
 NeoBundle 'slim-template/vim-slim'
@@ -601,13 +602,6 @@ augroup QuickRunUnitTest
 augroup END
 
 nnoremap <silent> <Leader>t :QuickRun -mode n -runner vimproc:updatetime=10 -hook/unittest/enable 1<CR>
-
-
-"-------------------------------------------
-" vimfiler
-"-------------------------------------------
-let g:vimfiler_as_default_explorer = 1
-nnoremap <silent> <Leader>f :VimFiler<CR>
 
 
 "-------------------------------------------
