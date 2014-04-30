@@ -244,7 +244,7 @@ nnoremap <C-h> :<C-u>help<Space>
 " :help under cursor keyword.
 nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><CR>
 
-" 最後に選択したテキストの選択
+" Select last modified text.
 nnoremap gc '[v']
 vnoremap gc :<C-u>normal gc<CR>
 onoremap gc :<C-u>normal gc<CR>
