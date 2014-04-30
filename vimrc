@@ -48,11 +48,16 @@ call neobundle#rc(expand('$DOTVIM/bundle'))
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+" Unite
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/unite-outline'
+NeoBundle 'sgur/unite-git_grep'
+NeoBundle 'rhysd/unite-codic.vim'
+  NeoBundle 'koron/codic-vim'
+NeoBundle 'ujihisa/unite-colorscheme'
+
 NeoBundle 'Shougo/junkfile.vim'
 NeoBundle 'Shougo/echodoc'
-NeoBundle 'Shougo/unite-ssh'
 
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
@@ -63,91 +68,36 @@ NeoBundle 'thinca/vim-visualstar'
 NeoBundle 'thinca/vim-singleton'
 NeoBundle 'thinca/vim-scouter'
 NeoBundle 'thinca/vim-fontzoom'
-NeoBundle 'thinca/vim-openbuf'
 
-NeoBundle 'tpope/vim-rails'
 NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-haml'
-NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-repeat'
 
 NeoBundle 'kana/vim-smartchr'
-NeoBundle 'kana/vim-filetype-haskell'
 NeoBundle 'kana/vim-tabpagecd'
 NeoBundle 'kana/vim-submode'
 
 NeoBundle 'tyru/eskk.vim'
-NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'tyru/restart.vim'
-
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'mattn/unite-advent_calendar'
-NeoBundle 'mattn/favstar-vim'
-NeoBundle 'mattn/httpstatus-vim'
-NeoBundle 'mattn/emmet-vim'
-
-NeoBundle 'basyura/twibill.vim'
-NeoBundle 'basyura/bitly.vim'
-NeoBundle 'basyura/TweetVim'
-NeoBundle 'basyura/unite-rails'
-
-NeoBundle 'ujihisa/ref-hoogle'
-NeoBundle 'ujihisa/unite-haskellimport'
-NeoBundle 'ujihisa/unite-colorscheme'
-
-NeoBundle 'othree/html5.vim'
-
-NeoBundle 'vim-scripts/autodate.vim'
-
-NeoBundle 'choplin/unite-vim_hacks'
-
-NeoBundle 'hail2u/vim-css3-syntax'
-
-NeoBundleLazy 'tsukkee/lingr-vim'
-NeoBundle 'tsukkee/unite-tag'
-
-NeoBundle 'tomasr/molokai'
-
-NeoBundle 'sgur/unite-git_grep'
 
 NeoBundle 'heavenshell/vim-quickrun-hook-unittest'
 
-NeoBundle 'kchmck/vim-coffee-script'
-
-NeoBundle 'taka84u9/unite-git'
-NeoBundle 'taka84u9/vim-ref-ri'
-
-NeoBundle 'dag/vim2hs'
-
-NeoBundle 'h1mesuke/vim-alignta'
-
-NeoBundle 'slim-template/vim-slim'
-
-NeoBundle 'zaiste/tmux.vim'
-
-NeoBundle 'cespare/vim-toml'
-
-NeoBundle 'fuenor/JpFormat.vim'
-
-NeoBundle 'Keithbsmiley/rspec.vim'
-
 NeoBundle 'osyo-manga/vim-anzu'
 
-NeoBundle 'zhaocai/unite-scriptnames'
+" Color Scheme
+NeoBundle 'tomasr/molokai'
 
-NeoBundle 'gregsexton/gitv'
-
-NeoBundle 'vim-ruby/vim-ruby'
-
+" Syntax Hightlighting
+NeoBundle 'zaiste/tmux.vim'
+NeoBundle 'cespare/vim-toml'
+NeoBundle 'othree/html5.vim'
+NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'pangloss/vim-javascript'
-
-NeoBundle 'alpaca-tc/alpaca_tags'
-
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'Keithbsmiley/rspec.vim'
+NeoBundle 'tpope/vim-haml'
+NeoBundle 'slim-template/vim-slim'
 NeoBundle 'evidens/vim-twig'
-
-NeoBundle 'koron/codic-vim'
-
-NeoBundle 'rhysd/unite-codic.vim'
 
 
 " Build vimproc.
@@ -600,7 +550,6 @@ nnoremap <silent> ,y :<C-u>Unite history/yank<CR>
 nnoremap <silent> ,v :<C-u>Unite -buffer-name=files bookmark<CR>
 nnoremap <silent> ,g :<C-u>Unite -buffer-name=search grep<CR>
 nnoremap <silent> ,o :<C-u>Unite outline<CR>
-nnoremap ,a :Unite rails/
 nnoremap ,p :Unite -auto-preview<Space>
 nnoremap ,h :Unite history/
 
@@ -676,12 +625,6 @@ else
         \'encoding': 'euc-jp',
         \}
 endif
-
-
-"-------------------------------------------
-" openbrowser
-"-------------------------------------------
-nmap <Leader>w <Plug>(openbrowser-open)
 
 
 "-------------------------------------------
