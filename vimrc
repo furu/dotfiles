@@ -220,7 +220,6 @@ set smartcase
 set incsearch
 set hlsearch
 
-
 " カーソルを表示行で移動
 noremap j gj
 noremap k gk
@@ -277,7 +276,6 @@ else
 endif
 "}}}
 
-
 " Reload with encoding.
 command! -bang -bar -complete=file -nargs=? Cp932 edit ++enc=cp932
 command! -bang -bar -complete=file -nargs=? EucJp edit ++enc=euc-jp
@@ -287,16 +285,12 @@ command! -bang -bar -complete=file -nargs=? Utf8 edit ++enc=utf-8
 command! -bang -bar -complete=file -nargs=? Jis Iso2022jp
 command! -bang -bar -complete=file -nargs=? Sjis Cp932
 
-
 function! s:set_two_indent()
   setlocal shiftwidth=2 softtabstop=2 expandtab
 endfunction
-
 function! s:set_four_indent()
   setlocal shiftwidth=4 softtabstop=4 expandtab
 endfunction
-
-
 augroup MyTab
   autocmd!
   autocmd FileType ruby call s:set_two_indent()
@@ -312,7 +306,6 @@ augroup MyTab
   autocmd FileType jsp call s:set_two_indent()
   autocmd FileType cucumber call s:set_two_indent()
 augroup END
-
 
 " Move cursor to last edit position.
 autocmd MyAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
