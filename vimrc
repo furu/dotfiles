@@ -106,6 +106,9 @@ endif
 filetype plugin indent on
 
 
+"-------------------------------------------
+" macros
+"-------------------------------------------
 if has('vim_starting')
   runtime macros/matchit.vim
   if !has('kaoriya')
@@ -113,6 +116,10 @@ if has('vim_starting')
   endif
 endif
 
+
+"-------------------------------------------
+" singleton
+"-------------------------------------------
 " Do not work on MacVim :(
 " if has('clientserver')
   " call singleton#enable()
@@ -187,9 +194,7 @@ set laststatus=2
 set statusline=%<%f\ %r%h%w%m[%{&fenc!=''?&fenc:&enc}][%{&ff=='unix'?'LF':&ff=='dos'?'CRLF':'CR'}]\ %y\ %=[0x%B]\ %c,%l/%L
 set list
 set listchars=tab:>-,eol:$
-" 画面最後の行をできる限り表示する
 set display=lastline
-" □や◯の文字があってもカーソル位置がずれないようにする
 set ambiwidth=double
 " new windows is put right
 set splitright
@@ -245,7 +250,6 @@ set formatoptions+=mM
 "-------------------------------------------
 " Searching
 "-------------------------------------------
-" 最後まで検索したら先頭へ戻る
 set wrapscan
 set ignorecase
 set smartcase
@@ -256,7 +260,7 @@ set hlsearch
 "-------------------------------------------
 " commands
 "-------------------------------------------
-" Reload with encoding.
+" Reload with specified encoding.
 command! -bang -bar -complete=file -nargs=? Cp932 edit ++enc=cp932 <args>
 command! -bang -bar -complete=file -nargs=? EucJp edit ++enc=euc-jp <args>
 command! -bang -bar -complete=file -nargs=? Iso2022jp edit ++enc=iso-2022-jp <args>
