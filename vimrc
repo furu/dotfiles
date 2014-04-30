@@ -136,8 +136,6 @@ set nobackup
 " Create swap file.
 set swapfile
 set directory=$TMPDIR
-" 編集中でも他のファイルを開ける
-" set hidden
 " Remove indent, eol and start by <BS>.
 set backspace=indent,eol,start
 " Show line number.
@@ -150,11 +148,6 @@ set title
 set ruler
 " Enable wrap.
 set wrap
-" 開いているファイルのディレクトリに移動
-" あまり推奨されないっぽい
-" -> 代わりにカレントディレクトリ移動のためのキーマッピングを定義した
-" set autochdir
-" 
 set showmatch
 " 閉じ括弧のマッチを表示する時間(1/10秒単位)
 set matchtime=2
@@ -164,10 +157,6 @@ set wildignorecase
 set wildmode=longest:full,full
 " カーソルが行末で止まらないようにする
 set whichwrap=b,s,h,l,<,>,[,]
-" スクロール時の余白確保
-" set scrolloff=5
-" ビープを鳴らさない
-" set visualbell t_vb=
 " 他で書き換えられたら自動で読みなおす
 set autoread
 " コマンドラインの高さ
@@ -176,9 +165,7 @@ set cmdheight=2
 set laststatus=2
 " ステータスラインに文字コード、改行コード、ファイルタイプなどを表示する
 set statusline=%<%f\ %r%h%w%m[%{&fenc!=''?&fenc:&enc}][%{&ff=='unix'?'LF':&ff=='dos'?'CRLF':'CR'}]\ %y\ %=[0x%B]\ %c,%l/%L
-" 
 set list
-" 
 set listchars=tab:>-,eol:$
 " 画面最後の行をできる限り表示する
 set display=lastline
@@ -212,14 +199,11 @@ endif
 " }}}
 
 " default tab & indent settings {{{
-" 
 set softtabstop=4
 " 自動インデント時の空白の数
 set shiftwidth=4
 " タブをスペースにする
 set expandtab
-" default indent settings
-" set cindent
 " }}}
 
 " Line feed code
