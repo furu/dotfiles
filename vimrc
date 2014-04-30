@@ -374,6 +374,9 @@ let g:quickrun_config = {}
 let g:quickrun_config._ = {
       \ 'runner': 'vimproc',
       \ }
+" TODO
+" http://lingr.com/room/vim/archives/2014/04/26#message-18895890
+" http://lingr.com/room/vim/archives/2014/04/26#message-18895905
 let g:quickrun_config['ruby.rspec'] = {
       \ 'command': 'rspec',
       \ 'cmdopt': '--no-color --format documentation',
