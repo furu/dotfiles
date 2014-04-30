@@ -269,7 +269,7 @@ command! -bang -bar -complete=file -nargs=? Sjis Cp932 <args>
 "-------------------------------------------
 " key mappings
 "-------------------------------------------
-" カーソルを表示行で移動
+" Move cursor by display lines.
 noremap j gj
 noremap k gk
 noremap <Down> gj
