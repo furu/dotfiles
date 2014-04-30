@@ -372,13 +372,6 @@ command! -bang -bar -complete=file -nargs=? Utf8 edit ++enc=utf-8
 command! -bang -bar -complete=file -nargs=? Jis Iso2022jp
 command! -bang -bar -complete=file -nargs=? Sjis Cp932
 
-" Check defined mappings. {{{
-command!
-      \ -nargs=* -complete=mapping
-      \ AllMaps
-      \ map <args> | map! <args> | lmap <args>
-"}}}
-
 " Change current directory. {{{
 function! s:ChangeCurrentDir(directory, bang)
   if a:directory == ''
