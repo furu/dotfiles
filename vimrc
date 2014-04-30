@@ -397,15 +397,6 @@ command! -nargs=? -complete=dir -bang CD call s:ChangeCurrentDir('<args>', '<ban
 nnoremap <silent> <Space>cd :<C-u>CD<CR>
 "}}}
 
-" Not work... Fix me!
-" mv editing file (from sorah's vimrc) {{{
-" function! s:mv_editing_file(new_file_name)
-  " call system("mv ".expand('%')." ".a:new_file_name)
-  " edit a:new_file_name
-" endfunction
-
-" command! -nargs=1 Rename call s:mv_editing_file(<f-args>)
-"}}}
 
 function! s:set_two_indent()
   setlocal shiftwidth=2 softtabstop=2 expandtab
