@@ -249,9 +249,6 @@ nnoremap gc '[v']
 vnoremap gc :<C-u>normal gc<CR>
 onoremap gc :<C-u>normal gc<CR>
 
-" 自動で挿入されたインデントが、何も入力せずにインサートモードを抜けたり、さらに新しい行を作ったりした場合に削除されないようにする
-nnoremap o oX<C-h>
-
 " key-mapping for nohlsearch
 nnoremap <silent> <Esc><Esc> :<C-u>nohlsearch<CR>
 
