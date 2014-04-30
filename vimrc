@@ -331,9 +331,6 @@ nnoremap gc '[v']
 vnoremap gc :<C-u>normal gc<CR>
 onoremap gc :<C-u>normal gc<CR>
 
-" バッファ一覧を表示し、番号を入力することでバッファを切り替える
-" nnoremap <Space>b :ls<Enter>:buffer<Space>
-
 " 自動で挿入されたインデントが、何も入力せずにインサートモードを抜けたり、さらに新しい行を作ったりした場合に削除されないようにする
 nnoremap o oX<C-h>
 " inoremap <CR> <CR>X<C-h>
