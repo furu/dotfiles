@@ -135,26 +135,25 @@ augroup MyAutoCmd
   autocmd!
 augroup END
 
-function! s:set_two_indent()
-  setlocal shiftwidth=2 softtabstop=2 expandtab
-endfunction
-function! s:set_four_indent()
-  setlocal shiftwidth=4 softtabstop=4 expandtab
+function! s:set_indent(n)
+  let &l:shiftwidth  = a:n
+  let &l:softtabstop = a:n
+  setlocal expandtab
 endfunction
 augroup MyTab
   autocmd!
-  autocmd FileType ruby call s:set_two_indent()
-  autocmd FileType vim call s:set_two_indent()
-  autocmd FileType javascript call s:set_four_indent()
-  autocmd FileType html call s:set_two_indent()
-  autocmd FileType xhtml call s:set_two_indent()
-  autocmd FileType haml call s:set_two_indent()
-  autocmd FileType css call s:set_two_indent()
-  autocmd FileType scss call s:set_two_indent()
-  autocmd FileType php call s:set_four_indent()
-  autocmd FileType eruby call s:set_two_indent()
-  autocmd FileType jsp call s:set_two_indent()
-  autocmd FileType cucumber call s:set_two_indent()
+  autocmd FileType ruby       call s:set_indent(2)
+  autocmd FileType vim        call s:set_indent(2)
+  autocmd FileType html       call s:set_indent(2)
+  autocmd FileType xhtml      call s:set_indent(2)
+  autocmd FileType haml       call s:set_indent(2)
+  autocmd FileType css        call s:set_indent(2)
+  autocmd FileType scss       call s:set_indent(2)
+  autocmd FileType eruby      call s:set_indent(2)
+  autocmd FileType jsp        call s:set_indent(2)
+  autocmd FileType cucumber   call s:set_indent(2)
+  autocmd FileType javascript call s:set_indent(4)
+  autocmd FileType php        call s:set_indent(4)
 augroup END
 
 " Move cursor to last edit position.
