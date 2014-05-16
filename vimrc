@@ -76,6 +76,8 @@ NeoBundle 'heavenshell/vim-quickrun-hook-unittest'
 
 NeoBundle 'osyo-manga/vim-anzu'
 
+NeoBundle 'editorconfig/editorconfig-vim'
+
 " Color Scheme
 NeoBundle 'tomasr/molokai'
 
