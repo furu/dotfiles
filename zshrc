@@ -96,8 +96,6 @@ disable r
 
 WORDCHARS=${WORDCHARS/\//}
 
-export PATH=${PATH}:./vendor/bin
-
 [ -e ${HOME}/.zsh/z/z.sh ] && source ${HOME}/.zsh/z/z.sh
 
 # Source local zshrc
