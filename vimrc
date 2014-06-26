@@ -362,7 +362,6 @@ let g:unite_source_git_grep_required_pattern_length = 2
 nnoremap <silent> ,b :<C-u>Unite -buffer-name=files buffer_tab<CR>
 nnoremap <silent> ,f :<C-u>Unite -buffer-name=files file<CR>
 nnoremap <silent> ,r :<C-u>Unite -buffer-name=files file_rec/async<CR>
-nnoremap <silent> ,m :<C-u>Unite -buffer-name=files file_mru<CR>
 nnoremap <silent> ,t :<C-u>Unite tab:no-current<CR>
 nnoremap <silent> ,y :<C-u>Unite history/yank<CR>
 nnoremap <silent> ,v :<C-u>Unite -buffer-name=files bookmark<CR>
