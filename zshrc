@@ -102,19 +102,20 @@ WORDCHARS=${WORDCHARS/\//}
 [ -e ~/.zshrc.local ] && source ~/.zshrc.local
 
 # Replacement of zsh bck-i-search
-peco-select-history() {
-  local tac
-  if type tac > /dev/null; then
-    tac="tac"
-  else
-    tac="tail -r"
-  fi
-  BUFFER=$(history -n 1 | eval $tac | peco --query "$LBUFFER")
-  CUSOR=$#BUFFER
-  zle clear-screen
-}
-zle -N peco-select-history
 if type peco > /dev/null; then
+  peco-select-history() {
+    local tac
+    if type tac > /dev/null; then
+      tac="tac"
+    else
+      tac="tail -r"
+    fi
+    BUFFER=$(history -n 1 | eval $tac | peco --query "$LBUFFER")
+    CUSOR=$#BUFFER
+    zle clear-screen
+  }
+
+  zle -N peco-select-history
   bindkey '^r' peco-select-history
 fi
 
