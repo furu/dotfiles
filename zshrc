@@ -72,23 +72,6 @@ hi() {
   for voice in `say -v '?' | cut -f1 -d ' '`; do echo $voice; say -v $voice hi; done
 }
 
-# Replacement of zsh bck-i-search
-peco-select-history() {
-  local tac
-  if type tac > /dev/null; then
-    tac="tac"
-  else
-    tac="tail -r"
-  fi
-  BUFFER=$(history -n 1 | eval $tac | peco --query "$LBUFFER")
-  CUSOR=$#BUFFER
-  zle clear-screen
-}
-zle -N peco-select-history
-if type peco > /dev/null; then
-  bindkey '^r' peco-select-history
-fi
-
 # Global Aliases
 alias -g L='| less'
 alias -g G='| grep'
@@ -117,6 +100,23 @@ WORDCHARS=${WORDCHARS/\//}
 
 # Source local zshrc
 [ -e ~/.zshrc.local ] && source ~/.zshrc.local
+
+# Replacement of zsh bck-i-search
+peco-select-history() {
+  local tac
+  if type tac > /dev/null; then
+    tac="tac"
+  else
+    tac="tail -r"
+  fi
+  BUFFER=$(history -n 1 | eval $tac | peco --query "$LBUFFER")
+  CUSOR=$#BUFFER
+  zle clear-screen
+}
+zle -N peco-select-history
+if type peco > /dev/null; then
+  bindkey '^r' peco-select-history
+fi
 
 # Start tmux
 if type tmux > /dev/null 2>&1 && [ -z "${TMUX}" ]; then
