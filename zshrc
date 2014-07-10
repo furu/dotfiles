@@ -112,7 +112,7 @@ if type peco > /dev/null; then
     fi
     BUFFER=$(history -n 1 | eval $tac | peco --query "$LBUFFER")
     CUSOR=$#BUFFER
-    zle clear-screen
+    zle -R -c
   }
 
   zle -N peco-select-history
