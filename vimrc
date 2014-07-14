@@ -124,10 +124,9 @@ endif
 "-------------------------------------------
 " singleton
 "-------------------------------------------
-" Do not work on MacVim :(
-" if has('clientserver')
-  " call singleton#enable()
-" endif
+if has('clientserver')
+  call singleton#enable()
+endif
 
 
 "-------------------------------------------
