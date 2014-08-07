@@ -248,6 +248,20 @@ endif
 set helplang=en,ja
 set formatoptions+=mM
 
+if has('persistent_undo')
+  if s:is_windows
+    let $UNDODIR = expand('~/vimfiles/undo')
+  else
+    let $UNDODIR = expand('~/.vim/undo')
+  endif
+  if !isdirectory($UNDODIR)
+    call mkdir($UNDODIR)
+  endif
+
+  set undofile
+  set undodir=$UNDODIR
+endif
+
 
 "-------------------------------------------
 " Searching
