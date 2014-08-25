@@ -78,6 +78,12 @@ NeoBundle 'osyo-manga/vim-anzu'
 
 NeoBundle 'editorconfig/editorconfig-vim'
 
+NeoBundle 'lambdalisue/vim-gista', {
+      \ 'depends' : [
+      \   'Shougo/unite.vim',
+      \   'tyru/open-browser.vim'
+      \ ]}
+
 " Color Scheme
 NeoBundle 'tomasr/molokai'
 
