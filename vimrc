@@ -84,6 +84,8 @@ NeoBundle 'lambdalisue/vim-gista', {
       \   'tyru/open-browser.vim'
       \ ]}
 
+NeoBundle 'vim-jp/go-vim'
+
 " Color Scheme
 NeoBundle 'tomasr/molokai'
 
@@ -161,6 +163,7 @@ augroup MyTab
   autocmd FileType cucumber   call s:set_indent(2)
   autocmd FileType javascript call s:set_indent(4)
   autocmd FileType php        call s:set_indent(4)
+  autocmd FileType go         setlocal noexpandtab tabstop=4 shiftwidth=4
 augroup END
 
 " Move cursor to last edit position.
