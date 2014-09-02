@@ -84,7 +84,8 @@ NeoBundle 'lambdalisue/vim-gista', {
       \   'tyru/open-browser.vim'
       \ ]}
 
-NeoBundle 'vim-jp/go-vim'
+NeoBundle 'google/vim-ft-go'
+NeoBundle 'vim-jp/vim-go-extra'
 
 " Color Scheme
 NeoBundle 'tomasr/molokai'
