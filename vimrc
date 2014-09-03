@@ -165,6 +165,7 @@ augroup MyTab
   autocmd FileType javascript call s:set_indent(4)
   autocmd FileType php        call s:set_indent(4)
   autocmd FileType go         setlocal noexpandtab tabstop=4 shiftwidth=4
+  autocmd FileType go         autocmd BufWritePre <buffer> Fmt
 augroup END
 
 " Move cursor to last edit position.
