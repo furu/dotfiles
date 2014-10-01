@@ -41,7 +41,9 @@ call neobundle#begin(expand('$DOTVIM/bundle'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " Unite
-NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/unite.vim', {
+      \ 'depends' : 'Shougo/tabpagebuffer.vim'
+      \ }
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'sgur/unite-git_grep'
 NeoBundle 'rhysd/unite-codic.vim', {
