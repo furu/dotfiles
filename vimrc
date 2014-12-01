@@ -1,4 +1,4 @@
-set nocompatible
+scriptencoding utf-8
 
 let s:is_windows = has('win32') || has('win64')
 let s:is_mac = has('macunix') || (executable('uname') && system('uname') =~? '^darwin')
