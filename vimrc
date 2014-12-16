@@ -70,6 +70,8 @@ NeoBundle 'tpope/vim-repeat'
 NeoBundle 'kana/vim-smartchr'
 NeoBundle 'kana/vim-tabpagecd'
 NeoBundle 'kana/vim-submode'
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'kana/vim-textobj-lastpat'
 
 NeoBundle 'tyru/eskk.vim'
 NeoBundle 'tyru/restart.vim'
