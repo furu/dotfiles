@@ -175,6 +175,8 @@ autocmd MyAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") |
 autocmd MyAutoCmd BufRead,BufNewFile *.md setlocal filetype=markdown
 autocmd MyAutoCmd BufRead,BufNewFile Guardfile setlocal filetype=ruby
 
+autocmd MyAutoCmd FileType gitcommit setlocal spell
+
 
 "-------------------------------------------
 " Basic
