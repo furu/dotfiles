@@ -46,10 +46,6 @@ NeoBundle 'Shougo/unite.vim', {
       \ }
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'sgur/unite-git_grep'
-NeoBundle 'rhysd/unite-codic.vim', {
-      \ 'depends' : 'koron/codic-vim'
-      \ }
-NeoBundle 'ujihisa/unite-colorscheme'
 
 NeoBundle 'Shougo/junkfile.vim'
 NeoBundle 'Shougo/echodoc'
@@ -58,11 +54,8 @@ NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
 
 NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'thinca/vim-ref'
 NeoBundle 'thinca/vim-visualstar'
 NeoBundle 'thinca/vim-singleton'
-NeoBundle 'thinca/vim-scouter'
-NeoBundle 'thinca/vim-fontzoom'
 
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
@@ -74,19 +67,10 @@ NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-textobj-lastpat'
 
 NeoBundle 'tyru/eskk.vim'
-NeoBundle 'tyru/restart.vim'
 
 NeoBundle 'heavenshell/vim-quickrun-hook-unittest'
 
 NeoBundle 'osyo-manga/vim-anzu'
-
-NeoBundle 'editorconfig/editorconfig-vim'
-
-NeoBundle 'lambdalisue/vim-gista', {
-      \ 'depends' : [
-      \   'Shougo/unite.vim',
-      \   'tyru/open-browser.vim'
-      \ ]}
 
 " Color Scheme
 NeoBundle 'tomasr/molokai'
@@ -357,22 +341,6 @@ vmap <Leader>cm <Plug>NERDCommenterMinimal
 nmap <Leader>ca <Plug>NERDCommenterAppend
 nmap <Leader>c$ <Plug>NERDCommenterToEOL
 vmap <Leader>cs <Plug>NERDCommenterSexy
-
-
-"-------------------------------------------
-" ref
-"-------------------------------------------
-autocmd MyAutoCmd FileType ref call s:initialize_ref_viewer()
-function! s:initialize_ref_viewer()
-  nnoremap <buffer> q <C-w>c
-  setlocal nonumber
-endfunction
-" gem install myrurema
-" rurema --init
-if executable('rurema')
-  let g:ref_refe_cmd = ['rurema', '--no-ask']
-  let g:ref_refe_version = 2
-endif
 
 
 "-------------------------------------------
