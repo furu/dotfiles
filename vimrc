@@ -45,7 +45,7 @@ NeoBundle 'Shougo/unite.vim', {
       \ 'depends' : 'Shougo/tabpagebuffer.vim'
       \ }
 NeoBundle 'Shougo/unite-outline'
-NeoBundle 'sgur/unite-git_grep'
+NeoBundle 'lambdalisue/unite-grep-vcs'
 
 NeoBundle 'Shougo/junkfile.vim'
 NeoBundle 'Shougo/echodoc'
