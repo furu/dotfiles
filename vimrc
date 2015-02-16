@@ -72,6 +72,8 @@ NeoBundle 'heavenshell/vim-quickrun-hook-unittest'
 
 NeoBundle 'osyo-manga/vim-anzu'
 
+NeoBundle 'junegunn/vim-easy-align'
+
 " Color Scheme
 NeoBundle 'tomasr/molokai'
 
@@ -475,3 +477,9 @@ nmap # <Plug>(anzu-sharp-with-echo)
 noremap <Plug>N N
 map * <Plug>(visualstar-*)<Plug>N
 map # <Plug>(visualstar-#)<Plug>N
+
+
+"-------------------------------------------
+" vim-easy-align
+"-------------------------------------------
+vmap <Enter> <Plug>(EasyAlign)
