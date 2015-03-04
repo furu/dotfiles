@@ -72,6 +72,11 @@ hi() {
   for voice in `say -v '?' | cut -f1 -d ' '`; do echo $voice; say -v $voice hi; done
 }
 
+# https://github.com/peco/peco/wiki/Sample-Usage#pecoghq--ghq--peco-miyagawa
+peco-ghq() {
+  cd $(ghq list --full-path | perl -nlpe 's[.*src/(.*)][$1\0$_]' | peco --null)
+}
+
 # Global Aliases
 alias -g L='| less'
 alias -g G='| grep'
@@ -90,6 +95,7 @@ alias grep='grep --color=auto'
 alias cp='cp -irp'
 alias chou='echo "Execute \"sudo pacman -Syu\""; sudo pacman -Syu'
 alias g='git'
+alias gl='peco-ghq'
 
 # For R Programming Language
 disable r
