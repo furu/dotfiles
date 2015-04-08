@@ -39,10 +39,4 @@ set guicursor& guicursor+=a:blinkon0
 set background=dark
 colorscheme molokai
 highlight Cursor guibg=#268bd2 guifg=#ffffff
-" For 'landscape' colorscheme.
-" highlight NonText guifg=#424242
-" highlight Search term=reverse ctermfg=0 ctermbg=14 guifg=#000000 guibg=#ffff33
-" if !exists('g:colors_name')
-  " colorscheme wombat
-" endif
 "}}}
