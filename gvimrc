@@ -23,9 +23,8 @@ if has('vim_starting')
   if has('win32') || has('win64')
     gui 
     set transparency=248
-  else
-    set columns=80
-    set lines=27
+  elseif has('mac')
+    set transparency=5
   endif
 endif
 
