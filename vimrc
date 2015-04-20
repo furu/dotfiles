@@ -48,7 +48,6 @@ NeoBundle 'Shougo/unite-outline'
 NeoBundle 'lambdalisue/unite-grep-vcs'
 
 NeoBundle 'Shougo/junkfile.vim'
-NeoBundle 'Shougo/echodoc'
 
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
@@ -340,12 +339,6 @@ vmap <Leader>cm <Plug>NERDCommenterMinimal
 nmap <Leader>ca <Plug>NERDCommenterAppend
 nmap <Leader>c$ <Plug>NERDCommenterToEOL
 vmap <Leader>cs <Plug>NERDCommenterSexy
-
-
-"-------------------------------------------
-" echodoc
-"-------------------------------------------
-let g:echodoc_enable_at_startup = 1
 
 
 "-------------------------------------------
