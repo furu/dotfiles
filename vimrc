@@ -53,7 +53,6 @@ NeoBundle 'Shougo/echodoc'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
 
-NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'thinca/vim-visualstar'
 NeoBundle 'thinca/vim-singleton'
 
@@ -363,15 +362,6 @@ nnoremap <silent> ,g :<C-u>Unite -buffer-name=search grep<CR>
 nnoremap <silent> ,o :<C-u>Unite outline<CR>
 nnoremap <silent> ,a :<C-u>Unite file_rec/git:--cached:--others:--exclude-standard<CR>
 nnoremap <silent> ,l :<C-u>UniteResume<CR>
-
-
-"-------------------------------------------
-" quickrun
-"-------------------------------------------
-let g:quickrun_config = {}
-let g:quickrun_config._ = {
-      \ 'runner': 'vimproc',
-      \ }
 
 
 "-------------------------------------------
