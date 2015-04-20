@@ -68,8 +68,6 @@ NeoBundle 'kana/vim-textobj-lastpat'
 
 NeoBundle 'tyru/eskk.vim'
 
-NeoBundle 'heavenshell/vim-quickrun-hook-unittest'
-
 NeoBundle 'osyo-manga/vim-anzu'
 
 NeoBundle 'junegunn/vim-easy-align'
@@ -370,35 +368,10 @@ nnoremap <silent> ,l :<C-u>UniteResume<CR>
 "-------------------------------------------
 " quickrun
 "-------------------------------------------
-" For RSpec
-" reference: https://gist.github.com/2631964
-function! BundleExecOrNot()
-  if findfile('Gemfile', '.;') ==# ''
-    return ''
-  else
-    return 'bundle exec'
-  endif
-endfunction
-
 let g:quickrun_config = {}
 let g:quickrun_config._ = {
       \ 'runner': 'vimproc',
       \ }
-" TODO
-" http://lingr.com/room/vim/archives/2014/04/26#message-18895890
-" http://lingr.com/room/vim/archives/2014/04/26#message-18895905
-let g:quickrun_config['ruby.rspec'] = {
-      \ 'command': 'rspec',
-      \ 'cmdopt': '--no-color --format documentation',
-      \ 'exec': BundleExecOrNot() . ' %c %o %s',
-      \ }
-
-augroup QuickRunUnitTest
-  autocmd!
-  autocmd BufWinEnter,BufNewFile *_spec.rb setlocal filetype=ruby.rspec syntax=rspec
-augroup END
-
-nnoremap <silent> <Leader>t :QuickRun -mode n -runner vimproc:updatetime=10 -hook/unittest/enable 1<CR>
 
 
 "-------------------------------------------
