@@ -145,7 +145,7 @@ augroup MyTab
   autocmd FileType eruby      call s:set_indent(2)
   autocmd FileType jsp        call s:set_indent(2)
   autocmd FileType cucumber   call s:set_indent(2)
-  autocmd FileType javascript call s:set_indent(4)
+  autocmd FileType javascript call s:set_indent(2)
   autocmd FileType php        call s:set_indent(4)
   autocmd FileType go         setlocal noexpandtab tabstop=4 shiftwidth=4
   autocmd FileType go         autocmd BufWritePre <buffer> Fmt
