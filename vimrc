@@ -70,6 +70,8 @@ NeoBundle 'osyo-manga/vim-anzu'
 
 NeoBundle 'junegunn/vim-easy-align'
 
+NeoBundle 'vim-scripts/vim-auto-save'
+
 " Color Scheme
 NeoBundle 'tomasr/molokai'
 
@@ -439,3 +441,10 @@ map # <Plug>(visualstar-#)<Plug>N
 " vim-easy-align
 "-------------------------------------------
 vmap <Enter> <Plug>(EasyAlign)
+
+
+"-------------------------------------------
+" VimSave
+"-------------------------------------------
+let g:auto_save = 1
+let g:auto_save_silent = 1
