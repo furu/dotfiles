@@ -54,6 +54,7 @@ NeoBundle 'scrooloose/syntastic'
 
 NeoBundle 'thinca/vim-visualstar'
 NeoBundle 'thinca/vim-singleton'
+NeoBundle 'thinca/vim-localrc'
 
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-repeat'
@@ -368,32 +369,7 @@ autocmd MyAutoCmd FileType ruby inoremap <buffer> <expr> { smartchr#loop('{', '#
 "-------------------------------------------
 " eskk
 "-------------------------------------------
-if s:is_windows
-  set imdisable
-  let g:eskk#large_dictionary = {
-        \'path': "C:\\skkdic\\SKK-JISYO.L",
-        \'sorted': 1,
-        \'encoding': 'euc-jp',
-        \}
-elseif s:is_mac
-  let g:eskk#dictionary = {
-        \'path': '/Users/furu/Library/Application\ Support/AquaSKK/skk-jisyo.utf8',
-        \'sorted': 0,
-        \'encoding': 'utf-8',
-        \}
-  let g:eskk#large_dictionary = {
-        \'path': "/Users/furu/Library/Application\ Support/AquaSKK/SKK-JISYO.L",
-        \'sorted': 1,
-        \'encoding': 'euc-jp',
-        \}
-else
-  set imdisable
-  let g:eskk#large_dictionary = {
-        \'path': "/usr/share/skk/SKK-JISYO.L",
-        \'sorted': 1,
-        \'encoding': 'euc-jp',
-        \}
-endif
+" Please put configuraion file to ~/.local.vimrc for each environment.
 
 
 "-------------------------------------------
