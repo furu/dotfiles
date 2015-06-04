@@ -303,8 +303,6 @@ noremap : ;
 " Oを使うので、現在の行の上に空行を挿入することができなくなるけど、あんまり使わないのでOK
 nnoremap <silent> O :<C-u>call append(expand('.'), '')<CR>j
 
-" :help quickly. TODO: Occur waiting for key-in.
-nnoremap <C-h> :<C-u>help<Space>
 " :help under cursor keyword.
 nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><CR>
 
@@ -315,10 +313,6 @@ onoremap gc :<C-u>normal gc<CR>
 
 " key-mapping for nohlsearch
 nnoremap <silent> <Esc><Esc> :<C-u>nohlsearch<CR>
-
-" key-mapping for edit .vimrc/.gvimrc
-nnoremap <silent> <Space>ev :<C-u>edit $MYVIMRC<CR>
-nnoremap <silent> <Space>eg :<C-u>edit $MYGVIMRC<CR>
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
 
