@@ -48,6 +48,7 @@ NeoBundle 'Shougo/unite-outline'
 NeoBundle 'lambdalisue/unite-grep-vcs'
 
 NeoBundle 'Shougo/junkfile.vim'
+NeoBundle 'Shougo/vinarise.vim'
 
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'scrooloose/syntastic'
