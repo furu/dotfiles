@@ -77,10 +77,6 @@ peco-ghq() {
   cd $(ghq list --full-path | perl -nlpe 's[.*src/(.*)][$1\0$_]' | peco --null)
 }
 
-# Global Aliases
-alias -g L='| less'
-alias -g G='| grep'
-
 # Aliases
 # http://qiita.com/items/a7807e3bac5a30791566
 alias reload='exec zsh --login'
