@@ -23,9 +23,6 @@ SAVEHIST=50000
 
 # Completion
 
-fpath=(${HOME}/.zsh/git-issue-zsh-completion $fpath)
-fpath=(${HOME}/.zsh.local/site-functions $fpath)
-
 zstyle :compinstall filename '/Users/furu/.zshrc'
 autoload -Uz compinit promptinit
 compinit
