@@ -1,23 +1,5 @@
 scriptencoding utf-8
 
-" Fonts:"{{{
-if has('win32') || has ('win64')
-  " set guifont=Osaka－等幅:h12:cSHIFTJIS
-  " set guifont=Ricty:h12:cSHIFTJIS
-  " set guifont=Inconsolata:h12:cSHIFTJIS
-  set guifont=Migu_1M:h11
-elseif has('mac')
-  " set guifont=Osaka－等幅:h12
-  set guifont=Osaka-Mono:h14
-else
-  set guifont=Ricty\ 12
-  " set guifont=Ricty\ Bold\ 12
-  " set guifont=Osaka－等幅\ Bold\ 12,Ricty\ 12,Inconsolata\ 12,Monospace\ 12
-  " set guifont=Osaka－等幅\ 12,Ricty\ 12,Inconsolata\ 12,Monospace\ 12
-endif
-"}}}
-
-
 " Window:"{{{
 if has('vim_starting')
   if has('win32') || has('win64')
