@@ -74,6 +74,8 @@ NeoBundle 'junegunn/vim-easy-align'
 
 NeoBundle 'vim-scripts/vim-auto-save'
 
+NeoBundle 'rhysd/vim-textobj-ruby'
+
 " Color Scheme
 NeoBundle 'tomasr/molokai'
 
