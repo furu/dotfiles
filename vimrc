@@ -175,7 +175,6 @@ set swapfile
 set directory=$TMPDIR
 " Remove indent, eol and start by <BS>.
 set backspace=indent,eol,start
-set number
 " Show file name on title bar.
 set title
 " Use clipboard.
