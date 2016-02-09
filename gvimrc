@@ -22,3 +22,12 @@ set background=dark
 colorscheme molokai
 highlight Cursor guibg=#268bd2 guifg=#ffffff
 "}}}
+
+" Mouse:"{{{
+" Show popup menu if right click.
+set mousemodel=popup
+" Don't focus the window when the mouse pointer is moved.
+set nomousefocus
+" Hide mouse pointer on insert mode.
+set mousehide
+"}}}
