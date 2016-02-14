@@ -212,7 +212,6 @@ nnoremap gc '[v']
 vnoremap gc :<C-u>normal gc<CR>
 onoremap gc :<C-u>normal gc<CR>
 
-" key-mapping for nohlsearch
 nnoremap <silent> <Esc><Esc> :<C-u>nohlsearch<CR>
 
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h') . '/' : '%%'
