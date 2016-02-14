@@ -202,8 +202,6 @@ noremap <Up> gk
 noremap ; :
 noremap : ;
 
-nnoremap <silent> O :<C-u>call append(expand('.'), '')<CR>j
-
 " :help under cursor keyword.
 nnoremap <C-h><C-h> :<C-u>help<Space><C-r><C-w><CR>
 
