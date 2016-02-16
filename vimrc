@@ -14,6 +14,7 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/tabpagebuffer.vim'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/junkfile.vim'
+NeoBundle 'Shougo/neoyank.vim'
 NeoBundle 'thinca/vim-singleton'
 NeoBundle 'thinca/vim-localrc'
 NeoBundle 'tpope/vim-surround'
@@ -233,7 +234,6 @@ vmap <Leader>cc <Plug>NERDCommenterToggle
 "-------------------------------------------
 " unite
 "-------------------------------------------
-let g:unite_source_history_yank_enable = 1
 nnoremap <silent> ,b :<C-u>Unite -buffer-name=files buffer_tab<CR>
 nnoremap <silent> ,f :<C-u>Unite -buffer-name=files file<CR>
 nnoremap <silent> ,r :<C-u>Unite -buffer-name=files file_rec/async<CR>
