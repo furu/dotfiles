@@ -23,7 +23,6 @@ NeoBundle 'kana/vim-submode'
 NeoBundle 'kana/vim-textobj-user'
 NeoBundle 'kana/vim-textobj-lastpat'
 NeoBundle 'scrooloose/nerdcommenter'
-NeoBundle 'lambdalisue/unite-grep-vcs'
 NeoBundle 'tyru/eskk.vim'
 NeoBundle 'junegunn/vim-easy-align'
 
@@ -235,7 +234,6 @@ vmap <Leader>cc <Plug>NERDCommenterToggle
 " unite
 "-------------------------------------------
 let g:unite_source_history_yank_enable = 1
-let g:unite_source_git_grep_required_pattern_length = 2
 nnoremap <silent> ,b :<C-u>Unite -buffer-name=files buffer_tab<CR>
 nnoremap <silent> ,f :<C-u>Unite -buffer-name=files file<CR>
 nnoremap <silent> ,r :<C-u>Unite -buffer-name=files file_rec/async<CR>
