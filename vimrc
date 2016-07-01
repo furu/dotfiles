@@ -128,6 +128,7 @@ set display=lastline
 set ambiwidth=double
 set splitright
 set textwidth=0
+set colorcolumn=81
 
 " default tab & indent settings
 set softtabstop=4
