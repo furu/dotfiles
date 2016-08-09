@@ -1,6 +1,7 @@
 # Emacs keybind
 bindkey -e
 
+setopt extended_history
 setopt share_history
 setopt auto_pushd
 setopt pushd_ignore_dups
