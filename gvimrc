@@ -18,8 +18,10 @@ set guicursor& guicursor+=a:blinkon0
 
 " Setting of colorscheme.
 " Don't override colorscheme.
-set background=dark
-colorscheme molokai
+colorscheme japanesque
+highlight Conceal NONE
+highlight Conceal guifg=#828282
+highlight Cursor NONE
 highlight Cursor guibg=#268bd2 guifg=#ffffff
 "}}}
 

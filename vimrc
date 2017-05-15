@@ -14,7 +14,6 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/tabpagebuffer.vim'
 NeoBundle 'Shougo/unite-outline'
 NeoBundle 'Shougo/junkfile.vim'
-NeoBundle 'Shougo/neoyank.vim'
 NeoBundle 'thinca/vim-singleton'
 NeoBundle 'thinca/vim-localrc'
 NeoBundle 'tpope/vim-surround'
@@ -26,12 +25,11 @@ NeoBundle 'kana/vim-textobj-lastpat'
 NeoBundle 'scrooloose/nerdcommenter'
 NeoBundle 'tyru/eskk.vim'
 NeoBundle 'junegunn/vim-easy-align'
-
-" Haskell
-NeoBundle 'itchyny/vim-haskell-indent'
+NeoBundle 'osyo-manga/vim-anzu'
 
 " Color Scheme
 NeoBundle 'tomasr/molokai'
+NeoBundle 'aereal/vim-colors-japanesque'
 
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
@@ -91,14 +89,14 @@ augroup MyTab
   autocmd FileType javascript call s:set_indent(2)
   autocmd FileType php        call s:set_indent(4)
   autocmd FileType haskell    call s:set_indent(2)
+  autocmd FileType yaml       call s:set_indent(2)
+  autocmd FileType json       call s:set_indent(2)
   autocmd FileType go         setlocal noexpandtab tabstop=4 shiftwidth=4
   autocmd FileType go         autocmd BufWritePre <buffer> Fmt
 augroup END
 
 " Move cursor to last edit position.
 autocmd MyAutoCmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
-autocmd MyAutoCmd FileType gitcommit setlocal spell
 
 
 "-------------------------------------------
@@ -112,6 +110,7 @@ set backspace=indent,eol,start
 set title
 set ruler
 set wrap
+set breakindent
 set showmatch
 set matchtime=2
 set wildmenu
@@ -237,6 +236,7 @@ vmap <Leader>cc <Plug>NERDCommenterToggle
 "-------------------------------------------
 nnoremap <silent> ,b :<C-u>Unite -buffer-name=files buffer_tab<CR>
 nnoremap <silent> ,a :<C-u>Unite file_rec/git:--cached:--others:--exclude-standard<CR>
+nnoremap <silent> ,o :<C-u>Unite outline<CR>
 
 
 "-------------------------------------------
@@ -271,3 +271,12 @@ let g:submode_keep_leaving_key = 1
 " vim-easy-align
 "-------------------------------------------
 vmap <Enter> <Plug>(EasyAlign)
+
+
+"-------------------------------------------
+" vim-anzu
+"-------------------------------------------
+nmap n <Plug>(anzu-n-with-echo)
+nmap N <Plug>(anzu-N-with-echo)
+nmap * <Plug>(anzu-star-with-echo)
+nmap # <Plug>(anzu-sharp-with-echo)
