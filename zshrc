@@ -93,8 +93,6 @@ disable r
 
 WORDCHARS=${WORDCHARS/\//}
 
-[ -e ${HOME}/.zsh/z/z.sh ] && source ${HOME}/.zsh/z/z.sh
-
 # Source local zshrc
 [ -e ~/.zshrc.local ] && source ~/.zshrc.local
 
