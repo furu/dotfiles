@@ -1,0 +1,8 @@
+# [user]
+#     name = Alice
+#     email = alice@example.com
+# [core]
+#     editor = nvim
+#     pager = lv -c
+# [ghq]
+#     root = ~/work/repos

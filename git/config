@@ -1,0 +1,39 @@
+[alias]
+    a = add
+    b = branch
+    ba = branch -a
+    ci = commit
+    cia = commit --amend
+    cl = clone
+    co = checkout
+    d = diff
+    ds = diff --staged
+    f = fetch
+    g = grep
+    gr = log --graph --date-order --all --pretty=format:'%h %Cred%d %Cgreen%ad %Cblue%cn %Creset%s' --date=short
+    l = log --stat
+    m = merge
+    p = push
+    r = rebase
+    rc = rebase --continue
+    rs = restore
+    s = status -sb
+    sh = show
+    ss = stash
+    sw = switch
+[color]
+    ui = auto
+[core]
+    quotepath = false
+[diff]
+    compactionHeuristic = true
+[grep]
+    lineNumber = true
+[include]
+    path = config.local
+[init]
+    defaultBranch = main
+[merge]
+    ff = false
+[push]
+    default = simple
