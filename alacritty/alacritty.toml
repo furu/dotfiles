@@ -1,0 +1,5 @@
+[window]
+# 80x24
+dimensions = { columns = 240, lines = 72 }
+opacity = 0.95
+#blur = true
