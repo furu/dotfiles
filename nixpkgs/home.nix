@@ -21,12 +21,12 @@
 
   home.packages = [
     pkgs.awscli2
+    pkgs.deno
     pkgs.ffmpeg_5
     pkgs.fnm
     pkgs.ghq
     pkgs.httpie
     pkgs.jq
-    pkgs.lv
     pkgs.mycli
     pkgs.nkf
     pkgs.neovim

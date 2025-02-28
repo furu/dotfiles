@@ -1,0 +1,9 @@
+font-family = HackGen Console NF
+font-size = 12
+font-thicken = true
+background-opacity = 0.95
+title = " "
+window-height = 67
+window-width = 205
+confirm-close-surface = false
+macos-titlebar-proxy-icon = hidden
