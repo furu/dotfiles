@@ -1,0 +1,12 @@
+*.iml
+,*
+.*.un~
+.DS_Store
+.envrc
+.httpie
+.idea
+.local.vimrc
+.vagrant
+.vscode
+Thumbs.db
+mise.local.toml
