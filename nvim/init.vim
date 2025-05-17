@@ -27,7 +27,7 @@ set statusline=%<%f\ %r%h%w%m[%{&fenc!=''?&fenc:&enc}][%{&ff=='unix'?'LF':&ff=='
 set termguicolors
 
 " skkeleton
-call skkeleton#config({ 'globalDictionaries': ['/Users/furukido/.nix-profile/share/SKK-JISYO.L'] })
+call skkeleton#config({ 'globalDictionaries': ['/Users/furukido/Library/Application Support/AquaSKK/SKK-JISYO.L'] })
 call skkeleton#register_keymap('input', ';', 'henkanPoint')
 imap <C-j> <Plug>(skkeleton-enable)
 cmap <C-j> <Plug>(skkeleton-enable)
