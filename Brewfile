@@ -14,7 +14,12 @@ cask 'firefox'
 cask 'font-hackgen-nerd'
 cask 'ghostty'
 cask 'google-chrome'
+cask 'google-drive'
 cask 'jetbrains-toolbox'
 cask 'karabiner-elements'
 cask 'logseq'
 cask 'orbstack'
+cask 'proxyman'
+cask 'visual-studio-code'
+
+mas 'Toggl Track', id: 1291898086
