@@ -5,6 +5,7 @@ brew 'fish'
 brew 'gmailctl'
 brew 'libyaml'
 brew 'lv'
+brew 'pgcli'
 brew 'watchman'
 brew 'xcodes'
 
