@@ -3,6 +3,7 @@
 brew 'envchain'
 brew 'fish'
 brew 'gmailctl'
+brew 'httpie'
 brew 'libyaml'
 brew 'lv'
 brew 'pgcli'
